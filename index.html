@@ -45,10 +45,27 @@
 
 		<section id="four">
 			<section>
-				<header>
-					<h2>Music Streaming App with Personalized Playlists</h2>
-					<p>Dec 2024 - Present</p>
-					<p>
+				<header style="margin-bottom: 4em;">
+					<h2 style="margin-bottom: 0.5em;">RhythmIQ | Music Streaming App with Personalized Playlists</h2>
+					<p style="margin: 0;">Jan 2025 - Present</p>
+					<p style="margin: 0.5em 0 1.5em;"><a href="https://github.com/RyanJHamby/RhythmIQControlPlaneService">View Project GitHub Repository</a></p>
+				
+					<img src="images/RhythmIQ.drawio copy.png" alt="RhythmIQ system diagram" style="width: 100%; margin-bottom: 2em;" />
+				
+					<div class="row-flex gradient-bg" style="padding: 3em; border-radius: 24px; margin-bottom: 2em;">
+						<article class="col-6 work-item" style="flex: 1; min-width: 300px; background: #f7f7f7; padding: 2em; border-radius: 12px;">
+							<h3>📖 RhythmIQ Low-Level Design Document</h3>
+							<p>Optimized data flow for low-latency music recommendation, modular Java architecture with AWS Lambda, and real-time context detection via sensor data.</p>
+							<a href="pdfs/RhythmIQ Low Level Design.pdf" class="button primary" target="_blank">View PDF 📄</a>
+						</article>
+						<article class="col-6 work-item" style="flex: 1; min-width: 300px; background: #f7f7f7; padding: 2em; border-radius: 12px;">
+							<h3>📖 RhythmIQ High-Level Design Document</h3>
+							<p>Problem definition, project scoping, scalable cloud-native architecture (AWS), and GitHub CI/CD with Terraform CDK.</p>
+							<a href="pdfs/Environment-Driven Music Recommendation Application High-Level Design.pdf" class="button primary" target="_blank">View PDF 📄</a>
+						</article>
+					</div>
+				
+					<p style="margin-bottom: 1em;">
 						This project is a feature-rich music streaming application that allows users to create and listen to 
 						personalized playlists based on their listening habits. The app integrates with various music APIs 
 						to provide real-time streaming and recommendations.
@@ -58,12 +75,8 @@
 						collaborative filtering and content-based filtering. The backend is powered by AWS Lambda for 
 						efficient and scalable processing, with Dagger used to manage dependencies within the Java codebase.
 					</p>
-					<p>
-						To optimize performance, I implemented caching with Redis and used asynchronous event-driven 
-						architecture to handle large-scale playlist generation efficiently.
-					</p>
-				</header>
-			</section>		
+				</header>				
+			</section>	
 			<hr />	
 			<section>
 				<header>
@@ -334,6 +347,20 @@
 
 	</div>
 
+	<!-- PDF Documents Section -->
+	<section id="pdfs">
+		<header class="major">
+			<h2>Documents</h2>
+		</header>
+		<div class="row">
+			<article class="col-6 col-12-xsmall work-item">
+				<h3>100 Michigan Tips</h3>
+				<p>A comprehensive guide with 100 tips about the University of Michigan.</p>
+				<a href="pdfs/100MichiganTips.pdf" class="button" target="_blank">View PDF</a>
+			</article>
+		</div>
+	</section>
+
 	<!-- Footer -->
 	<footer id="footer">
 		<div class="inner">
@@ -344,7 +371,7 @@
 							class="label">Github</span></a></li>
 			</ul>
 			<ul class="copyright">
-				<strong>Last updated: 04/06/25 | hambyr@umich.edu</strong>
+				<strong>Last updated: 04/19/25 | hambyr@umich.edu</strong>
 			</ul>
 		</div>
 	</footer>
@@ -358,5 +385,41 @@
 	<script src="assets/js/main.js"></script>
 
 </body>
+
+<style>
+	.gradient-bg {
+		background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+		background-size: 600% 600%;
+		animation: gradientWave 10s ease infinite;
+	}
+
+	@keyframes gradientWave {
+		0% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+		100% { background-position: 0% 50%; }
+	}
+
+	.card {
+		background: white;
+		padding: 2em;
+		border-radius: 16px;
+		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+		flex: 1;
+		min-width: 300px;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+	}
+
+	.row-flex {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2em;
+		margin-top: 2em;
+	}
+</style>
 
 </html>
