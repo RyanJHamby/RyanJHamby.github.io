@@ -31,6 +31,7 @@ body {
   color: var(--primary-color);
   border-bottom: 3px solid var(--secondary-color);
   padding-bottom: 0.5em;
+  margin-top: 0;
   margin-bottom: 1em;
   font-size: 2.5em;
 }
@@ -553,6 +554,16 @@ hr {
 }
 
 .share-buttons {
+  display: none !important;
+}
+
+/* Hide the duplicate profile card on homepage */
+article.first-entry.home-info {
+  display: none !important;
+}
+
+/* Hide blog post preview/excerpt that appears after projects */
+article.post-entry {
   display: none !important;
 }
 

@@ -4,23 +4,21 @@ title = "Home"
 
 ![Profile Picture](/images/engin.JPG)
 
-## Hello, I am Ryan.
-
 I strive for simple solutions to complex problems.
 
-**📍 New York, NY | Software Engineer II @ AWS**
+**New York, NY | Software Engineer II @ AWS**
 
 I am particularly passionate about the fintech space, where technology and finance intersect to solve complex, high-impact problems. My experience in building resilient, secure, and customer-centric systems directly overlaps with the demands of fintech—where scalability, reliability, and compliance are essential. I am excited by opportunities to apply my expertise in cloud-native architectures, system monitoring, and end-to-end development to innovations in payments, trading systems, and financial infrastructure.
 
+[LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) | [GitHub](https://github.com/RyanJHamby) | [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com)
+
 ---
 
-## Quick Navigation
+## Check out my Personal Tech Blog!
 
-- 💼 [Experience](/experience) - AWS career and impact
-- 🚀 [Projects](/projects) - Trading & quant systems
-- 🎯 [Hobby Projects](/hobby-projects) - Mobile apps, design projects
-- 🎓 [Education](/education) - Skills & certifications
-- 📝 [Blog](/blog) - Technical insights
+Systems, performance, and the craft of building software. [Read more](/blog)
+
+- [Cache Eviction: 30 Years of Improvements](/blog/cache-eviction-improvements/) — How cache hierarchies evolved from naive LRU to adaptive policies. Includes 30-year trend data on hit rates and eviction strategies.
 
 ---
 
