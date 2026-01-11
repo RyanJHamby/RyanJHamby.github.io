@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Home on Ryan J Hamby</title>
+    <link>https://ryanjhamby.github.io/</link>
+    <description>Recent content in Home on Ryan J Hamby</description>
+    <generator>Hugo -- 0.154.4</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ryanjhamby.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>https://ryanjhamby.github.io/blog/first-post/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/blog/first-post/</guid>
+      <description>&lt;p&gt;This is your first blog post. Replace this with your content.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://ryanjhamby.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/about/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a Software Engineer II at Amazon Web Services working on payment compliance and infrastructure for AWS Marketplace.&lt;/p&gt;
+&lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;
+&lt;p&gt;I build resilient, scalable systems that solve complex problems. My focus is on the intersection of cloud architecture, system design, and fintech—where reliability, compliance, and performance are non-negotiable.&lt;/p&gt;
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+&lt;p&gt;I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and have spent my career building production systems at AWS. I&amp;rsquo;ve worked on distributed systems processing millions of requests per day, led infrastructure redesigns that unlocked hundreds of millions in annual revenue, and mentored engineers on system design principles.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Education &amp; Skills</title>
+      <link>https://ryanjhamby.github.io/education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/education/</guid>
+      <description>&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
+&lt;h3 id=&#34;university-of-michigan&#34;&gt;University of Michigan&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;B.S.E. in Computer Science, Minor in Electrical Engineering | Dec 2022&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;GPA: 3.65 / 4.00, Magna Cum Laude&lt;/p&gt;
+&lt;p&gt;Leadership:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VP of M-HEAL (250-member Global Health Engineering Club)&lt;/li&gt;
+&lt;li&gt;VP of M-Racing (Formula SAE Racing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;certifications&#34;&gt;Certifications&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;📕 AWS Certified Solutions Architect Associate (2024)&lt;/li&gt;
+&lt;li&gt;📘 AWS Certified Developer (2025)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;technical-skills&#34;&gt;Technical Skills&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Languages:&lt;/strong&gt; Python, Java, TypeScript (production expertise) | C++, SQL (proficient) | Go, Rust (learning)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Distributed Systems:&lt;/strong&gt; AWS (Lambda, DynamoDB, RDS, S3, Step Functions), Redis, gRPC, Docker, Terraform&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Experience</title>
+      <link>https://ryanjhamby.github.io/experience/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/experience/</guid>
+      <description>&lt;h2 id=&#34;amazon-web-services---software-development-engineer-ii&#34;&gt;Amazon Web Services - Software Development Engineer II&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;AWS Marketplace, Payment Compliance Team | Dec 2024 - Present | New York, NY&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Amazon Logo&#34; loading=&#34;lazy&#34; src=&#34;https://ryanjhamby.github.io/images/amazon.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h3&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Architected dual-partition multi-tenant infrastructure enabling AWS Marketplace expansion into 27-country sovereign cloud, supporting &lt;span class=&#34;metric&#34;&gt;$200M+ in new international GMV annually&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Led pre-launch compliance review identifying &lt;span class=&#34;metric&#34;&gt;7 regulatory gaps&lt;/span&gt; (GDPR, PCI-DSS, KYC) across EU/APAC that would have blocked &lt;span class=&#34;metric&#34;&gt;$100M+ annual revenue stream&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Eliminated &lt;span class=&#34;metric&#34;&gt;$2M+ annual reconciliation errors&lt;/span&gt; by building event-driven sync service maintaining consistency across 3 payment workflows with exactly-once delivery of 50K+ daily updates
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Reduced Japan seller onboarding from &lt;span class=&#34;metric&#34;&gt;6 days to 2 days&lt;/span&gt; through KYC workflow redesign with Step Functions retry optimization and automated validation, unlocking &lt;span class=&#34;metric&#34;&gt;$10M+ in blocked inventory&lt;/span&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;amazon-web-services---software-development-engineer&#34;&gt;Amazon Web Services - Software Development Engineer&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;AWS IoT SiteWise / AWS Marketplace | Mar 2023 - Nov 2024 | Boston, MA / New York, NY&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>https://ryanjhamby.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/projects/</guid>
+      <description>&lt;h2 id=&#34;personal-projects&#34;&gt;Personal Projects&lt;/h2&gt;
+&lt;h3 id=&#34;quantitative-trading-system--systematic-momentum-strategy&#34;&gt;Quantitative Trading System — Systematic Momentum Strategy&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Nov 2025 - Present&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Built production trading system processing 3,800+ equities daily using Stage 2 momentum criteria. Reduced API costs 74% through earnings-aware caching and thread-safe rate limiting.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Features:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Multi-factor regime filter combining SMA trend analysis, SPY correlation, and market breadth indicators; cut false positives 60%&lt;/li&gt;
+&lt;li&gt;Systematic risk engine: ATR position sizing, dynamic stops (10% max risk), 2:1 R/R validation, algorithmic profit protection&lt;/li&gt;
+&lt;li&gt;Integrated live portfolio tracking via Robinhood API with real-time position monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;java4java--iosandroid-anki-like-leetcode-learning-platform&#34;&gt;Java4Java — iOS/Android Anki-like LeetCode Learning Platform&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;May 2025 - Present | 100+ installs&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

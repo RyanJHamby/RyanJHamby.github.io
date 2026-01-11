@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blog on Ryan J Hamby</title>
+    <link>https://ryanjhamby.github.io/blog/</link>
+    <description>Recent content in Blog on Ryan J Hamby</description>
+    <generator>Hugo -- 0.154.4</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ryanjhamby.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>https://ryanjhamby.github.io/blog/first-post/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/blog/first-post/</guid>
+      <description>&lt;p&gt;This is your first blog post. Replace this with your content.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
