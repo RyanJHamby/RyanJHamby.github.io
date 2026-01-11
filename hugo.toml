@@ -1,0 +1,96 @@
+baseURL = 'https://ryanjhamby.github.io/'
+languageCode = 'en-us'
+title = 'Ryan J Hamby'
+theme = 'PaperMod'
+enableRobotsTXT = true
+enableSitemap = true
+
+[pagination]
+pagerSize = 5
+
+[markup]
+unsafe = true
+
+[markup.highlight]
+style = "monokai"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[menu]
+[[menu.main]]
+name = "Experience"
+url = "experience"
+weight = 1
+
+[[menu.main]]
+name = "Projects"
+url = "projects"
+weight = 2
+
+[[menu.main]]
+name = "Education"
+url = "education"
+weight = 3
+
+[[menu.main]]
+name = "Blog"
+url = "blog"
+weight = 4
+
+[params]
+author = "Ryan J Hamby"
+description = "Software Engineer II @ AWS | Fintech & Cloud-Native Systems"
+keywords = ["software engineer", "AWS", "fintech", "cloud", "portfolio"]
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+TocOpen = false
+
+[params.homeInfoParams]
+Title = "Ryan J Hamby"
+Content = "**📍 New York, NY | Software Engineer II @ AWS**\n\nI strive for simple solutions to complex problems. Passionate about fintech, cloud-native architectures, and building resilient systems at scale."
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/ryan-j-hamby/"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/RyanJHamby"
+
+[[params.socialIcons]]
+name = "email"
+url = "mailto:hambyr@umich.edu"
+
+[params.profileMode]
+enabled = true
+title = "Ryan J Hamby"
+subtitle = "Software Engineer II @ AWS | Fintech • Cloud Architecture • System Design"
+imageUrl = "/images/engin.JPG"
+imageTitle = "Profile Picture"
+imageWidth = 150
+imageHeight = 150
+
+[[params.profileMode.buttons]]
+name = "Experience"
+url = "/experience"
+
+[[params.profileMode.buttons]]
+name = "Projects"
+url = "/projects"
+
+[[params.profileMode.buttons]]
+name = "Blog"
+url = "/blog"
+
+[[params.profileMode.buttons]]
+name = "Contact"
+url = "mailto:hambyr@umich.edu"
