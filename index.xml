@@ -77,23 +77,43 @@ Reduced Japan seller onboarding from &lt;span class=&#34;metric&#34;&gt;6 days t
 &lt;p&gt;&lt;strong&gt;AWS IoT SiteWise / AWS Marketplace | Mar 2023 - Nov 2024 | Boston, MA / New York, NY&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Hobby Projects</title>
+      <link>https://ryanjhamby.github.io/hobby-projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/hobby-projects/</guid>
+      <description>&lt;h2 id=&#34;java4java--iosandroid-anki-like-leetcode-learning-platform&#34;&gt;Java4Java — iOS/Android Anki-like LeetCode Learning Platform&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;May 2025 - Present | 100+ installs&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;project-showcase&#34;&gt;
+&lt;p&gt;Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android with 100+ active installs.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://apps.apple.com/us/app/java4java/id6754247227&#34;&gt;⬇️ Download on the App Store&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Key Features:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Implemented SM-2 spaced repetition improving retention by 30%; personalized recommendations based on proficiency and mastery patterns&lt;/li&gt;
+&lt;li&gt;Engineered offline-first sync with conflict-free queue reconciliation using CRDTs, achieving 99.5% data consistency across devices during intermittent connectivity&lt;/li&gt;
+&lt;li&gt;Monetized via AdMob optimizing fill rates to 85%+ through waterfall bidding and A/B tested placements, generating sustainable revenue while maintaining UX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rhythmiq--music-streaming-app-with-personalized-playlists&#34;&gt;RhythmIQ | Music Streaming App with Personalized Playlists&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Jan 2025 - Present&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Projects</title>
       <link>https://ryanjhamby.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.github.io/projects/</guid>
-      <description>&lt;h2 id=&#34;personal-projects&#34;&gt;Personal Projects&lt;/h2&gt;
-&lt;h3 id=&#34;quantitative-trading-system--systematic-momentum-strategy&#34;&gt;Quantitative Trading System — Systematic Momentum Strategy&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Nov 2025 - Present&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Built production trading system processing 3,800+ equities daily using Stage 2 momentum criteria. Reduced API costs 74% through earnings-aware caching and thread-safe rate limiting.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Key Features:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Multi-factor regime filter combining SMA trend analysis, SPY correlation, and market breadth indicators; cut false positives 60%&lt;/li&gt;
-&lt;li&gt;Systematic risk engine: ATR position sizing, dynamic stops (10% max risk), 2:1 R/R validation, algorithmic profit protection&lt;/li&gt;
-&lt;li&gt;Integrated live portfolio tracking via Robinhood API with real-time position monitoring&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;java4java--iosandroid-anki-like-leetcode-learning-platform&#34;&gt;Java4Java — iOS/Android Anki-like LeetCode Learning Platform&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;May 2025 - Present | 100+ installs&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;low-latency-order-book-engine&#34;&gt;Low-Latency Order Book Engine&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Sep 2025 - Dec 2025&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/OrderBookEngine&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Minimal, high-performance order book engine in C++ designed to explore the foundations of low-latency trading systems. Includes nanosecond-level order matcher skeleton, lock-free queues, thread-local memory pools, and automated benchmarking on AWS EC2 spot instances.&lt;/p&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Built C++ order book engine with lock-free queues, thread-local memory pools, and inlined matching—benchmarked at &lt;span class=&#34;metric&#34;&gt;1M+ orders with average match latency under 1 microsecond&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Automated EC2 spot benchmarking with cloud-init for reproducible, low-cost latency profiling
+&lt;/div&gt;
+&lt;h3 id=&#34;architecture&#34;&gt;Architecture&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Order Matching Core:&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
