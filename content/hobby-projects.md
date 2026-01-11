@@ -25,15 +25,15 @@ Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through s
 
 **Jan 2025 - Present**
 
-![RhythmIQ Architecture](/images/RhythmIQ.drawio copy.png)
+![RhythmIQ Architecture](/images/RhythmIQ-drawio.png)
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/RhythmIQControlPlaneService)
 
 Optimized data flow for low-latency music recommendation, modular Java architecture with AWS Lambda, and real-time context detection via sensor data.
 
 **Design Documents:**
-- 📄 [RhythmIQ Low-Level Design Document](/pdfs/RhythmIQ Low Level Design.pdf)
-- 📄 [RhythmIQ High-Level Design Document](/pdfs/Environment-Driven Music Recommendation Application High-Level Design.pdf)
+- 📄 [RhythmIQ Low-Level Design Document](/pdfs/RhythmIQ-Low-Level-Design.pdf)
+- 📄 [RhythmIQ High-Level Design Document](/pdfs/RhythmIQ-High-Level-Design.pdf)
 
 This project features a recommendation engine using collaborative filtering and content-based filtering, AWS Lambda for efficient processing, and Dagger for dependency management within Java.
 

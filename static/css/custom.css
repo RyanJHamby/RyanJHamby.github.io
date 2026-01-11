@@ -582,3 +582,208 @@ hr {
 .page-footer a[href*="ryan.j.hamby@gmail.com"]:hover {
   color: #e74c3c;
 }
+
+/* Dark mode support for manual toggle and system preference */
+html[data-theme="dark"] {
+  --primary-color: #ecf0f1;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --light-bg: #2c3e50;
+  --border-color: #34495e;
+  --dark-bg: #1a1a2e;
+}
+
+html[data-theme="dark"] body {
+  background-color: #1a1a2e;
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] .post-title,
+html[data-theme="dark"] .page-title,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4 {
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] .post-content,
+html[data-theme="dark"] .page-content {
+  color: #d5d8dc;
+}
+
+html[data-theme="dark"] a {
+  color: #3498db;
+}
+
+html[data-theme="dark"] a:hover {
+  color: #e74c3c;
+}
+
+html[data-theme="dark"] strong,
+html[data-theme="dark"] b {
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] pre {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  border-left-color: #3498db;
+}
+
+html[data-theme="dark"] code {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] pre code {
+  background: none;
+  color: #d5d8dc;
+}
+
+html[data-theme="dark"] .experience-card,
+html[data-theme="dark"] .project-card {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border-left-color: #3498db;
+}
+
+html[data-theme="dark"] .experience-card:hover,
+html[data-theme="dark"] .project-card:hover {
+  background: #34495e;
+  box-shadow: 0 8px 24px rgba(52, 152, 219, 0.25);
+}
+
+html[data-theme="dark"] blockquote {
+  background: rgba(52, 152, 219, 0.1);
+  color: #bdc3c7;
+  border-left-color: #3498db;
+}
+
+html[data-theme="dark"] table {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] th {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] td {
+  color: #d5d8dc;
+  border-bottom-color: #34495e;
+}
+
+html[data-theme="dark"] tr:hover {
+  background: #34495e;
+}
+
+html[data-theme="dark"] .badge {
+  background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+html[data-theme="dark"] .project-showcase {
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+html[data-theme="dark"] .metric {
+  color: #f39c12;
+  background: rgba(243, 156, 18, 0.1);
+}
+
+html[data-theme="dark"] .achievement {
+  background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(39, 174, 96, 0.15));
+  border-left-color: #2ecc71;
+}
+
+html[data-theme="dark"] .skill-category {
+  background: #2c3e50;
+  border-top-color: #3498db;
+}
+
+html[data-theme="dark"] .skill-category:hover {
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.25);
+}
+
+html[data-theme="dark"] .skill-category strong {
+  color: #3498db;
+}
+
+html[data-theme="dark"] .nav-item a {
+  color: #ecf0f1;
+}
+
+html[data-theme="dark"] .nav-item a:hover {
+  color: #3498db;
+  border-bottom-color: #3498db;
+}
+
+html[data-theme="dark"] .project-tile {
+  background: #2c3e50;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dark"] .project-tile:hover {
+  box-shadow: 0 12px 40px rgba(52, 152, 219, 0.2);
+}
+
+html[data-theme="dark"] .project-tile-content {
+  color: #d5d8dc;
+}
+
+html[data-theme="dark"] .project-tile-content p {
+  color: #d5d8dc;
+}
+
+html[data-theme="dark"] .project-link {
+  color: #3498db;
+}
+
+html[data-theme="dark"] .project-link:hover {
+  color: #e74c3c;
+}
+
+html[data-theme="dark"] .project-link:hover::after {
+  background: #e74c3c;
+}
+
+html[data-theme="dark"] hr {
+  background: linear-gradient(to right, transparent, #3498db, transparent);
+}
+
+html[data-theme="dark"] .date,
+html[data-theme="dark"] em {
+  color: #95a5a6;
+}
+
+html[data-theme="dark"] .page-footer::after {
+  border-top-color: #34495e;
+  color: #95a5a6;
+}
+
+html[data-theme="dark"] .page-footer a[href*="ryan.j.hamby@gmail.com"] {
+  color: #3498db;
+}
+
+html[data-theme="dark"] .page-footer a[href*="ryan.j.hamby@gmail.com"]:hover {
+  color: #e74c3c;
+}
+
+/* System preference dark mode fallback */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #ecf0f1;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --light-bg: #2c3e50;
+    --border-color: #34495e;
+    --dark-bg: #1a1a2e;
+  }
+
+  body {
+    background-color: #1a1a2e;
+    color: #ecf0f1;
+  }
+}

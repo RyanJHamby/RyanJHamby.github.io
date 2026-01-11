@@ -37,7 +37,7 @@ url = "hobby-projects"
 weight = 3
 
 [[menu.main]]
-name = "Education"
+name = "Education & Skills"
 url = "education"
 weight = 4
 

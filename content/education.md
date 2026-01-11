@@ -10,9 +10,10 @@ title = "Education & Skills"
 
 GPA: 3.65 / 4.00, Magna Cum Laude
 
-Leadership:
+Leadership & Involvement:
 - VP of M-HEAL (250-member Global Health Engineering Club)
-- VP of M-Racing (Formula SAE Racing)
+- M-Racing (Formula SAE Racing) - Member
+- 3D Printing Club - Member
 
 ---
 
@@ -25,12 +26,12 @@ Leadership:
 
 ## Technical Skills
 
-**Languages:** Python, Java, TypeScript (production expertise) | C++, SQL (proficient) | Go, Rust (learning)
+**Languages:** Java, Python, TypeScript (production) | C++ (projects) | SQL (proficient) | Rust (learning)
 
-**Distributed Systems:** AWS (Lambda, DynamoDB, RDS, S3, Step Functions), Redis, gRPC, Docker, Terraform
+**Infrastructure & DevOps:** Linux, Redis, Kafka, PostgreSQL, gRPC, Docker, Terraform, AWS (EC2, Lambda, DynamoDB, RDS, ECS, S3, Step Functions)
 
 **ML/Data Engineering:** PyTorch, TensorFlow, AWS SageMaker, Pandas, NumPy
 
 **Frontend:** React, Node.js, Flutter, iOS (Swift), Android (Kotlin), TailwindCSS, Figma
 
-**On-Call Experience:** 98 days primary on-call maintaining 99.95% uptime across 5 services processing 2M+ requests/day
+**Operations:** 112 days on-call maintaining 99.95% uptime across 5 services processing 2M+ requests/day
