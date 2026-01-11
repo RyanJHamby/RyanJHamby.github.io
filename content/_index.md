@@ -17,6 +17,21 @@ I am particularly passionate about the fintech space, where technology and finan
 ## Quick Navigation
 
 - 💼 [Experience](/experience) - AWS career and impact
-- 🚀 [Projects](/projects) - Personal & college projects
+- 🚀 [Projects](/projects) - Trading & quant systems
+- 🎯 [Hobby Projects](/hobby-projects) - Mobile apps, design projects
 - 🎓 [Education](/education) - Skills & certifications
 - 📝 [Blog](/blog) - Technical insights
+
+---
+
+## Featured Projects
+
+### Production Trading Systems
+- **[Covariance-Based Macro Trading System](/projects/#covariance-based-macro-trading-system)** - 1.4 Sharpe ratio using eigendecomposition of 8 macro indicators
+- **[Intelligent Stock Screener](/projects/#intelligent-stock-screener)** - 3,800+ daily stock scans with Phase-based classification
+- **[Low-Latency Order Book Engine](/projects/#low-latency-order-book-engine)** - C++ engine with <1μs matching latency
+
+### Hobby Projects
+- **[Java4Java](/hobby-projects/#java4java--iosandroid-anki-like-leetcode-learning-platform)** - Cross-platform spaced repetition app (100+ installs)
+- **[RhythmIQ](/hobby-projects/#rhythmiq--music-streaming-app-with-personalized-playlists)** - Music recommendation system with AWS Lambda
+- **[SmartCycle](/hobby-projects/#smartcycle-machine-learning-recycling-app)** - ML-powered iOS app for recycling incentives

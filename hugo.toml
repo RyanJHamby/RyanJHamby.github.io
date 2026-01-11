@@ -32,14 +32,19 @@ url = "projects"
 weight = 2
 
 [[menu.main]]
+name = "Hobby Projects"
+url = "hobby-projects"
+weight = 3
+
+[[menu.main]]
 name = "Education"
 url = "education"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Blog"
 url = "blog"
-weight = 4
+weight = 5
 
 [params]
 author = "Ryan J Hamby"
@@ -65,10 +70,6 @@ url = "https://www.linkedin.com/in/ryan-j-hamby/"
 [[params.socialIcons]]
 name = "github"
 url = "https://github.com/RyanJHamby"
-
-[[params.socialIcons]]
-name = "email"
-url = "mailto:hambyr@umich.edu"
 
 [params.profileMode]
 enabled = true
