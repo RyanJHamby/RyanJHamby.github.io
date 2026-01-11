@@ -6,14 +6,16 @@
     <description>Recent content in Blog on Ryan J Hamby</description>
     <generator>Hugo -- 0.154.4</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First Post</title>
-      <link>https://ryanjhamby.github.io/blog/first-post/</link>
-      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/first-post/</guid>
-      <description>&lt;p&gt;This is your first blog post. Replace this with your content.&lt;/p&gt;</description>
+      <title>Cache Eviction: 30 Years of Improvements</title>
+      <link>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</link>
+      <pubDate>Sat, 11 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Cache hierarchies are everywhere—from L1/L2/L3 on your CPU to Redis clusters backing your microservices. But the way we organize and manage these tiers has fundamentally transformed over the past three decades. What started as simple in-memory buffers has evolved into a sophisticated science of eviction policies, write-through strategies, and predictive prefetching.&lt;/p&gt;
+&lt;p&gt;This post explores why caches are structured the way they are, how eviction strategies have improved, and what the actual data tells us about their effectiveness over time.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
