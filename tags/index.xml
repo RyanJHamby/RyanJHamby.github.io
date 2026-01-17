@@ -4,8 +4,37 @@
     <title>Tags on Ryan J Hamby</title>
     <link>https://ryanjhamby.github.io/tags/</link>
     <description>Recent content in Tags on Ryan J Hamby</description>
-    <generator>Hugo -- 0.154.4</generator>
+    <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hardware</title>
+      <link>https://ryanjhamby.github.io/tags/hardware/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/tags/hardware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multicast</title>
+      <link>https://ryanjhamby.github.io/tags/multicast/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/tags/multicast/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Networking</title>
+      <link>https://ryanjhamby.github.io/tags/networking/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/tags/networking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://ryanjhamby.github.io/tags/performance/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/tags/performance/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

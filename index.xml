@@ -4,10 +4,17 @@
     <title>Home on Ryan J Hamby</title>
     <link>https://ryanjhamby.github.io/</link>
     <description>Recent content in Home on Ryan J Hamby</description>
-    <generator>Hugo -- 0.154.4</generator>
+    <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think</title>
+      <link>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</link>
+      <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</guid>
+      <description>How fiber optics impact TCP/UDP multicast speeds, and which cables actually optimize for low-latency group communication.</description>
+    </item>
     <item>
       <title>Cache Eviction: 30 Years of Improvements</title>
       <link>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</link>

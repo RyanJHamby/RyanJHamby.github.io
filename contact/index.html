@@ -247,7 +247,188 @@ GitHub
 
   </div>
 
-  <footer class="post-footer">
+  <footer class="post-footer"><div class="engagement-metrics">
+  <div class="metric-item">
+    <span class="metric-icon">👁</span>
+    <span class="view-count" data-page="https://ryanjhamby.github.io/contact/">0</span>
+    <span class="metric-label">views</span>
+  </div>
+  <button class="like-button" data-page="https://ryanjhamby.github.io/contact/" aria-label="Like this post">
+    <span class="like-icon">♥</span>
+    <span class="like-count">0</span>
+  </button>
+</div>
+
+<style>
+.engagement-metrics {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  margin-top: 2em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--border-color, #bdc3c7);
+  font-size: 0.9em;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #7f8c8d;
+}
+
+.metric-icon {
+  font-size: 1.1em;
+}
+
+.view-count,
+.like-count {
+  font-weight: 600;
+  color: #3498db;
+}
+
+.metric-label {
+  color: #95a5a6;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 0.4em 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.like-button:hover {
+  background: rgba(231, 76, 60, 0.1);
+  transform: scale(1.05);
+}
+
+.like-button.liked {
+  background: #e74c3c;
+  color: white;
+}
+
+.like-icon {
+  font-size: 1em;
+}
+
+.like-count {
+  color: inherit;
+}
+
+ 
+html[data-theme="dark"] .metric-item {
+  color: #a8b8d8;
+}
+
+html[data-theme="dark"] .metric-label {
+  color: #7f8c8d;
+}
+
+html[data-theme="dark"] .engagement-metrics {
+  border-top-color: #1a2f4a;
+}
+</style>
+
+<script>
+(function() {
+  const STORAGE_PREFIX = 'blog_engagement_';
+
+  function getPageId() {
+    return window.location.pathname;
+  }
+
+  function getViewCount() {
+    const pageId = getPageId();
+    const key = STORAGE_PREFIX + 'views_' + pageId;
+    const count = localStorage.getItem(key) || '0';
+    return parseInt(count, 10);
+  }
+
+  function incrementViewCount() {
+    const pageId = getPageId();
+    const key = STORAGE_PREFIX + 'views_' + pageId;
+    const currentCount = getViewCount();
+    const newCount = currentCount + 1;
+    localStorage.setItem(key, newCount.toString());
+    return newCount;
+  }
+
+  function getLikeCount() {
+    const pageId = getPageId();
+    const key = STORAGE_PREFIX + 'likes_' + pageId;
+    const count = localStorage.getItem(key) || '0';
+    return parseInt(count, 10);
+  }
+
+  function isLiked() {
+    const pageId = getPageId();
+    const key = STORAGE_PREFIX + 'liked_' + pageId;
+    return localStorage.getItem(key) === 'true';
+  }
+
+  function toggleLike() {
+    const pageId = getPageId();
+    const likedKey = STORAGE_PREFIX + 'liked_' + pageId;
+    const countKey = STORAGE_PREFIX + 'likes_' + pageId;
+
+    const currentLiked = isLiked();
+    const currentCount = getLikeCount();
+
+    if (currentLiked) {
+      
+      localStorage.setItem(likedKey, 'false');
+      localStorage.setItem(countKey, Math.max(0, currentCount - 1).toString());
+      return currentCount - 1;
+    } else {
+      
+      localStorage.setItem(likedKey, 'true');
+      localStorage.setItem(countKey, currentCount + 1);
+      return currentCount + 1;
+    }
+  }
+
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const viewElements = document.querySelectorAll('.view-count');
+    viewElements.forEach(el => {
+      const newCount = incrementViewCount();
+      el.textContent = newCount.toString();
+    });
+
+    
+    const likeButtons = document.querySelectorAll('.like-button');
+    likeButtons.forEach(btn => {
+      const likeCountEl = btn.querySelector('.like-count');
+      const likeCount = getLikeCount();
+      likeCountEl.textContent = likeCount.toString();
+
+      
+      if (isLiked()) {
+        btn.classList.add('liked');
+      }
+
+      
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const newCount = toggleLike();
+        likeCountEl.textContent = newCount.toString();
+        btn.classList.toggle('liked');
+      });
+    });
+  });
+})();
+</script>
+
     <ul class="post-tags">
     </ul>
 
@@ -401,6 +582,18 @@ GitHub
   color: #e74c3c;
 }
 </style>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+</script>
 </body>
 
 </html>

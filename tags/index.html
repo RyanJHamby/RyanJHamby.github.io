@@ -151,6 +151,18 @@
 </header>
 
 <ul class="terms-tags">
+    <li>
+        <a href="https://ryanjhamby.github.io/tags/hardware/">hardware <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://ryanjhamby.github.io/tags/multicast/">multicast <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://ryanjhamby.github.io/tags/networking/">networking <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://ryanjhamby.github.io/tags/performance/">performance <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
 </ul>
     </main>
     
@@ -232,6 +244,18 @@
   color: #e74c3c;
 }
 </style>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+</script>
 </body>
 
 </html>
