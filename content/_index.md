@@ -18,6 +18,8 @@ I am particularly passionate about the fintech space, where technology and finan
 
 Systems, performance, and the craft of building software. [Read more](/blog)
 
+- [Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think](/blog/optical-cables-multicast-performance/) — How fiber optics impact TCP/UDP multicast latency, with real-world performance data and practical optimization guidelines.
+
 - [Cache Eviction: 30 Years of Improvements](/blog/cache-eviction-improvements/) — How cache hierarchies evolved from naive LRU to adaptive policies. Includes 30-year trend data on hit rates and eviction strategies.
 
 ---
@@ -27,67 +29,91 @@ Systems, performance, and the craft of building software. [Read more](/blog)
 <div class="projects-grid">
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+<div class="project-tile-header">
 <h3>Order Book Engine</h3>
-<span class="project-badge">C++ / Low-Latency</span>
+<div class="project-tags">
+<span class="project-badge">C++</span>
+<span class="project-badge">Low-Latency</span>
+<span class="project-badge performance-badge">&lt;1μs</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>High-performance order matching engine with <strong>&lt;1μs latency</strong> and automated EC2 spot benchmarking.</p>
+<p>High-performance order matching engine with automated EC2 spot benchmarking. Enterprise-grade matching system for trading infrastructure.</p>
 <a href="/projects/#low-latency-order-book-engine" class="project-link">Explore →</a>
 </div>
 </div>
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+<div class="project-tile-header">
 <h3>Stock Screener</h3>
-<span class="project-badge">Python / Trading</span>
+<div class="project-tags">
+<span class="project-badge">Python</span>
+<span class="project-badge">Trading</span>
+<span class="project-badge performance-badge">3,800+/day</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>3,800+ daily stock scans using Minervini's Trend Template with <strong>74% API reduction</strong> via smart caching.</p>
+<p>Intelligent stock scanning using Minervini's Trend Template with smart caching. Reduces API calls by 74% while maintaining accuracy.</p>
 <a href="/projects/#intelligent-stock-screener" class="project-link">Explore →</a>
 </div>
 </div>
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+<div class="project-tile-header">
 <h3>Macro Trading System</h3>
-<span class="project-badge">C++ / AWS Lambda</span>
+<div class="project-tags">
+<span class="project-badge">C++</span>
+<span class="project-badge">AWS Lambda</span>
+<span class="project-badge performance-badge">1.4 Sharpe</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>Eigendecomposition-based regime detection on 8 macro indicators. <strong>1.4 Sharpe ratio</strong> over 17-year backtest.</p>
+<p>Eigendecomposition-based regime detection across 8 macro indicators. Backtested over 17 years with consistent outperformance.</p>
 <a href="/projects/#covariance-based-macro-trading-system" class="project-link">Explore →</a>
 </div>
 </div>
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+<div class="project-tile-header">
 <h3>Java4Java</h3>
-<span class="project-badge">Swift / Kotlin</span>
+<div class="project-tags">
+<span class="project-badge">Swift</span>
+<span class="project-badge">Kotlin</span>
+<span class="project-badge performance-badge">100+ users</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>Cross-platform spaced repetition app for algorithm practice. <strong>100+ installs</strong> across iOS, Android, macOS.</p>
+<p>Cross-platform spaced repetition app for algorithm practice. Available on iOS, Android, and macOS with seamless sync.</p>
 <a href="/hobby-projects/#java4java--iosandroid-anki-like-leetcode-learning-platform" class="project-link">Explore →</a>
 </div>
 </div>
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+<div class="project-tile-header">
 <h3>RhythmIQ</h3>
-<span class="project-badge">Java / AWS Lambda</span>
+<div class="project-tags">
+<span class="project-badge">Java</span>
+<span class="project-badge">AWS Lambda</span>
+<span class="project-badge performance-badge">ML Powered</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>Music streaming app with personalized recommendations and AWS Lambda backend. Low-level & high-level design docs included.</p>
+<p>Music streaming with personalized recommendations using ML algorithms. Includes detailed low-level and high-level design documentation.</p>
 <a href="/hobby-projects/#rhythmiq--music-streaming-app-with-personalized-playlists" class="project-link">Explore →</a>
 </div>
 </div>
 
 <div class="project-tile">
-<div class="project-tile-header" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+<div class="project-tile-header">
 <h3>SmartCycle</h3>
-<span class="project-badge">Swift / CoreML</span>
+<div class="project-tags">
+<span class="project-badge">Swift</span>
+<span class="project-badge">CoreML</span>
+<span class="project-badge performance-badge">AI Vision</span>
+</div>
 </div>
 <div class="project-tile-content">
-<p>ML-powered iOS app using CoreML for recycling bin detection. Rewards users with points for sustainability.</p>
+<p>ML-powered iOS app with real-time recycling bin detection. Gamified rewards system to encourage sustainable behavior.</p>
 <a href="/hobby-projects/#smartcycle-machine-learning-recycling-app" class="project-link">Explore →</a>
 </div>
 </div>
