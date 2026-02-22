@@ -18,9 +18,7 @@ I am particularly passionate about the fintech space, where technology and finan
 
 Systems, performance, and the craft of building software. [Read more](/blog)
 
-- [Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think](/blog/optical-cables-multicast-performance/) — How fiber optics impact TCP/UDP multicast latency, with real-world performance data and practical optimization guidelines.
-
-- [Cache Eviction: 30 Years of Improvements](/blog/cache-eviction-improvements/) — How cache hierarchies evolved from naive LRU to adaptive policies. Includes 30-year trend data on hit rates and eviction strategies.
+{{< recent-posts 3 >}}
 
 ---
 

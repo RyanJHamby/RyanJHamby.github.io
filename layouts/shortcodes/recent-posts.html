@@ -1,0 +1,7 @@
+{{ $count := .Get 0 | default 3 }}
+{{ $posts := where site.RegularPages "Section" "blog" | first $count }}
+<ul>
+{{- range $posts }}
+  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Summary | plainify | truncate 180 }}</li>
+{{- end }}
+</ul>
