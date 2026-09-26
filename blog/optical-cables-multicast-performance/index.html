@@ -10,7 +10,7 @@
 <meta name="description" content="How fiber optics impact TCP/UDP multicast speeds, and which cables actually optimize for low-latency group communication.">
 <meta name="author" content="Ryan J Hamby">
 <link rel="canonical" href="https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://ryanjhamby.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://ryanjhamby.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://ryanjhamby.github.io/favicon-32x32.png">
@@ -310,34 +310,34 @@
 <p>Let me walk through actual measurements from a trading firm&rsquo;s infrastructure (anonymized, circa 2022):</p>
 <p><strong>Multicast latency profile across 3km intra-metro fiber:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Cable Type</th>
-          <th>99th Percentile Latency</th>
-          <th>99.9th Percentile Latency</th>
-          <th>Packet Loss (%)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>G.652 (generic, 10y old)</td>
-          <td>2.84µs</td>
-          <td>12.3µs</td>
-          <td>0.003%</td>
-      </tr>
-      <tr>
-          <td>G.655 (dispersion-optimized)</td>
-          <td>2.12µs</td>
-          <td>4.8µs</td>
-          <td>0.0001%</td>
-      </tr>
-      <tr>
-          <td>OM4 MMF (3km, non-optimal)</td>
-          <td>3.41µs</td>
-          <td>18.9µs</td>
-          <td>0.015%</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Cable Type</th>
+					<th>99th Percentile Latency</th>
+					<th>99.9th Percentile Latency</th>
+					<th>Packet Loss (%)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>G.652 (generic, 10y old)</td>
+					<td>2.84µs</td>
+					<td>12.3µs</td>
+					<td>0.003%</td>
+			</tr>
+			<tr>
+					<td>G.655 (dispersion-optimized)</td>
+					<td>2.12µs</td>
+					<td>4.8µs</td>
+					<td>0.0001%</td>
+			</tr>
+			<tr>
+					<td>OM4 MMF (3km, non-optimal)</td>
+					<td>3.41µs</td>
+					<td>18.9µs</td>
+					<td>0.015%</td>
+			</tr>
+	</tbody>
 </table>
 <p>The test: 10 million multicast UDP frames, 1472-byte payload, 1Gbps offered load, across 3km of fiber in separate conduits.</p>
 <p><strong>Why the spread?</strong></p>
