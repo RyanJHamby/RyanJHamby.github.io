@@ -4,7 +4,7 @@ title = "Projects"
 
 ## GPU Flight Recorder
 
-**Sep 2026 - Present**
+**Mar 2026 - Present**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder)
 
