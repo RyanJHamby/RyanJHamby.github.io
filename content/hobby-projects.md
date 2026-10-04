@@ -53,7 +53,7 @@ Developed a website displaying sustainable fuel vehicles to gain experience with
 
 ## M-HEAL Solar Fridge
 
-**Project Team Lead & Electrical Sub Team Lead | Jan 2019 - Present**
+**Project Team Lead & Electrical Sub Team Lead | Jan 2019 - Dec 2022**
 
 ![Solar Fridge Project](/images/mheal.jpg)
 

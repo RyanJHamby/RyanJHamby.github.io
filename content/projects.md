@@ -146,7 +146,7 @@ Benefits: Repeatable benchmarking at low cost with cloud infrastructure consiste
 
 ## Intelligent Stock Screener
 
-**Oct 2025 - Dec 2025**
+**Oct 2025 - Present**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/stock-screener)
 

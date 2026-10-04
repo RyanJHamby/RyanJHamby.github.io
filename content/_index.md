@@ -51,7 +51,7 @@ Systems, performance, and the craft of building software. [Read more](/blog)
 </div>
 </div>
 <div class="project-tile-content">
-<p>Merged fixes in vLLM (Qwen3-Omni multimodal crash and processor-cache false positives) and Firecracker (VMM snapshot-restore panic).</p>
+<p>Merged fixes in vLLM (Qwen3-Omni multimodal crash and processor-cache false positives) and Firecracker (VMM panic on ACPI device restore).</p>
 <a href="/projects/#open-source-contributions" class="project-link">Explore →</a>
 </div>
 </div>
