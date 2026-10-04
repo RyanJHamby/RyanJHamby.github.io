@@ -4,7 +4,7 @@
     <title>Home on Ryan J Hamby</title>
     <link>https://ryanjhamby.github.io/</link>
     <description>Recent content in Home on Ryan J Hamby</description>
-    <generator>Hugo -- 0.166.0</generator>
+    <generator>Hugo -- 0.167.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -39,11 +39,9 @@
       <link>https://ryanjhamby.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.github.io/about/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m a Software Engineer II at Amazon Web Services working on payment compliance and infrastructure for AWS Marketplace.&lt;/p&gt;
+      <description>&lt;p&gt;I&amp;rsquo;m a Software Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.&lt;/p&gt;
 &lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;
-&lt;p&gt;I build resilient, scalable systems that solve complex problems. My focus is on the intersection of cloud architecture, system design, and fintech—where reliability, compliance, and performance are non-negotiable.&lt;/p&gt;
-&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-&lt;p&gt;I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and have spent my career building production systems at AWS. I&amp;rsquo;ve worked on distributed systems processing millions of requests per day, led infrastructure redesigns that unlocked hundreds of millions in annual revenue, and mentored engineers on system design principles.&lt;/p&gt;</description>
+&lt;p&gt;I build resilient, high-performance systems. At work that means fault-tolerant, multi-tenant payment services; outside work it means the layer AI runs on: GPU telemetry for distributed training, open-source fixes in vLLM and Firecracker, and low-latency engines in Rust and C++.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
@@ -51,12 +49,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.github.io/contact/</guid>
       <description>&lt;h2 id=&#34;get-in-touch&#34;&gt;Get in Touch&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;d love to hear from you. Reach out with any questions, opportunities, or just to chat about trading systems, fintech, or software engineering.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d love to hear from you. Reach out with any questions, opportunities, or just to chat about AI infrastructure, low-latency systems, or software engineering.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:ryan.j.hamby@gmail.com&#34;&gt;ryan.j.hamby@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;You can also find me on:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://linkedin.com/in/ryanjhamby&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/ryan-j-hamby/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/RyanJHamby&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ryanjhamby.github.io/pdfs/Ryan_Hamby_Resume.pdf&#34;&gt;Resume (PDF)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
@@ -82,7 +81,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;technical-skills&#34;&gt;Technical Skills&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Languages:&lt;/strong&gt; Java, Python, TypeScript (production) | C++ (projects) | SQL (proficient) | Rust (learning)&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;Languages:&lt;/strong&gt; Rust, C++ (C++20), Python, Java (strong) | Go, TypeScript, SQL (familiar)&lt;/p&gt;</description>
     </item>
     <item>
       <title>Experience</title>
@@ -94,16 +93,16 @@
 &lt;p&gt;&lt;img alt=&#34;Amazon Logo&#34; loading=&#34;lazy&#34; src=&#34;https://ryanjhamby.github.io/images/amazon.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h3&gt;
 &lt;div class=&#34;achievement&#34;&gt;
-Architected dual-partition multi-tenant infrastructure enabling AWS Marketplace expansion into 27-country sovereign cloud, supporting &lt;span class=&#34;metric&#34;&gt;$200M+ in new international GMV annually&lt;/span&gt;
+Owned dual-partition, multi-tenant infrastructure upgrades with cross-partition DynamoDB replication, enabling AWS Marketplace expansion into the EU sovereign cloud and supporting &lt;span class=&#34;metric&#34;&gt;$112M+/yr in new GMV&lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&#34;achievement&#34;&gt;
 Led pre-launch compliance review identifying &lt;span class=&#34;metric&#34;&gt;7 regulatory gaps&lt;/span&gt; (GDPR, PCI-DSS, KYC) across EU/APAC that would have blocked &lt;span class=&#34;metric&#34;&gt;$100M+ annual revenue stream&lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&#34;achievement&#34;&gt;
-Eliminated &lt;span class=&#34;metric&#34;&gt;$2M+ annual reconciliation errors&lt;/span&gt; by building event-driven sync service maintaining consistency across 3 payment workflows with exactly-once delivery of 50K+ daily updates
+Built an event-driven sync service guaranteeing exactly-once delivery via SQS FIFO and DynamoDB conditional writes across 3 payment workflows, eliminating &lt;span class=&#34;metric&#34;&gt;$2M+/yr in reconciliation errors&lt;/span&gt;
 &lt;/div&gt;
 &lt;div class=&#34;achievement&#34;&gt;
-Reduced Japan seller onboarding from &lt;span class=&#34;metric&#34;&gt;6 days to 2 days&lt;/span&gt; through KYC workflow redesign with Step Functions retry optimization and automated validation, unlocking &lt;span class=&#34;metric&#34;&gt;$10M+ in blocked inventory&lt;/span&gt;
+Led build of the Payment Adapter Service (parallel third-party verification, circuit breakers, idempotent retries, async callbacks), reducing Japanese seller onboarding from &lt;span class=&#34;metric&#34;&gt;6 days to 5 minutes&lt;/span&gt; and unlocking &lt;span class=&#34;metric&#34;&gt;$10M+/yr in sales&lt;/span&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;amazon-web-services---software-development-engineer&#34;&gt;Amazon Web Services - Software Development Engineer&lt;/h2&gt;
@@ -135,18 +134,10 @@ Reduced Japan seller onboarding from &lt;span class=&#34;metric&#34;&gt;6 days t
       <link>https://ryanjhamby.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.github.io/projects/</guid>
-      <description>&lt;h2 id=&#34;low-latency-order-book-engine&#34;&gt;Low-Latency Order Book Engine&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Sep 2025 - Dec 2025&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/OrderBookEngine&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Minimal, high-performance order book engine in C++ designed to explore the foundations of low-latency trading systems. Includes nanosecond-level order matcher skeleton, lock-free queues, thread-local memory pools, and automated benchmarking on AWS EC2 spot instances.&lt;/p&gt;
-&lt;div class=&#34;achievement&#34;&gt;
-Built C++ order book engine with lock-free queues, thread-local memory pools, and inlined matching—benchmarked at &lt;span class=&#34;metric&#34;&gt;1M+ orders with average match latency under 1 microsecond&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class=&#34;achievement&#34;&gt;
-Automated EC2 spot benchmarking with cloud-init for reproducible, low-cost latency profiling
-&lt;/div&gt;
-&lt;h3 id=&#34;architecture&#34;&gt;Architecture&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Order Matching Core:&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;gpu-flight-recorder&#34;&gt;GPU Flight Recorder&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Sep 2026 - Present&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
