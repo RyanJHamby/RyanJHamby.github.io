@@ -2,7 +2,7 @@
 title = "Home"
 +++
 
-![Profile Picture](/images/engin.JPG)
+![Profile Picture](/images/headshot.jpg)
 
 I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 

@@ -234,22 +234,22 @@ Market Regime: RISK-ON (Strong)
 
 ## Covariance-Based Macro Trading System
 
-**Sep 2023 - Present**
+**Sep 2023 - Feb 2026**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/macro-factor-decomposition)
 
-Systematic S&P 500 futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
+Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
 
 <div class="achievement">
-Achieved <span class="metric">1.4 Sharpe ratio</span> over 17-year backtest at <span class="metric">12% max drawdown</span> via regime-aware position sizing and macro surprise decomposition
+Backtested on real FRED data over <span class="metric">18 years (2007–2024)</span>: <span class="metric">87% win rate at 3.2% max drawdown</span> with half-Kelly, regime-adjusted position sizing
 </div>
 
 <div class="achievement">
-C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation, computing eigendecomposition in <span class="metric">12ms</span>
+C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation
 </div>
 
 <div class="achievement">
-End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ = UΛUᵀ) → S3 with <span class="metric">180+ unit tests</span> and 73% alignment with NBER recession dates
+End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ = UΛUᵀ) → S3, covered by <span class="metric">270+ unit tests</span>
 </div>
 
 ### Core Hypothesis
@@ -279,13 +279,12 @@ Solution: Decompose surprise covariance via PCA to identify 3-4 interpretable ma
 
 **AWS Stack:**
 - EventBridge (cron: daily 12:00 UTC) → Lambda (512MB, 600s) → S3 (versioned, encrypted)
-- Lambda execution: ~4.2s average (p95: 8.7s)
-- Native C++ binary (662 KB) with Eigen, AWS SDK, curl
+- Native C++ binary with Eigen, AWS SDK, curl
 - IaC: AWS CDK 2.x (TypeScript, dev/staging/prod)
 
 **Validation:**
-- 180+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability
-- 5+ year backtests: 73% alignment with NBER recession dates
+- 270+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability, Sharpe/drawdown/P&L accuracy
+- 18-year backtest (2007–2024): 87.2% win rate, 3.23% max drawdown, 2.10% annualized return, 0.28 Sharpe; conservative sizing by design
 
 ### Data Inputs
 

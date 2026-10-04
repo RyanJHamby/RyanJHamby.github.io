@@ -36,9 +36,9 @@ body {
 }
 
 /* Profile image styling */
-.post-content img[src*="engin"],
+.post-content img[src*="headshot"],
 .page-content img[src*="profile"],
-.entry-content img[src*="engin"] {
+.entry-content img[src*="headshot"] {
   border-radius: 50%;
   border: 4px solid var(--secondary-color);
   max-width: 200px;
@@ -49,7 +49,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.post-content img[src*="engin"]:hover,
+.post-content img[src*="headshot"]:hover,
 .page-content img[src*="profile"]:hover {
   transform: scale(1.05);
 }
