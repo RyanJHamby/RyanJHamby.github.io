@@ -135,7 +135,7 @@ Led build of the Payment Adapter Service (parallel third-party verification, cir
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.github.io/projects/</guid>
       <description>&lt;h2 id=&#34;gpu-flight-recorder&#34;&gt;GPU Flight Recorder&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Sep 2026 - Present&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mar 2026 - Present&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.&lt;/p&gt;</description>
     </item>
