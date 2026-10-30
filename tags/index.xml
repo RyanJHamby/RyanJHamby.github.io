@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Ryan J Hamby</title>
-    <link>https://ryanjhamby.github.io/tags/</link>
+    <link>https://ryanjhamby.dev/tags/</link>
     <description>Recent content in Tags on Ryan J Hamby</description>
-    <generator>Hugo -- 0.167.0</generator>
+    <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ryanjhamby.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ryanjhamby.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hardware</title>
-      <link>https://ryanjhamby.github.io/tags/hardware/</link>
+      <link>https://ryanjhamby.dev/tags/hardware/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/tags/hardware/</guid>
+      <guid>https://ryanjhamby.dev/tags/hardware/</guid>
       <description></description>
     </item>
     <item>
       <title>Multicast</title>
-      <link>https://ryanjhamby.github.io/tags/multicast/</link>
+      <link>https://ryanjhamby.dev/tags/multicast/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/tags/multicast/</guid>
+      <guid>https://ryanjhamby.dev/tags/multicast/</guid>
       <description></description>
     </item>
     <item>
       <title>Networking</title>
-      <link>https://ryanjhamby.github.io/tags/networking/</link>
+      <link>https://ryanjhamby.dev/tags/networking/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/tags/networking/</guid>
+      <guid>https://ryanjhamby.dev/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance</title>
-      <link>https://ryanjhamby.github.io/tags/performance/</link>
+      <link>https://ryanjhamby.dev/tags/performance/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/tags/performance/</guid>
+      <guid>https://ryanjhamby.dev/tags/performance/</guid>
       <description></description>
     </item>
   </channel>

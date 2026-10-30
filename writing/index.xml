@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blog on Ryan J Hamby</title>
-    <link>https://ryanjhamby.github.io/blog/</link>
-    <description>Recent content in Blog on Ryan J Hamby</description>
-    <generator>Hugo -- 0.167.0</generator>
+    <title>Writing on Ryan J Hamby</title>
+    <link>https://ryanjhamby.dev/writing/</link>
+    <description>Recent content in Writing on Ryan J Hamby</description>
+    <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ryanjhamby.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ryanjhamby.dev/writing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes&#39; Second Act: From Container Orchestrator to AI Operating System</title>
-      <link>https://ryanjhamby.github.io/blog/kubernetes-second-act-ai-backbone/</link>
+      <link>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/kubernetes-second-act-ai-backbone/</guid>
+      <guid>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;There&amp;rsquo;s a version of this story where Kubernetes &amp;ldquo;came back.&amp;rdquo; That framing is wrong.&lt;/p&gt;
 &lt;p&gt;Kubernetes never left—it lost the narrative. Between 2020 and 2023, the conversation was dominated by YAML-hell complaints, cluster complexity horror stories, and a genuine question: is this worth it for most teams? The backlash was real. But the adoption curve was not affected. Production usage kept climbing even as the discourse soured.&lt;/p&gt;
@@ -20,16 +20,16 @@
     </item>
     <item>
       <title>Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think</title>
-      <link>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</link>
+      <link>https://ryanjhamby.dev/writing/optical-cables-multicast-performance/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</guid>
+      <guid>https://ryanjhamby.dev/writing/optical-cables-multicast-performance/</guid>
       <description>How fiber optics impact TCP/UDP multicast speeds, and which cables actually optimize for low-latency group communication.</description>
     </item>
     <item>
       <title>Cache Eviction: 30 Years of Improvements</title>
-      <link>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</link>
+      <link>https://ryanjhamby.dev/writing/cache-eviction-improvements/</link>
       <pubDate>Sat, 11 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</guid>
+      <guid>https://ryanjhamby.dev/writing/cache-eviction-improvements/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Cache hierarchies are everywhere—from L1/L2/L3 on your CPU to Redis clusters backing your microservices. But the way we organize and manage these tiers has fundamentally transformed over the past three decades. What started as simple in-memory buffers has evolved into a sophisticated science of eviction policies, write-through strategies, and predictive prefetching.&lt;/p&gt;
 &lt;p&gt;This post explores why caches are structured the way they are, how eviction strategies have improved, and what the actual data tells us about their effectiveness over time.&lt;/p&gt;</description>

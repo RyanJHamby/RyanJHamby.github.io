@@ -2,48 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ryanjhamby.github.io/blog/</loc>
+    <loc>https://ryanjhamby.dev/</loc>
     <lastmod>2026-02-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/</loc>
+    <loc>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</loc>
     <lastmod>2026-02-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/blog/kubernetes-second-act-ai-backbone/</loc>
+    <loc>https://ryanjhamby.dev/writing/</loc>
     <lastmod>2026-02-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/tags/hardware/</loc>
+    <loc>https://ryanjhamby.dev/tags/hardware/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/tags/multicast/</loc>
+    <loc>https://ryanjhamby.dev/tags/multicast/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/tags/networking/</loc>
+    <loc>https://ryanjhamby.dev/tags/networking/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</loc>
+    <loc>https://ryanjhamby.dev/writing/optical-cables-multicast-performance/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/tags/performance/</loc>
+    <loc>https://ryanjhamby.dev/tags/performance/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/tags/</loc>
+    <loc>https://ryanjhamby.dev/tags/</loc>
     <lastmod>2025-01-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</loc>
+    <loc>https://ryanjhamby.dev/writing/cache-eviction-improvements/</loc>
     <lastmod>2025-01-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ryanjhamby.github.io/about/</loc>
+    <loc>https://ryanjhamby.dev/about/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/categories/</loc>
+    <loc>https://ryanjhamby.dev/categories/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/contact/</loc>
+    <loc>https://ryanjhamby.dev/contact/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/education/</loc>
+    <loc>https://ryanjhamby.dev/education/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/experience/</loc>
+    <loc>https://ryanjhamby.dev/experience/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/hobby-projects/</loc>
+    <loc>https://ryanjhamby.dev/hobby-projects/</loc>
   </url><url>
-    <loc>https://ryanjhamby.github.io/projects/</loc>
+    <loc>https://ryanjhamby.dev/projects/</loc>
   </url>
 </urlset>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Home on Ryan J Hamby</title>
-    <link>https://ryanjhamby.github.io/</link>
+    <link>https://ryanjhamby.dev/</link>
     <description>Recent content in Home on Ryan J Hamby</description>
-    <generator>Hugo -- 0.167.0</generator>
+    <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ryanjhamby.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ryanjhamby.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kubernetes&#39; Second Act: From Container Orchestrator to AI Operating System</title>
-      <link>https://ryanjhamby.github.io/blog/kubernetes-second-act-ai-backbone/</link>
+      <link>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/kubernetes-second-act-ai-backbone/</guid>
+      <guid>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;There&amp;rsquo;s a version of this story where Kubernetes &amp;ldquo;came back.&amp;rdquo; That framing is wrong.&lt;/p&gt;
 &lt;p&gt;Kubernetes never left—it lost the narrative. Between 2020 and 2023, the conversation was dominated by YAML-hell complaints, cluster complexity horror stories, and a genuine question: is this worth it for most teams? The backlash was real. But the adoption curve was not affected. Production usage kept climbing even as the discourse soured.&lt;/p&gt;
@@ -20,49 +20,49 @@
     </item>
     <item>
       <title>Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think</title>
-      <link>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</link>
+      <link>https://ryanjhamby.dev/writing/optical-cables-multicast-performance/</link>
       <pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/optical-cables-multicast-performance/</guid>
+      <guid>https://ryanjhamby.dev/writing/optical-cables-multicast-performance/</guid>
       <description>How fiber optics impact TCP/UDP multicast speeds, and which cables actually optimize for low-latency group communication.</description>
     </item>
     <item>
       <title>Cache Eviction: 30 Years of Improvements</title>
-      <link>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</link>
+      <link>https://ryanjhamby.dev/writing/cache-eviction-improvements/</link>
       <pubDate>Sat, 11 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/blog/cache-eviction-improvements/</guid>
+      <guid>https://ryanjhamby.dev/writing/cache-eviction-improvements/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Cache hierarchies are everywhere—from L1/L2/L3 on your CPU to Redis clusters backing your microservices. But the way we organize and manage these tiers has fundamentally transformed over the past three decades. What started as simple in-memory buffers has evolved into a sophisticated science of eviction policies, write-through strategies, and predictive prefetching.&lt;/p&gt;
 &lt;p&gt;This post explores why caches are structured the way they are, how eviction strategies have improved, and what the actual data tells us about their effectiveness over time.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About</title>
-      <link>https://ryanjhamby.github.io/about/</link>
+      <link>https://ryanjhamby.dev/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/about/</guid>
+      <guid>https://ryanjhamby.dev/about/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a Software Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.&lt;/p&gt;
 &lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;
 &lt;p&gt;I build resilient, high-performance systems. At work that means fault-tolerant, multi-tenant payment services; outside work it means the layer AI runs on: GPU telemetry for distributed training, open-source fixes in vLLM and Firecracker, and low-latency engines in Rust and C++.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
-      <link>https://ryanjhamby.github.io/contact/</link>
+      <link>https://ryanjhamby.dev/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/contact/</guid>
+      <guid>https://ryanjhamby.dev/contact/</guid>
       <description>&lt;h2 id=&#34;get-in-touch&#34;&gt;Get in Touch&lt;/h2&gt;
 &lt;p&gt;I&amp;rsquo;d love to hear from you. Reach out with any questions, opportunities, or just to chat about AI infrastructure, low-latency systems, or software engineering.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:ryan.j.hamby@gmail.com&#34;&gt;ryan.j.hamby@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:hi@ryanjhamby.dev&#34;&gt;hi@ryanjhamby.dev&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;You can also find me on:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/ryan-j-hamby/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/RyanJHamby&#34;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://ryanjhamby.github.io/pdfs/Ryan_Hamby_Resume.pdf&#34;&gt;Resume (PDF)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ryanjhamby.dev/pdfs/Ryan_Hamby_Resume.pdf&#34;&gt;Resume (PDF)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
       <title>Education &amp; Skills</title>
-      <link>https://ryanjhamby.github.io/education/</link>
+      <link>https://ryanjhamby.dev/education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/education/</guid>
+      <guid>https://ryanjhamby.dev/education/</guid>
       <description>&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
 &lt;h3 id=&#34;university-of-michigan&#34;&gt;University of Michigan&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;B.S.E. in Computer Science, Minor in Electrical Engineering | Dec 2022&lt;/strong&gt;&lt;/p&gt;
@@ -85,12 +85,12 @@
     </item>
     <item>
       <title>Experience</title>
-      <link>https://ryanjhamby.github.io/experience/</link>
+      <link>https://ryanjhamby.dev/experience/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/experience/</guid>
+      <guid>https://ryanjhamby.dev/experience/</guid>
       <description>&lt;h2 id=&#34;amazon-web-services---software-development-engineer-ii&#34;&gt;Amazon Web Services - Software Development Engineer II&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;AWS Marketplace, Payment Compliance Team | Dec 2024 - Present | New York, NY&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;Amazon Logo&#34; loading=&#34;lazy&#34; src=&#34;https://ryanjhamby.github.io/images/amazon.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Amazon Logo&#34; loading=&#34;lazy&#34; src=&#34;https://ryanjhamby.dev/images/amazon.png&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;key-achievements&#34;&gt;Key Achievements&lt;/h3&gt;
 &lt;div class=&#34;achievement&#34;&gt;
 Owned dual-partition, multi-tenant infrastructure upgrades with cross-partition DynamoDB replication, enabling AWS Marketplace expansion into the EU sovereign cloud and supporting &lt;span class=&#34;metric&#34;&gt;$112M+/yr in new GMV&lt;/span&gt;
@@ -110,9 +110,9 @@ Led build of the Payment Adapter Service (parallel third-party verification, cir
     </item>
     <item>
       <title>Hobby Projects</title>
-      <link>https://ryanjhamby.github.io/hobby-projects/</link>
+      <link>https://ryanjhamby.dev/hobby-projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/hobby-projects/</guid>
+      <guid>https://ryanjhamby.dev/hobby-projects/</guid>
       <description>&lt;h2 id=&#34;java4java--iosandroid-anki-like-leetcode-learning-platform&#34;&gt;Java4Java — iOS/Android Anki-like LeetCode Learning Platform&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Sep 2025 - Present | 250+ installs&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;project-showcase&#34;&gt;
@@ -131,9 +131,9 @@ Led build of the Payment Adapter Service (parallel third-party verification, cir
     </item>
     <item>
       <title>Projects</title>
-      <link>https://ryanjhamby.github.io/projects/</link>
+      <link>https://ryanjhamby.dev/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ryanjhamby.github.io/projects/</guid>
+      <guid>https://ryanjhamby.dev/projects/</guid>
       <description>&lt;h2 id=&#34;gpu-flight-recorder&#34;&gt;GPU Flight Recorder&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Mar 2026 - Present&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
