@@ -39,7 +39,7 @@
       <link>https://ryanjhamby.dev/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/about/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;m a Software Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.&lt;/p&gt;
+      <description>&lt;p&gt;I&amp;rsquo;m a Software Development Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.&lt;/p&gt;
 &lt;h2 id=&#34;what-i-do&#34;&gt;What I Do&lt;/h2&gt;
 &lt;p&gt;I build resilient, high-performance systems. At work that means fault-tolerant, multi-tenant payment services; outside work it means the layer AI runs on: GPU telemetry for distributed training, open-source fixes in vLLM and Firecracker, and low-latency engines in Rust and C++.&lt;/p&gt;</description>
     </item>
@@ -114,16 +114,16 @@ Led build of the Payment Adapter Service (parallel third-party verification, cir
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/hobby-projects/</guid>
       <description>&lt;h2 id=&#34;java4java--iosandroid-anki-like-leetcode-learning-platform&#34;&gt;Java4Java — iOS/Android Anki-like LeetCode Learning Platform&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Sep 2025 - Present | 250+ installs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sep 2025 - Present&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;project-showcase&#34;&gt;
-&lt;p&gt;Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android with 250+ installs.&lt;/p&gt;
+&lt;p&gt;Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://apps.apple.com/us/app/java4java/id6754247227&#34;&gt;⬇️ Download on the App Store&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Key Features:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Implemented SM-2 spaced repetition improving retention by 30%; personalized recommendations based on proficiency and mastery patterns&lt;/li&gt;
-&lt;li&gt;Engineered offline-first sync with conflict-free queue reconciliation using CRDTs, achieving 99.5% data consistency across devices during intermittent connectivity&lt;/li&gt;
-&lt;li&gt;Monetized via AdMob optimizing fill rates to 85%+ through waterfall bidding and A/B tested placements, generating sustainable revenue while maintaining UX&lt;/li&gt;
+&lt;li&gt;Implemented SM-2 spaced repetition; personalized recommendations based on proficiency and mastery patterns&lt;/li&gt;
+&lt;li&gt;Engineered offline-first sync with conflict-free queue reconciliation using CRDTs for consistency across devices during intermittent connectivity&lt;/li&gt;
+&lt;li&gt;Monetized via AdMob using waterfall bidding and A/B tested placements, generating sustainable revenue while maintaining UX&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;rhythmiq--music-streaming-app-with-personalized-playlists&#34;&gt;RhythmIQ | Music Streaming App with Personalized Playlists&lt;/h2&gt;
@@ -135,7 +135,7 @@ Led build of the Payment Adapter Service (parallel third-party verification, cir
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/projects/</guid>
       <description>&lt;h2 id=&#34;gpu-flight-recorder&#34;&gt;GPU Flight Recorder&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Mar 2026 - Present&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mar 2026&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder&#34;&gt;📊 View GitHub Repository&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.&lt;/p&gt;</description>
     </item>
