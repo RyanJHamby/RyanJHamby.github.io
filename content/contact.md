@@ -6,7 +6,7 @@ title = "Contact"
 
 I'd love to hear from you. Reach out with any questions, opportunities, or just to chat about AI infrastructure, low-latency systems, or software engineering.
 
-**Email:** [hi@ryanjhamby.dev](mailto:hi@ryanjhamby.dev)
+**Email:** [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com)
 
 You can also find me on:
 - [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/)
