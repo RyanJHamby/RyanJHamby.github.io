@@ -4,6 +4,11 @@
     <title>Writing on Ryan J Hamby</title>
     <link>https://ryanjhamby.dev/writing/</link>
     <description>Recent content in Writing on Ryan J Hamby</description>
+    <image>
+      <title>Ryan J Hamby</title>
+      <url>https://ryanjhamby.dev/images/og.png</url>
+      <link>https://ryanjhamby.dev/images/og.png</link>
+    </image>
     <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
@@ -13,10 +18,7 @@
       <link>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</link>
       <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;There&amp;rsquo;s a version of this story where Kubernetes &amp;ldquo;came back.&amp;rdquo; That framing is wrong.&lt;/p&gt;
-&lt;p&gt;Kubernetes never left—it lost the narrative. Between 2020 and 2023, the conversation was dominated by YAML-hell complaints, cluster complexity horror stories, and a genuine question: is this worth it for most teams? The backlash was real. But the adoption curve was not affected. Production usage kept climbing even as the discourse soured.&lt;/p&gt;
-&lt;p&gt;Now, in 2026, the framing has shifted entirely. Kubernetes is the de facto substrate for running inference workloads at scale. The 2026 CNCF survey puts production adoption at &lt;strong&gt;82%&lt;/strong&gt;—not &amp;ldquo;emerging,&amp;rdquo; not &amp;ldquo;early majority.&amp;rdquo; It&amp;rsquo;s baseline infrastructure, like TCP/IP. You don&amp;rsquo;t get excited about TCP/IP. You also can&amp;rsquo;t run a distributed system without it.&lt;/p&gt;</description>
+      <description>Why Kubernetes never left, and how it became the default substrate for running AI inference workloads.</description>
     </item>
     <item>
       <title>Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think</title>
@@ -30,9 +32,7 @@
       <link>https://ryanjhamby.dev/writing/cache-eviction-improvements/</link>
       <pubDate>Sat, 11 Jan 2025 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/writing/cache-eviction-improvements/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Cache hierarchies are everywhere—from L1/L2/L3 on your CPU to Redis clusters backing your microservices. But the way we organize and manage these tiers has fundamentally transformed over the past three decades. What started as simple in-memory buffers has evolved into a sophisticated science of eviction policies, write-through strategies, and predictive prefetching.&lt;/p&gt;
-&lt;p&gt;This post explores why caches are structured the way they are, how eviction strategies have improved, and what the actual data tells us about their effectiveness over time.&lt;/p&gt;</description>
+      <description>How cache hierarchies and eviction policies evolved over three decades, from simple in-memory buffers to modern tiered caches, and what the data says about their effectiveness.</description>
     </item>
   </channel>
 </rss>

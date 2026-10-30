@@ -82,7 +82,9 @@ Finds the straggler in a distributed data-parallel training job and explains why
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
-<meta name="twitter:card" content="summary">
+      <meta property="og:image" content="https://ryanjhamby.dev/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ryanjhamby.dev/images/og.png">
 <meta name="twitter:title" content="GPU Flight Recorder">
 <meta name="twitter:description" content="Mar 2026
 GitHub repository
@@ -122,7 +124,7 @@ Finds the straggler in a distributed data-parallel training job and explains why
   "articleBody": "Mar 2026\nGitHub repository\nFinds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.\nGo agents stream per-rank events over gRPC to a coordinator that correlates collectives by (process_group, sequence_id), so no cross-node clock synchronization is needed Status: early build. The agent, ring buffer, correlator, attribution engine and gRPC transport exist; there are no validation results yet. Results will be published, with hardware named, once a captured run exists.\n",
   "wordCount" : "137",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
+  "image": "https://ryanjhamby.dev/images/og.png","datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
   "author":{
     "@type": "Person",
@@ -133,7 +135,7 @@ Finds the straggler in a distributed data-parallel training job and explains why
     "@id": "https://ryanjhamby.dev/projects/gpu-flight-recorder/"
   },
   "publisher": {
-    "@type": "Organization",
+    "@type": "Person",
     "name": "Ryan J Hamby",
     "logo": {
       "@type": "ImageObject",
