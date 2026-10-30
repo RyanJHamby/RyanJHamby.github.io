@@ -4,19 +4,21 @@ title = "Home"
 
 ![Profile Picture](/images/engin.JPG)
 
-I strive for simple solutions to complex problems.
+**I measure and cut the real cost of running AI (dollars, watts, and reliability) from serving down to hardware.**
 
 **New York, NY | Software Engineer II @ AWS**
 
 I am particularly passionate about the fintech space, where technology and finance intersect to solve complex, high-impact problems. My experience in building resilient, secure, and customer-centric systems directly overlaps with the demands of fintech—where scalability, reliability, and compliance are essential. I am excited by opportunities to apply my expertise in cloud-native architectures, system monitoring, and end-to-end development to innovations in payments, trading systems, and financial infrastructure.
 
-[LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) | [GitHub](https://github.com/RyanJHamby) | [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) | [GitHub](https://github.com/RyanJHamby) | [Substack](https://substack.com/@ryanjhamby) | [hi@ryanjhamby.dev](mailto:hi@ryanjhamby.dev)
 
 ---
 
-## Check out my Personal Tech Blog!
+## Writing
 
-Systems, performance, and the craft of building software. [Read more](/blog)
+Systems, performance, and the craft of building software. [Read more](/writing)
+
+**Newsletter:** new posts also go out by email. [Subscribe on Substack](https://substack.com/@ryanjhamby).
 
 {{< recent-posts 3 >}}
 
