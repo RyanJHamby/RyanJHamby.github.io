@@ -1,7 +1,7 @@
 {{ $count := .Get 0 | default 3 }}
 {{ $posts := where site.RegularPages "Section" "writing" | first $count }}
-<ul>
+<ul class="post-index">
 {{- range $posts }}
-  <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Summary | plainify | truncate 180 }}</li>
+  <li><span class="meta">{{ .Date.Format "Jan 2006" }}</span><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
 {{- end }}
 </ul>

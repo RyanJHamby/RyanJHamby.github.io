@@ -20,3 +20,7 @@ Switched public contact from hi@ryanjhamby.dev back to ryan.j.hamby@gmail.com. R
 ## 2026-10-30 13:11 EDT (at b42aa22)
 
 Audited site vs repos. GPU Flight Recorder repo has 7 commits (Mar 24-27 2026), no simulator and no results/, so the 30/30 and 0/30 detection figures were removed; section now says early build. Macro backtest is 17 years per repo README (site said 18), tests 240+ (242 counted), dates per first/last commit. Dropped uncaptured Java4Java metrics (installs, retention, consistency, fill rate). Screener/macro figures kept but labelled README-sourced, not captured. Job title unified to Software Development Engineer II. Resume untouched.
+
+## 2026-10-30 13:16 EDT (at 86d01a4)
+
+Site redesign: replaced two stylesheets (965 + 747 lines) with one system-font stylesheet, one accent, light+dark; removed the localStorage views/likes widget (per-visitor fake social proof); home rewritten around selected work; emoji and light-only inline styles removed. Verified: hugo --minify builds; Chrome screenshots of home, projects at desktop and 390px. Not verified: dark mode rendering (headless could not set the theme), deployed site.
