@@ -6,7 +6,7 @@ title = "Projects"
 
 **Mar 2026**
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder)
+[GitHub repository](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder)
 
 Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.
 
@@ -30,7 +30,7 @@ Go agents stream per-rank events over gRPC to a coordinator that correlates coll
 
 **Mar 2026 - Oct 2026**
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/FlowState)
+[GitHub repository](https://github.com/RyanJHamby/FlowState)
 
 Rust-accelerated temporal join engine for point-in-time ML feature pipelines: join trades, quotes, and signals without look-ahead bias, in batch or streaming.
 
@@ -52,7 +52,7 @@ Streaming incremental join with watermark-based emission, per-symbol state, and 
 
 **Sep 2025 - Sep 2026**
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/order-book-engine)
+[GitHub repository](https://github.com/RyanJHamby/order-book-engine)
 
 Minimal, high-performance order book engine in C++ designed to explore the foundations of low-latency trading systems. Includes nanosecond-level order matcher skeleton, lock-free queues, thread-local memory pools, and automated benchmarking on AWS EC2 spot instances.
 
@@ -144,7 +144,7 @@ Benefits: Repeatable benchmarking at low cost with cloud infrastructure consiste
 
 **Nov 2025 - May 2026**
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/stock-screener)
+[GitHub repository](https://github.com/RyanJHamby/stock-screener)
 
 Fully automated stock screening system scanning 3,800+ US stocks daily using Mark Minervini's Trend Template methodology. Identifies high-conviction buy/sell signals via phase-based trend classification, relative strength momentum, and fundamental quality filters.
 
@@ -190,8 +190,7 @@ Risk-managed position management with <span class="metric">max 10% risk, min 2:1
 ### Sample Output
 
 <details>
-<summary style="cursor: pointer; font-weight: bold; padding: 1em; background: #f8f9fa; border-radius: 6px; margin: 1.5em 0;">
-📊 View Sample Scan Output (Jan 9, 2026)
+<summary>View sample scan output (Jan 9, 2026)
 </summary>
 
 ```
@@ -218,7 +217,7 @@ Market Breadth (n=1,188):
 
 Market Regime: RISK-ON (Strong)
 
-⭐ BUY #1: WWD | Score: 104.5/110
+BUY #1: WWD | Score: 104.5/110
   Phase: 2 | Entry Quality: Good | R:R: 3.2:1
   Stop Loss: $299.25
   • 11.1% above 50 SMA (strong breakout)
@@ -234,7 +233,7 @@ Market Regime: RISK-ON (Strong)
 
 **Aug 2023 - May 2026**
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/macro-factor-decomposition)
+[GitHub repository](https://github.com/RyanJHamby/macro-factor-decomposition)
 
 Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
 

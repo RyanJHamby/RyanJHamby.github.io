@@ -10,7 +10,7 @@ title = "Hobby Projects"
 
 Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android.
 
-[⬇️ Download on the App Store](https://apps.apple.com/us/app/java4java/id6754247227)
+[App Store](https://apps.apple.com/us/app/java4java/id6754247227)
 
 </div>
 
@@ -27,13 +27,13 @@ Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through s
 
 ![RhythmIQ Architecture](/images/RhythmIQ-drawio.png)
 
-[📊 View GitHub Repository](https://github.com/RyanJHamby/RhythmIQControlPlaneService)
+[GitHub repository](https://github.com/RyanJHamby/RhythmIQControlPlaneService)
 
 Optimized data flow for low-latency music recommendation, modular Java architecture with AWS Lambda, and real-time context detection via sensor data.
 
 **Design Documents:**
-- 📄 [RhythmIQ Low-Level Design Document](/pdfs/RhythmIQ-Low-Level-Design.pdf)
-- 📄 [RhythmIQ High-Level Design Document](/pdfs/RhythmIQ-High-Level-Design.pdf)
+- [RhythmIQ Low-Level Design Document](/pdfs/RhythmIQ-Low-Level-Design.pdf)
+- [RhythmIQ High-Level Design Document](/pdfs/RhythmIQ-High-Level-Design.pdf)
 
 This project features a recommendation engine using collaborative filtering and content-based filtering, AWS Lambda for efficient processing, and Dagger for dependency management within Java.
 
@@ -45,7 +45,7 @@ This project features a recommendation engine using collaborative filtering and 
 
 ![EV Calculator](/images/EVCalculator.png)
 
-[🌐 Live Website](https://elegant-strudel-f64bcd.netlify.app/) | [💻 GitHub Repo](https://github.com/RyanJHamby/EV-Breakeven-Calculator)
+[Live site](https://elegant-strudel-f64bcd.netlify.app/) | [GitHub](https://github.com/RyanJHamby/EV-Breakeven-Calculator)
 
 Developed a website displaying sustainable fuel vehicles to gain experience with TypeScript and React. Features include debounced searching, sorting, filtering, and pagination.
 
@@ -64,7 +64,7 @@ Solar Fridge is a student-run project team at Michigan Health Engineered for All
 - Created a touchscreen LCD digital data logger that displays current and previous vaccine temperatures
 - Designed PCB to condense thermocouple leads and implemented Arduino code driver
 
-[🔗 M-HEAL Solar Fridge Home Page](http://mheal.engin.umich.edu/solarfridge)
+[M-HEAL Solar Fridge Home Page](http://mheal.engin.umich.edu/solarfridge)
 
 **Concept & Implementation:**
 ![Concept Design](/images/concept.jpg)
