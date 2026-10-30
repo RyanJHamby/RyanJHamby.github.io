@@ -1,5 +1,6 @@
 +++
-title = "Home"
+title = "Ryan J Hamby"
+description = "Software engineer working on AI compute, from the serving layer to the hardware: vLLM and Firecracker contributions, GPU telemetry, Rust and low-latency C++."
 +++
 
 I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.

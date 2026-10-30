@@ -1,4 +1,5 @@
 +++
+description = "Side projects: Java4Java, RhythmIQ and earlier student and hardware projects."
 title = "Hobby Projects"
 +++
 
@@ -39,7 +40,11 @@ This project features a recommendation engine using collaborative filtering and 
 
 ---
 
-## Electric Vehicle Explorer & Breakeven Calculator
+## Earlier projects
+
+Student and early projects, kept for context.
+
+### Electric Vehicle Explorer & Breakeven Calculator
 
 **July 2023 - Aug 2023**
 
@@ -51,7 +56,7 @@ Developed a website displaying sustainable fuel vehicles to gain experience with
 
 ---
 
-## M-HEAL Solar Fridge
+### M-HEAL Solar Fridge
 
 **Project Team Lead & Electrical Sub Team Lead | Jan 2019 - Dec 2022**
 
@@ -72,7 +77,7 @@ Solar Fridge is a student-run project team at Michigan Health Engineered for All
 
 ---
 
-## M-HEAL Leadership
+### M-HEAL Leadership
 
 **Internal Vice President | March 2021 - April 2022**
 
@@ -80,7 +85,7 @@ Managed and oversaw progress of 12 independent project teams covering global hea
 
 ---
 
-## Phone-Free Driving Device
+### Phone-Free Driving Device
 
 **Owner | Sep 2019 - Dec 2019**
 
@@ -92,7 +97,7 @@ Designed an automotive safety device that restricts phone access unless the car 
 
 ---
 
-## SmartCycle Machine Learning Recycling App
+### SmartCycle Machine Learning Recycling App
 
 **May 2020 - Sept 2021**
 
@@ -100,16 +105,10 @@ Designed an automotive safety device that restricts phone access unless the car 
 
 Developed an iOS app with ML-powered recycling bin detection to encourage recycling through point rewards. Utilized IBM Cloud Machine Learning and Apple CoreML for image classification trained on thousands of recyclable items.
 
-<div class="achievement">
-Trained ML algorithm to discriminate against reusable water bottles to prevent cheating
-</div>
+- Trained ML algorithm to discriminate against reusable water bottles to prevent cheating
 
-<div class="achievement">
-Integrated Swift frontend with CoreML models for real-time detection
-</div>
+- Integrated Swift frontend with CoreML models for real-time detection
 
-<div class="achievement">
-Backed user data using Google Firebase for persistent storage
-</div>
+- Backed user data using Google Firebase for persistent storage
 
 ![Recycling Machine](/images/reverse.jpg)

@@ -1,4 +1,5 @@
 +++
+description = "Why Kubernetes never left, and how it became the default substrate for running AI inference workloads."
 aliases = ["/blog/kubernetes-second-act-ai-backbone/"]
 title = "Kubernetes' Second Act: From Container Orchestrator to AI Operating System"
 date = 2026-02-22

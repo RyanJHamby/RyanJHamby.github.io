@@ -1,0 +1,23 @@
+# Ryan J Hamby
+
+> Software engineer working on AI compute: serving, GPU telemetry, and low-latency systems in Rust, C++ and Go. Based in New York.
+
+Public claims here are backed by repos and dated history. Where a figure is not from a captured run, the page says so.
+
+## Proof
+
+- [Projects](https://ryanjhamby.dev/projects/): index with status and dates for each project
+- [vllm-project/vllm#48420](https://github.com/vllm-project/vllm/pull/48420): merged fix, Qwen3-Omni multimodal processing crash
+- [firecracker#6032](https://github.com/firecracker-microvm/firecracker/pull/6032): merged fix, VMM panic on ACPI device restore
+- [FlowState](https://github.com/RyanJHamby/FlowState): Rust temporal join engine
+- [GPU Flight Recorder](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder): early build, no validation results yet
+
+## Writing
+
+- [Writing](https://ryanjhamby.dev/writing/)
+- [Substack](https://substack.com/@ryanjhamby)
+
+## Contact
+
+- Email: ryan.j.hamby@gmail.com
+- [GitHub](https://github.com/RyanJHamby) · [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/)

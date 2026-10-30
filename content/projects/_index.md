@@ -1,4 +1,5 @@
 +++
+description = "Open-source contributions to vLLM and Firecracker, plus systems projects in Rust, C++ and Go."
 title = "Projects"
 aliases = []
 +++

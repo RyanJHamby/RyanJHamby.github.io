@@ -28,3 +28,7 @@ Site redesign: replaced two stylesheets (965 + 747 lines) with one system-font s
 ## 2026-10-30 13:22 EDT (at 81cf83d)
 
 Split the 300-line projects page into an index plus one page per project (GPU Flight Recorder, FlowState, order book, screener, macro). Old #anchors on /projects/ now land on the index; only the home page linked to them and was updated. Order book page now says its figures are README-sourced, not captured.
+
+## 2026-10-30 13:31 EDT (at 8d2bf02)
+
+Discoverability pass: descriptions on posts/pages, og:image card, PaperMod publisherType=Person (removed my duplicate JSON-LD after finding PaperMod already emits it), llms.txt, hobby projects reordered with an Earlier section, drillpad page added as draft=true (not built). Not verified: indexing, link previews in LinkedIn/Substack, deployed site.

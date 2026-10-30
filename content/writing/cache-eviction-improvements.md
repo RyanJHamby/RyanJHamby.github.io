@@ -1,4 +1,5 @@
 +++
+description = "How cache hierarchies and eviction policies evolved over three decades, from simple in-memory buffers to modern tiered caches, and what the data says about their effectiveness."
 aliases = ["/blog/cache-eviction-improvements/"]
 title = "Cache Eviction: 30 Years of Improvements"
 date = 2025-01-11
