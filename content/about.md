@@ -2,7 +2,7 @@
 title = "About"
 +++
 
-I'm a Software Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
+I'm a Software Development Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
 ## What I Do
 
