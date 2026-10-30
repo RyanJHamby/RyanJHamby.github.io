@@ -32,3 +32,7 @@ Split the 300-line projects page into an index plus one page per project (GPU Fl
 ## 2026-10-30 13:31 EDT (at 8d2bf02)
 
 Discoverability pass: descriptions on posts/pages, og:image card, PaperMod publisherType=Person (removed my duplicate JSON-LD after finding PaperMod already emits it), llms.txt, hobby projects reordered with an Earlier section, drillpad page added as draft=true (not built). Not verified: indexing, link previews in LinkedIn/Substack, deployed site.
+
+## 2026-10-30 13:40 EDT (at 3ce1f30)
+
+Deploy of PR #7 failed in CI: I inserted [params.schema] directly after [params], which moved author, description, keywords, defaultTheme and the Show* options under params.schema. Hugo 0.154 (local) tolerated it; CI's latest Hugo (0.169) failed in PaperMod rss.xml (site.Author). My earlier verification only checked og:image and the schema block. Fix: schema table moved after the scalar params. Lesson: after editing TOML, check the keys that used to follow the insertion point, and check the CI build, not only the local one.

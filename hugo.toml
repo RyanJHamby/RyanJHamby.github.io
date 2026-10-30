@@ -43,9 +43,6 @@ weight = 4
 
 [params]
 images = ["images/og.png"]
-
-[params.schema]
-publisherType = "Person"
 author = "Ryan J Hamby"
 description = "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
 keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
@@ -57,6 +54,9 @@ ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
 TocOpen = false
+
+[params.schema]
+publisherType = "Person"
 
 [[params.socialIcons]]
 name = "linkedin"
