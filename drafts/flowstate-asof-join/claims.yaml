@@ -61,3 +61,15 @@
   evidence: "results/2026-10-30-1412-asof-join-spread/output.log and env.txt"
   verified_by:
   verified_on:
+- key: asof_clean_rerun
+  kind: run
+  claim: "Clean-environment rerun (fresh clone at fdc202b, uv venv, regular CPython 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, maturin develop --release): same ordering, and Polars' slowest run was faster than FlowState's fastest at both sizes. A free-threaded CPython 3.14.7 failed to install Polars 1.38.1. This was not a pow run capture, so the rerun's own timings are not quoted."
+  evidence: "drafts/flowstate-asof-join/repro-clean-env.log and repro-clean-env.sh"
+  verified_by:
+  verified_on:
+- key: repro_time
+  kind: est
+  claim: "About 1.5 minutes end to end on the M4 for the clean setup, Rust build and benchmark, from the elapsed time in the clean-environment log (1:28.90). No cloud cost."
+  evidence: "drafts/flowstate-asof-join/repro-clean-env.log (last lines)"
+  verified_by:
+  verified_on:
