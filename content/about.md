@@ -1,4 +1,5 @@
 +++
+description = "Ryan J Hamby: software engineer working on AI compute, from serving to hardware. Background, interests and contact."
 title = "About"
 +++
 

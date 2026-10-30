@@ -42,6 +42,10 @@ url = "pdfs/Ryan_Hamby_Resume.pdf"
 weight = 4
 
 [params]
+images = ["images/og.png"]
+
+[params.schema]
+publisherType = "Person"
 author = "Ryan J Hamby"
 description = "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
 keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
