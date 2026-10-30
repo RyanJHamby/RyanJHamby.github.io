@@ -12,3 +12,7 @@ Archived old site to archive/old-blog (pushed). Restructured to Writing/Projects
 ## 2026-10-30 12:44 EDT (at fa7b9ad)
 
 Merged origin/main (AI-compute repositioning, resume PDF) into agent/new-site-structure; conflicts in hugo.toml, about.md, _index.md resolved by keeping main's copy and my structure. This also resolved the home-vs-About positioning mismatch. hugo --minify builds clean.
+
+## 2026-10-30 12:56 EDT (at 2207a79)
+
+Switched public contact from hi@ryanjhamby.dev back to ryan.j.hamby@gmail.com. Reason: most inbound/outbound will be automated agents, so gmail deliverability and consistency with resume/profile README matter more than a vanity address on a new domain with no sending reputation. Domain stays for site/Substack.

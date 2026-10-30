@@ -10,7 +10,7 @@ I make AI compute fast, efficient, and reliable, from the serving layer down to 
 
 At AWS I build fault-tolerant, multi-tenant payment and IoT systems. Outside work I build the layer AI runs on: a straggler detector for distributed GPU training, merged fixes in vLLM and Firecracker, a Rust temporal join engine, and a sub-microsecond C++ order book.
 
-[Resume (PDF)](/pdfs/Ryan_Hamby_Resume.pdf) | [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) | [GitHub](https://github.com/RyanJHamby) | [Substack](https://substack.com/@ryanjhamby) | [hi@ryanjhamby.dev](mailto:hi@ryanjhamby.dev)
+[Resume (PDF)](/pdfs/Ryan_Hamby_Resume.pdf) | [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) | [GitHub](https://github.com/RyanJHamby) | [Substack](https://substack.com/@ryanjhamby) | [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com)
 
 ---
 
