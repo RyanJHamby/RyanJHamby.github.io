@@ -36,3 +36,7 @@ Discoverability pass: descriptions on posts/pages, og:image card, PaperMod publi
 ## 2026-10-30 13:40 EDT (at 3ce1f30)
 
 Deploy of PR #7 failed in CI: I inserted [params.schema] directly after [params], which moved author, description, keywords, defaultTheme and the Show* options under params.schema. Hugo 0.154 (local) tolerated it; CI's latest Hugo (0.169) failed in PaperMod rss.xml (site.Author). My earlier verification only checked og:image and the schema block. Fix: schema table moved after the scalar params. Lesson: after editing TOML, check the keys that used to follow the insertion point, and check the CI build, not only the local one.
+
+## 2026-10-30 14:14 EDT (at 6b038fb)
+
+Drafted the FlowState dead-end post in drafts/flowstate-asof-join (not under content/, so not built). Numbers come from FlowState results/2026-10-30-1412-asof-join-spread @ fdc202b (10 runs, min/max, Apple M4). FlowState is 1.34x Polars' median at 1M rows and 1.44x at 10M, ranges do not overlap, derived by derive.py. HUMAN sections left empty: seed.md has to come from Ryan. Lint passes except the intentional HUMAN/TODO blockers. First draft of mine broke AGENTS.md by stating an expectation not in any seed and an opinion; caught on re-read and removed. Added a predates-the-standard note to the three older posts. Substack embed not done: publication subdomain unknown.

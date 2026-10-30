@@ -1,0 +1,111 @@
+---
+title: "My Rust as-of join is slower than Polars"
+date: {{TODO: publish date}}
+type: dead-end
+tags: [rust, arrow, performance]
+run_ids: [2026-10-30-1412-asof-join-spread]
+results_commit: fdc202b
+---
+
+<!-- NOTES
+TODO: publish date; Spec fields beyond what the capture records (EVIDENCE.md was not provided).
+HUMAN gaps: What I believed, What I did, What I'd do instead, plus the human parts of Why it failed.
+Unsure how to classify: nothing here is a measured cause; the cause section is deliberately empty.
+Rules not satisfied: no figure yet (generate from the capture with a committed script); title carries no number on purpose.
+Not marked verified: every claim in claims.yaml has verified_by / verified_on empty.
+Pillar fit: "Build log" (CONTENT.md §2); not one of the benchmark pillars.
+-->
+
+**TL;DR.** FlowState, the as-of join I wrote in Rust, was slower than Polars in my runs on one Apple M4 laptop: the median was 13.3 ms against 9.9 ms for Polars on 1M left rows [run:asof_fs_1m] [run:asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows [run:asof_fs_10m] [run:asof_polars_10m]. The one caveat that matters: one machine, synthetic data, and I do not yet know why.
+
+**Why this matters.** Anyone building a point-in-time join for ML features is choosing between writing a kernel and calling a library that already exists. On this workload the library was faster in batch mode.
+
+## What I believed  [HUMAN]
+
+{{HUMAN: expand}}
+
+## What I did  [HUMAN]
+
+{{HUMAN: expand}}
+
+FlowState's batch kernel is a merge-scan over timestamp-sorted inputs, parallelized with Rayon, exchanging data with Python as Arrow without copying. The benchmark times only the join: data generation, sorting and table construction are excluded, and each engine's output is checked against Polars before timing.
+
+## What happened
+
+I measured the join on 1M left and 0.5M right rows, and on 10M left and 5M right rows, with 1,000 symbols each. Each figure is the median of 10 runs after 2 warmup runs, with the fastest and slowest run alongside. [run:asof_setup]
+
+| Engine | 1M left rows: median (min–max) | 10M left rows: median (min–max) |
+|---|---|---|
+| Polars | 9.9 ms (9.3–10.9) [run:asof_polars_1m] | 135.8 ms (127.2–145.3) [run:asof_polars_10m] |
+| FlowState | 13.3 ms (12.7–13.8) [run:asof_fs_1m] | 194.9 ms (182.7–206.2) [run:asof_fs_10m] |
+| pandas | 80.8 ms (78.7–84.9) [run:asof_pandas_1m] | 843.4 ms (838.0–858.9) [run:asof_pandas_10m] |
+
+FlowState's median was 1.34 times Polars' at 1M rows [run:asof_ratio_1m] and 1.44 times at 10M rows [run:asof_ratio_10m]. In both sizes the ranges do not overlap: Polars' slowest run was faster than FlowState's fastest. FlowState was still well ahead of pandas.
+
+An earlier capture on 2026-10-04, median of 5 runs with no spread recorded, shows the same ordering: 8.7 ms for Polars and 12.3 ms for FlowState at 1M rows [run:asof_earlier_capture]. The absolute times drifted between the two sessions (Polars went from 8.7 ms to 9.9 ms on identical code and data), so I only compare engines within the same run.
+
+## Why it failed
+
+- **Measured cause:** none. I have not profiled either engine.
+- **My best explanation:** {{HUMAN: expand}}
+- **What would confirm it:** {{HUMAN: expand}}
+
+## What I'd do instead  [HUMAN]
+
+{{HUMAN: expand}}
+
+## Limits of this result
+
+- **What I didn't test:** other CPUs, inputs that are not already globally timestamp-sorted, real market data, a join tolerance, thread-count settings, and memory use. I recorded no energy or power data.
+- **Could this work elsewhere?** {{HUMAN: expand}}
+- **Threats to validity:** one laptop with no recorded power or thermal state; synthetic random-walk quotes; two sessions that disagree on absolute time.
+
+## Spec
+
+<details>
+<summary>Full benchmark specification</summary>
+
+### Hardware
+Apple M4, 10 logical cores, 32 GB RAM, macOS 26.6.2 (arm64). Power and thermal state: not recorded. [run:asof_setup]
+
+### Software
+Python 3.14.3; FlowState 0.1.0 with the Rust kernel (rustc 1.94.0); Polars 1.38.1; pandas 3.0.6; DuckDB 1.5.0 (not run); pyarrow 23.0.1. [run:asof_setup]
+
+### Workload
+Backward as-of join, no tolerance. Synthetic random-walk quotes, 1,000 symbols, seeds 42 and 99, globally timestamp-sorted. Sizes: 1M left and 0.5M right rows; 10M left and 5M right rows. Data generation excluded from timing. [run:asof_setup]
+
+### Metrics definitions
+Wall time of one join call in milliseconds, from a monotonic clock. Median across timed runs, with the fastest and slowest.
+
+### Energy method
+n/a (not measured).
+
+### Cost inputs
+n/a.
+
+### Statistics
+10 timed runs after 2 warmup runs per engine and size, single session. No confidence interval computed. [run:asof_setup]
+
+Machine-readable: `results/2026-10-30-1412-asof-join-spread/` (`cmd.txt`, `env.txt`, `output.log`) @ `fdc202b`.
+</details>
+
+## Reproduce
+
+```bash
+git clone https://github.com/RyanJHamby/FlowState && cd FlowState
+git checkout fdc202b
+{{TODO: pinned environment setup commands}}
+.venv/bin/python -W ignore benchmarks/reproduce.py --pandas-scale --runs 10
+```
+
+Approximate cost to reproduce: {{TODO: number — source?}}
+
+## References
+
+[1] FlowState repository, `benchmarks/reproduce.py` and `results/` at commit `fdc202b`.
+
+---
+**Reproduce:** https://github.com/RyanJHamby/FlowState at `fdc202b` · **Raw data:** `results/2026-10-30-1412-asof-join-spread/` at the same commit
+**Published:** {{TODO: YYYY-MM-DD}} · **Last updated:** {{TODO: YYYY-MM-DD}} · Changelog: {{TODO: link}}
+**AI disclosure:** Drafted with AI (Claude) from the captured run data and the repo; the benchmark script was run on my machine through an AI assistant at my direction, and every number comes from that captured run. The sections marked HUMAN are still empty and must be written by me from my own notes. Claims are unverified until I mark them.
+**Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
