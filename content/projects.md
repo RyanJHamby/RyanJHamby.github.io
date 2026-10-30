@@ -160,6 +160,8 @@ Phase-based classification identifying Phase 2 uptrend breakouts passing 7 of 8 
 Risk-managed position management with <span class="metric">max 10% risk, min 2:1 R:R ratio</span>, automated stop-loss trailing, and tax-aware filtering for long-term positions
 </div>
 
+*Figures on this project are from the repo README, not a captured run.*
+
 ### Core Features
 
 **Phase-Based Trend Classification:**

@@ -4,20 +4,20 @@ title = "Hobby Projects"
 
 ## Java4Java — iOS/Android Anki-like LeetCode Learning Platform
 
-**Sep 2025 - Present | 250+ installs**
+**Sep 2025 - Present**
 
 <div class="project-showcase">
 
-Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android with 250+ installs.
+Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android.
 
 [⬇️ Download on the App Store](https://apps.apple.com/us/app/java4java/id6754247227)
 
 </div>
 
 **Key Features:**
-- Implemented SM-2 spaced repetition improving retention by 30%; personalized recommendations based on proficiency and mastery patterns
-- Engineered offline-first sync with conflict-free queue reconciliation using CRDTs, achieving 99.5% data consistency across devices during intermittent connectivity
-- Monetized via AdMob optimizing fill rates to 85%+ through waterfall bidding and A/B tested placements, generating sustainable revenue while maintaining UX
+- Implemented SM-2 spaced repetition; personalized recommendations based on proficiency and mastery patterns
+- Engineered offline-first sync with conflict-free queue reconciliation using CRDTs for consistency across devices during intermittent connectivity
+- Monetized via AdMob using waterfall bidding and A/B tested placements, generating sustainable revenue while maintaining UX
 
 ---
 
