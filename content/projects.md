@@ -28,7 +28,7 @@ Go agents stream per-rank events over gRPC to a coordinator that correlates coll
 
 ## FlowState
 
-**Mar 2026**
+**Mar 2026 - Oct 2026**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/FlowState)
 
@@ -142,7 +142,7 @@ Benefits: Repeatable benchmarking at low cost with cloud infrastructure consiste
 
 ## Intelligent Stock Screener
 
-**Oct 2025 - Present**
+**Nov 2025 - May 2026**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/stock-screener)
 
