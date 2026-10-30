@@ -36,3 +36,15 @@ Discoverability pass: descriptions on posts/pages, og:image card, PaperMod publi
 ## 2026-10-30 13:40 EDT (at 3ce1f30)
 
 Deploy of PR #7 failed in CI: I inserted [params.schema] directly after [params], which moved author, description, keywords, defaultTheme and the Show* options under params.schema. Hugo 0.154 (local) tolerated it; CI's latest Hugo (0.169) failed in PaperMod rss.xml (site.Author). My earlier verification only checked og:image and the schema block. Fix: schema table moved after the scalar params. Lesson: after editing TOML, check the keys that used to follow the insertion point, and check the CI build, not only the local one.
+
+## 2026-10-30 14:14 EDT (at 6b038fb)
+
+Drafted the FlowState dead-end post in drafts/flowstate-asof-join (not under content/, so not built). Numbers come from FlowState results/2026-10-30-1412-asof-join-spread @ fdc202b (10 runs, min/max, Apple M4). FlowState is 1.34x Polars' median at 1M rows and 1.44x at 10M, ranges do not overlap, derived by derive.py. HUMAN sections left empty: seed.md has to come from Ryan. Lint passes except the intentional HUMAN/TODO blockers. First draft of mine broke AGENTS.md by stating an expectation not in any seed and an opinion; caught on re-read and removed. Added a predates-the-standard note to the three older posts. Substack embed not done: publication subdomain unknown.
+
+## 2026-10-30 14:17 EDT (at 3cfe872)
+
+FlowState post: added the figure (figure.py from output.log) and verified the reproduce commands from a clean clone at fdc202b. First clean attempt failed because uv picked a free-threaded CPython 3.14.7 that has no Polars 1.38.1 wheel; pinning the regular 3.14.3 fixed it. Clean rerun kept the ordering (Polars slowest run faster than FlowState fastest, both sizes), about 1.5 min end to end. The rerun was not a pow capture, so its timings are not quoted. Installed kernel in the original capture verified byte-identical to the release build, built before the capture; only packaging metadata changed after.
+
+## 2026-10-30 14:19 EDT (at 6dcc001)
+
+FlowState post: Ryan asked me to write the seed. I did not invent beliefs; I assembled seed.md only from text he wrote in the FlowState repo (README at 3c7486a, DESIGN.md 3.2, journal 2026-10-04), with sources per line and the unwritten parts left as gaps. That surfaced the real story: a March README table claimed 1.8x over Polars with no captured run; the reproducible run in October reversed it. DESIGN.md 3.2 still says 'Why we outperform Polars' and conflicts with the README: flagged, not changed. Post TL;DR rewritten around the retracted claim; four HUMAN gaps remain.

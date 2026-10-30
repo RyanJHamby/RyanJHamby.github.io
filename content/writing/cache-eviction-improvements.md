@@ -6,6 +6,8 @@ date = 2025-01-11
 draft = false
 +++
 
+> *This post predates my current standard for evidence (every number traced to a captured run or a cited source). Treat figures here as unverified.*
+
 ## Introduction
 
 Cache hierarchies are everywhere—from L1/L2/L3 on your CPU to Redis clusters backing your microservices. But the way we organize and manage these tiers has fundamentally transformed over the past three decades. What started as simple in-memory buffers has evolved into a sophisticated science of eviction policies, write-through strategies, and predictive prefetching.

@@ -6,6 +6,8 @@ description = "How fiber optics impact TCP/UDP multicast speeds, and which cable
 tags = ["networking", "performance", "hardware", "multicast"]
 +++
 
+> *This post predates my current standard for evidence (every number traced to a captured run or a cited source). Treat figures here as unverified.*
+
 ## The Problem
 
 You've optimized your multicast application. The code is clean. The algorithm is sound. Yet your latency numbers lag behind competitors, and you can't figure out why. The bottleneck isn't in your logic—it's in the cable running under the floor.

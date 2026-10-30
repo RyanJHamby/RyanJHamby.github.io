@@ -6,6 +6,8 @@ date = 2026-02-22
 draft = false
 +++
 
+> *This post predates my current standard for evidence (every number traced to a captured run or a cited source). Treat figures here as unverified.*
+
 ## Introduction
 
 There's a version of this story where Kubernetes "came back." That framing is wrong.
