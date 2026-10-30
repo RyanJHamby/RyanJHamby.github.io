@@ -1,4 +1,5 @@
 +++
+aliases = ["/blog/cache-eviction-improvements/"]
 title = "Cache Eviction: 30 Years of Improvements"
 date = 2025-01-11
 draft = false

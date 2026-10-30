@@ -1,4 +1,5 @@
 +++
-title = "Blog"
+title = "Writing"
 layout = "posts"
+aliases = ["/blog/"]
 +++
