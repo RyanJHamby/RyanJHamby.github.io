@@ -6,7 +6,7 @@ title = "Home"
 
 I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
-**New York, NY | Software Engineer II @ AWS**
+**New York, NY | Software Development Engineer II @ AWS**
 
 At AWS I build fault-tolerant, multi-tenant payment and IoT systems. Outside work I build the layer AI runs on: a straggler detector for distributed GPU training, merged fixes in vLLM and Firecracker, a Rust temporal join engine, and a sub-microsecond C++ order book.
 

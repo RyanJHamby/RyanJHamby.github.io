@@ -43,7 +43,7 @@ weight = 4
 
 [params]
 author = "Ryan J Hamby"
-description = "Software Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
+description = "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
 keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
 defaultTheme = "auto"
 ShowReadingTime = true
@@ -56,7 +56,7 @@ TocOpen = false
 
 [params.homeInfoParams]
 Title = "Ryan J Hamby"
-Content = "**📍 New York, NY | Software Engineer II @ AWS**\n\nI make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it."
+Content = "**📍 New York, NY | Software Development Engineer II @ AWS**\n\nI make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it."
 
 [[params.socialIcons]]
 name = "linkedin"
@@ -73,7 +73,7 @@ url = "https://substack.com/@ryanjhamby"
 [params.profileMode]
 enabled = false
 title = "Ryan J Hamby"
-subtitle = "Software Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
+subtitle = "Software Development Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
 imageUrl = "/images/headshot.jpg"
 imageTitle = "Profile Picture"
 imageWidth = 150
