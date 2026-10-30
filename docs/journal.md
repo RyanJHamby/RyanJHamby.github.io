@@ -48,3 +48,7 @@ FlowState post: added the figure (figure.py from output.log) and verified the re
 ## 2026-10-30 14:19 EDT (at 6dcc001)
 
 FlowState post: Ryan asked me to write the seed. I did not invent beliefs; I assembled seed.md only from text he wrote in the FlowState repo (README at 3c7486a, DESIGN.md 3.2, journal 2026-10-04), with sources per line and the unwritten parts left as gaps. That surfaced the real story: a March README table claimed 1.8x over Polars with no captured run; the reproducible run in October reversed it. DESIGN.md 3.2 still says 'Why we outperform Polars' and conflicts with the README: flagged, not changed. Post TL;DR rewritten around the retracted claim; four HUMAN gaps remain.
+
+## 2026-10-30 14:24 EDT (at 7f70409)
+
+Prepared the FlowState post for publication: build_post.py generates content/writing/flowstate-asof-join from draft.md and claims.yaml (evidence tags become footnotes, 17 of them). Gaps resolved by stating what is not known, not by inventing: 'why Polars is faster' is 'I don't know'; expectation and 'could this work elsewhere' dropped; open question taken from the journal's own unverified suspicion. Dates set to 2026-10-30. claims.yaml verified_by/verified_on still empty and CHECKLIST.md not run, so the PR is a draft PR.

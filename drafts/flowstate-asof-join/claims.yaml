@@ -91,3 +91,15 @@
   evidence: "FlowState repo, docs/journal.md, entry 2026-10-04 17:29 (at 0df6f05)"
   verified_by:
   verified_on:
+- key: asof_march_build
+  kind: run
+  claim: "Kernel and Python package built at commit 3c7486a (the 2026-03-11 README that claimed 1.8x), today's reproduce.py, same Apple M4, Python 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, release build, 10 runs after 2 warmup, 1M left x 500K right rows, 1,000 symbols: FlowState median 12.9 ms (min 11.8, max 13.6) against Polars 8.9 ms (min 8.5, max 9.7)."
+  evidence: "FlowState results/2026-10-30-1423-asof-join-march-build-3c7486a/output.log @ 53084c2"
+  verified_by:
+  verified_on:
+- key: asof_march_ratio
+  kind: run
+  claim: "FlowState median / Polars median = 1.45 for the March build; ranges do not overlap (Polars max 9.7 ms < FlowState min 11.8 ms). Derived by derive.py. The March kernel was built with today's Rust toolchain and the script is today's, not March's."
+  evidence: "drafts/flowstate-asof-join/derive.py on the log above"
+  verified_by:
+  verified_on:
