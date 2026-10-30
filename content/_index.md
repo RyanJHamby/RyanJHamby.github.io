@@ -8,7 +8,7 @@ Software Development Engineer II at AWS, New York. At work: fault-tolerant, mult
 
 <div class="links-line">
 
-[Resume](/pdfs/Ryan_Hamby_Resume.pdf) · [GitHub](https://github.com/RyanJHamby) · [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) · [Substack](https://substack.com/@ryanjhamby) · [Email](mailto:ryan.j.hamby@gmail.com)
+[Resume](/pdfs/Ryan_Hamby_Resume.pdf) [GitHub](https://github.com/RyanJHamby) [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) [Substack](https://substack.com/@ryanjhamby) [Email](mailto:ryan.j.hamby@gmail.com)
 
 </div>
 

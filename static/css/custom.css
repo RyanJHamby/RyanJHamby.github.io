@@ -50,7 +50,10 @@ body {
 
 /* Header / nav */
 .header { font-family: var(--sans); }
-.nav { max-width: var(--main-width); padding: 0 var(--gap); }
+.header { padding: 0; }
+.nav { max-width: var(--main-width); padding: 0 var(--gap); margin: 0 auto; }
+.main { max-width: var(--main-width); overflow-wrap: anywhere; }
+img, pre, table { max-width: 100%; }
 .logo a {
   font-family: var(--sans);
   font-weight: 650;
@@ -163,7 +166,11 @@ code, pre { font-family: var(--mono); }
 .project-showcase { margin: 1rem 0; }
 
 /* Home: selected work */
-.work-list { list-style: none; padding: 0; margin: 1.2rem 0; }
+.post-content ul.work-list, .post-content ul.post-index { list-style: none; padding: 0; margin: 1.2rem 0; }
+.post-index li { display: flex; gap: 1.2rem; padding: 0.55rem 0; margin: 0; border-bottom: 1px solid var(--border); }
+.post-index .meta { font-family: var(--mono); font-size: 12px; color: var(--secondary); min-width: 4.8rem; padding-top: 0.35rem; }
+.post-index a { color: var(--primary); text-decoration: none; }
+.post-index a:hover { color: var(--accent); }
 .work-list li {
   padding: 1rem 0;
   margin: 0;
@@ -208,3 +215,5 @@ code, pre { font-family: var(--mono); }
   .nav { padding: 0 16px; }
   .main { padding: 0 16px; }
 }
+
+.list, [data-theme="dark"] .list { background: var(--theme); }

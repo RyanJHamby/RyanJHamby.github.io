@@ -54,10 +54,6 @@ ShowCodeCopyButtons = true
 ShowToc = true
 TocOpen = false
 
-[params.homeInfoParams]
-Title = "Ryan J Hamby"
-Content = "**New York, NY | Software Development Engineer II @ AWS**\n\nI make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it."
-
 [[params.socialIcons]]
 name = "linkedin"
 url = "https://www.linkedin.com/in/ryan-j-hamby/"
