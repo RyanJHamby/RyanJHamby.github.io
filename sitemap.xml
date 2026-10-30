@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ryanjhamby.dev/projects/gpu-flight-recorder/</loc>
+  </url><url>
+    <loc>https://ryanjhamby.dev/projects/flowstate/</loc>
+  </url><url>
+    <loc>https://ryanjhamby.dev/projects/order-book-engine/</loc>
+  </url><url>
+    <loc>https://ryanjhamby.dev/projects/stock-screener/</loc>
+  </url><url>
+    <loc>https://ryanjhamby.dev/projects/macro-trading-system/</loc>
+  </url><url>
     <loc>https://ryanjhamby.dev/</loc>
     <lastmod>2026-02-22T00:00:00+00:00</lastmod>
   </url><url>

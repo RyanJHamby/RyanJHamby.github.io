@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Projects on Ryan J Hamby</title>
+    <link>https://ryanjhamby.dev/projects/</link>
+    <description>Recent content in Projects on Ryan J Hamby</description>
+    <generator>Hugo -- 0.169.0</generator>
+    <language>en-us</language>
+    <atom:link href="https://ryanjhamby.dev/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPU Flight Recorder</title>
+      <link>https://ryanjhamby.dev/projects/gpu-flight-recorder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/projects/gpu-flight-recorder/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Mar 2026&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder&#34;&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FlowState</title>
+      <link>https://ryanjhamby.dev/projects/flowstate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/projects/flowstate/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Mar 2026 - Oct 2026&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/FlowState&#34;&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Rust-accelerated temporal join engine for point-in-time ML feature pipelines: join trades, quotes, and signals without look-ahead bias, in batch or streaming.&lt;/p&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Rust as-of join engine with O(n+m) merge-scan kernels, zero-copy Arrow via the PyCapsule interface, and lock-free &lt;code&gt;UnsafeCell&lt;/code&gt; writes across Rayon workers
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Streaming incremental join with watermark-based emission, per-symbol state, and configurable lateness tolerance; streaming output verified identical to batch
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+&lt;span class=&#34;metric&#34;&gt;132 Rust tests&lt;/span&gt;, including property-based checks of every kernel against reference implementations
+&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Low-Latency Order Book Engine</title>
+      <link>https://ryanjhamby.dev/projects/order-book-engine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/projects/order-book-engine/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Sep 2025 - Sep 2026&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/order-book-engine&#34;&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Minimal, high-performance order book engine in C++ designed to explore the foundations of low-latency trading systems. Includes nanosecond-level order matcher skeleton, lock-free queues, thread-local memory pools, and automated benchmarking on AWS EC2 spot instances.&lt;/p&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Built C++20 order matching engine with lock-free SPSC ingestion, thread-local slab pools, and inlined matching. On an isolated EC2 &lt;code&gt;c6i.large&lt;/code&gt; core over 1M orders: &lt;span class=&#34;metric&#34;&gt;P50 0.21 µs, P99.9 3.1–3.2 µs, 1.4–1.8M orders/sec&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Automated EC2 spot benchmarking with cloud-init for reproducible, low-cost latency profiling
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Latency and throughput figures are from the repo README (EC2 &lt;code&gt;c6i.large&lt;/code&gt;, isolated core, 3 runs), not a &lt;code&gt;pow run&lt;/code&gt; capture.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Intelligent Stock Screener</title>
+      <link>https://ryanjhamby.dev/projects/stock-screener/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/projects/stock-screener/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Nov 2025 - May 2026&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/stock-screener&#34;&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fully automated stock screening system scanning 3,800+ US stocks daily using Mark Minervini&amp;rsquo;s Trend Template methodology. Identifies high-conviction buy/sell signals via phase-based trend classification, relative strength momentum, and fundamental quality filters.&lt;/p&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Automated daily scans of &lt;span class=&#34;metric&#34;&gt;3,800+ stocks&lt;/span&gt; with &lt;span class=&#34;metric&#34;&gt;74% API reduction&lt;/span&gt; via Git-based fundamental caching and GitHub Actions automation
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Phase-based classification identifying Phase 2 uptrend breakouts passing 7 of 8 Minervini criteria (50&gt;150&gt;200 SMA alignment, relative strength ≥70, volume confirmation)
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Risk-managed position management with &lt;span class=&#34;metric&#34;&gt;max 10% risk, min 2:1 R:R ratio&lt;/span&gt;, automated stop-loss trailing, and tax-aware filtering for long-term positions
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Figures on this project are from the repo README, not a captured run.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Covariance-Based Macro Trading System</title>
+      <link>https://ryanjhamby.dev/projects/macro-trading-system/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/projects/macro-trading-system/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Aug 2023 - May 2026&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/RyanJHamby/macro-factor-decomposition&#34;&gt;GitHub repository&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.&lt;/p&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+Backtested on real FRED data over &lt;span class=&#34;metric&#34;&gt;17 years (2007–2024)&lt;/span&gt;: &lt;span class=&#34;metric&#34;&gt;0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown&lt;/span&gt; with half-Kelly, regime-adjusted position sizing
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation
+&lt;/div&gt;
+&lt;div class=&#34;achievement&#34;&gt;
+End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ = UΛUᵀ) → S3, covered by &lt;span class=&#34;metric&#34;&gt;240+ unit tests&lt;/span&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;core-hypothesis&#34;&gt;Core Hypothesis&lt;/h2&gt;
+&lt;p&gt;Markets respond to &lt;strong&gt;unexpected&lt;/strong&gt; economic information, not levels. Raw covariance is misleading—it captures expected relationships.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

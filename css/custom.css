@@ -217,3 +217,8 @@ code, pre { font-family: var(--mono); }
 }
 
 .list, [data-theme="dark"] .list { background: var(--theme); }
+
+.project-index .meta { min-width: 9.5rem; }
+.project-index .tags { font-family: var(--mono); font-size: 12px; color: var(--secondary); }
+.page-header { margin: 1.5rem 0; }
+@media (max-width: 600px) { .project-index li { flex-direction: column; gap: 2px; } }
