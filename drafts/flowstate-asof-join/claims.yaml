@@ -73,3 +73,21 @@
   evidence: "drafts/flowstate-asof-join/repro-clean-env.log (last lines)"
   verified_by:
   verified_on:
+- key: readme_march_claim
+  kind: cite
+  claim: "The 2026-03-11 FlowState README table listed a grouped as-of join (1M rows, 1K symbols, 'Apple M-series', Polars 1.x) at 10 ms for FlowState against 18 ms for Polars, labelled 1.8x. It cited no captured run."
+  evidence: "FlowState repo, README.md at commit 3c7486a, lines 56-61 (git show 3c7486a:README.md)"
+  verified_by:
+  verified_on:
+- key: design_doc_claim
+  kind: cite
+  claim: "DESIGN.md section 3.2, 'Why we outperform Polars', written 2026-03-11 and still present in the repo, argues FlowState is faster on grouped temporal joins and lists five reasons."
+  evidence: "FlowState repo, DESIGN.md line 78 at 3c7486a and at main"
+  verified_by:
+  verified_on:
+- key: journal_not_reproduced
+  kind: cite
+  claim: "Journal 2026-10-04 17:29: 'The earlier README claim of 1.8x over Polars did not reproduce and was removed. Suspect the earlier number came from a stale (March) flowstate_core build or a different dataset; not verified.'"
+  evidence: "FlowState repo, docs/journal.md, entry 2026-10-04 17:29 (at 0df6f05)"
+  verified_by:
+  verified_on:

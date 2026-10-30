@@ -9,26 +9,31 @@ results_commit: fdc202b
 
 <!-- NOTES
 TODO: publish and updated dates, changelog link; Spec fields beyond what the capture records (EVIDENCE.md was not provided); the figure's alt text needs Ryan's review.
-HUMAN gaps: What I believed, What I did, What I'd do instead, plus the human parts of Why it failed.
+HUMAN gaps now: what I expected in October; why Polars is faster today; 'Could this work elsewhere'; the open question. Other HUMAN sections were drafted from seed.md, which was assembled from Ryan's own repo notes and needs his confirmation.
 Unsure how to classify: nothing here is a measured cause; the cause section is deliberately empty.
 Figure: figure.py + figure.png; needs alt-text review by Ryan. Title carries no number on purpose.
+FLAG (AGENTS.md rule 5): FlowState DESIGN.md section 3.2 still says 'Why we outperform Polars', which conflicts with the README and the captures. Not changed; Ryan to decide.
 Not marked verified: every claim in claims.yaml has verified_by / verified_on empty.
 Pillar fit: "Build log" (CONTENT.md §2); not one of the benchmark pillars.
 -->
 
-**TL;DR.** FlowState, the as-of join I wrote in Rust, was slower than Polars in my runs on one Apple M4 laptop: the median was 13.3 ms against 9.9 ms for Polars on 1M left rows [run:asof_fs_1m] [run:asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows [run:asof_fs_10m] [run:asof_polars_10m]. The one caveat that matters: one machine, synthetic data, and I do not yet know why.
+**TL;DR.** In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms) [cite:readme_march_claim]. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState's median was 13.3 ms against 9.9 ms for Polars on 1M left rows [run:asof_fs_1m] [run:asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows [run:asof_fs_10m] [run:asof_polars_10m]. I removed the March claim, I have not found out why Polars is faster, and I don't know yet what caused the original number.
 
-**Why this matters.** Anyone building a point-in-time join for ML features is choosing between writing a kernel and calling a library that already exists. On this workload the library was faster in batch mode.
+**Why this matters.** A performance claim with no captured run behind it can sit in a README for months. On this workload the library was faster in batch mode, so anyone considering a custom join kernel for point-in-time ML features should measure against the library first.
 
 ## What I believed  [HUMAN]
 
-{{HUMAN: expand}}
+I believed FlowState would beat Polars on grouped as-of joins, and I wrote down why in the design doc on 2026-03-11: it skips the sort verification a general engine has to do, borrows symbol keys without allocating, joins symbol groups in parallel with Rayon, and splits large scans into parallel chunks [cite:design_doc_claim]. I also believed pandas "falls over at 10M rows."
+
+{{HUMAN: expand}} (what I expected the October benchmark to show)
 
 ## What I did  [HUMAN]
 
-{{HUMAN: expand}}
+The March README table was never backed by a captured run [cite:readme_march_claim]. On 2026-10-04 I wrote a reproducible benchmark that prints the hardware, versions and dataset, and checks every engine's output against Polars before timing. I ran it through `pow run`. The first result showed Polars about 1.4 times faster, and pandas finished the 10M-row join in 0.76 s, so the pandas belief was also wrong [cite:journal_not_reproduced]. I removed the March claim from the README. On 2026-10-30 I added the fastest and slowest run to the output and captured 10 runs [run:asof_setup].
 
-FlowState's batch kernel is a merge-scan over timestamp-sorted inputs, parallelized with Rayon, exchanging data with Python as Arrow without copying. The benchmark times only the join: data generation, sorting and table construction are excluded, and each engine's output is checked against Polars before timing.
+DuckDB's `ASOF JOIN` did not finish at 1M rows and 1K symbols in my run, so it is opt-in in the script and not in the results here.
+
+FlowState's batch kernel is a merge-scan over timestamp-sorted inputs, parallelized with Rayon, exchanging data with Python as Arrow without copying. The benchmark times only the join: data generation, sorting and table construction are excluded.
 
 ## What happened
 
@@ -50,13 +55,14 @@ An earlier capture on 2026-10-04, median of 5 runs with no spread recorded, show
 
 ## Why it failed
 
-- **Measured cause:** none. I have not profiled either engine.
-- **My best explanation:** {{HUMAN: expand}}
-- **What would confirm it:** {{HUMAN: expand}}
+- **Measured cause:** none. I have not profiled either engine, and I have not tested whether any of the five reasons in my design doc hold.
+- **Why the March number did not reproduce (speculation):** my journal says I suspect it came from a stale March build of the Rust kernel or from a different dataset, and that this is not verified [cite:journal_not_reproduced].
+- **Why Polars is faster today:** {{HUMAN: expand}}
+- **What would confirm it:** rebuilding the kernel at commit `3c7486a` and running the current script against it would test the stale-build explanation. I have not done that.
 
 ## What I'd do instead  [HUMAN]
 
-{{HUMAN: expand}}
+My view, from the README: FlowState's value is not raw join speed against Polars. It is the pieces around the join: watermark streaming alignment, the SPSC streaming pipeline, partitioned replay and the temporal feature store. That is an opinion, and this benchmark does not test it.
 
 ## Limits of this result
 
@@ -92,6 +98,10 @@ n/a.
 
 Machine-readable: `results/2026-10-30-1412-asof-join-spread/` (`cmd.txt`, `env.txt`, `output.log`) @ `fdc202b`.
 </details>
+
+## What's open
+
+{{HUMAN: expand}} (one open question this raises)
 
 ## Reproduce
 

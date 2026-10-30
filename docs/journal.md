@@ -44,3 +44,7 @@ Drafted the FlowState dead-end post in drafts/flowstate-asof-join (not under con
 ## 2026-10-30 14:17 EDT (at 3cfe872)
 
 FlowState post: added the figure (figure.py from output.log) and verified the reproduce commands from a clean clone at fdc202b. First clean attempt failed because uv picked a free-threaded CPython 3.14.7 that has no Polars 1.38.1 wheel; pinning the regular 3.14.3 fixed it. Clean rerun kept the ordering (Polars slowest run faster than FlowState fastest, both sizes), about 1.5 min end to end. The rerun was not a pow capture, so its timings are not quoted. Installed kernel in the original capture verified byte-identical to the release build, built before the capture; only packaging metadata changed after.
+
+## 2026-10-30 14:19 EDT (at 6dcc001)
+
+FlowState post: Ryan asked me to write the seed. I did not invent beliefs; I assembled seed.md only from text he wrote in the FlowState repo (README at 3c7486a, DESIGN.md 3.2, journal 2026-10-04), with sources per line and the unwritten parts left as gaps. That surfaced the real story: a March README table claimed 1.8x over Polars with no captured run; the reproducible run in October reversed it. DESIGN.md 3.2 still says 'Why we outperform Polars' and conflicts with the README: flagged, not changed. Post TL;DR rewritten around the retracted claim; four HUMAN gaps remain.
