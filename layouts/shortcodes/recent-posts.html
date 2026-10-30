@@ -1,5 +1,5 @@
 {{ $count := .Get 0 | default 3 }}
-{{ $posts := where site.RegularPages "Section" "blog" | first $count }}
+{{ $posts := where site.RegularPages "Section" "writing" | first $count }}
 <ul>
 {{- range $posts }}
   <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> — {{ .Summary | plainify | truncate 180 }}</li>
