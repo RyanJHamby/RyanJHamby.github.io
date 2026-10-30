@@ -24,3 +24,7 @@ Audited site vs repos. GPU Flight Recorder repo has 7 commits (Mar 24-27 2026), 
 ## 2026-10-30 13:16 EDT (at 86d01a4)
 
 Site redesign: replaced two stylesheets (965 + 747 lines) with one system-font stylesheet, one accent, light+dark; removed the localStorage views/likes widget (per-visitor fake social proof); home rewritten around selected work; emoji and light-only inline styles removed. Verified: hugo --minify builds; Chrome screenshots of home, projects at desktop and 390px. Not verified: dark mode rendering (headless could not set the theme), deployed site.
+
+## 2026-10-30 13:22 EDT (at 81cf83d)
+
+Split the 300-line projects page into an index plus one page per project (GPU Flight Recorder, FlowState, order book, screener, macro). Old #anchors on /projects/ now land on the index; only the home page linked to them and was updated. Order book page now says its figures are README-sourced, not captured.

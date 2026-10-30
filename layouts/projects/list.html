@@ -1,0 +1,11 @@
+{{- define "main" }}
+<header class="page-header"><h1>{{ .Title }}</h1></header>
+<div class="post-content">
+  {{ .Content }}
+  <ul class="post-index project-index">
+  {{- range .Pages.ByWeight }}
+    <li><span class="meta">{{ .Params.status }}</span><span><a href="{{ .RelPermalink }}">{{ .Title }}</a><br><span class="tags">{{ .Params.tags_line }}</span></span></li>
+  {{- end }}
+  </ul>
+</div>
+{{- end }}
