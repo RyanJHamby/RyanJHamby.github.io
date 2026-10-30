@@ -19,6 +19,8 @@ unsafe = true
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+taxonomy = ["HTML"]
+term = ["HTML"]
 
 [menu]
 [[menu.main]]
