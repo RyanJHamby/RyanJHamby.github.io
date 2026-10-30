@@ -52,3 +52,7 @@ FlowState post: Ryan asked me to write the seed. I did not invent beliefs; I ass
 ## 2026-10-30 14:24 EDT (at 7f70409)
 
 Prepared the FlowState post for publication: build_post.py generates content/writing/flowstate-asof-join from draft.md and claims.yaml (evidence tags become footnotes, 17 of them). Gaps resolved by stating what is not known, not by inventing: 'why Polars is faster' is 'I don't know'; expectation and 'could this work elsewhere' dropped; open question taken from the journal's own unverified suspicion. Dates set to 2026-10-30. claims.yaml verified_by/verified_on still empty and CHECKLIST.md not run, so the PR is a draft PR.
+
+## 2026-10-30 14:50 EDT (at 33bc4e4)
+
+Withdrew the FlowState as-of join post (draft = true) pending a fair rerun: the harness had not shown equal work, the wrapper overhead was inside the timed region, and it ran on a laptop only. The changelog in the post records the withdrawal.
