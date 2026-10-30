@@ -1,6 +1,6 @@
 # RyanJHamby.github.io
 
-Hugo-based personal portfolio site deployed to GitHub Pages at https://ryanjhamby.github.io/
+Hugo-based personal portfolio site deployed to GitHub Pages at https://ryanjhamby.dev/ (custom domain; see `static/CNAME`)
 
 ## Prerequisites
 
@@ -55,17 +55,17 @@ hugo server --buildDrafts
 ### Add a Blog Post
 
 ```bash
-hugo new content blog/your-post-title.md
+hugo new content writing/your-post-title.md
 ```
 
-This creates a new markdown file in `content/blog/` with default frontmatter.
+This creates a new markdown file in `content/writing/` with default frontmatter.
 
 ### Edit Content
 
 Content files are in the `content/` directory:
 - `content/_index.md` - Home page
 - `content/about.md` - About page
-- `content/blog/` - Blog posts
+- `content/writing/` - Posts (old `/blog/...` URLs redirect here)
 
 ## Publishing
 
@@ -80,7 +80,7 @@ git push origin main
 GitHub Actions will automatically:
 1. Build the Hugo site
 2. Deploy to the `gh-pages` branch
-3. Update the live site at https://ryanjhamby.github.io/
+3. Update the live site at https://ryanjhamby.dev/
 
 The workflow file is at `.github/workflows/hugo.yml`
 
@@ -114,3 +114,12 @@ Uses [PaperMod](https://github.com/adityatelange/hugo-PaperMod), a minimal and f
 ## License
 
 See LICENSE.txt
+
+## How this was built
+
+Design, experiments, and analysis are mine. I used AI coding assistants for
+parts of the implementation, tests, and documentation, and reviewed every change.
+The 2026-10 site restructure (Writing/Projects/About, custom domain) was done with Claude Code.
+The [engineering journal](docs/journal.md) records decisions and dead ends as
+they happened, and [`results/`](results/) holds the raw output behind every
+number quoted here.

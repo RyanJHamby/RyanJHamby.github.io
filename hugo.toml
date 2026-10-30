@@ -1,4 +1,4 @@
-baseURL = 'https://ryanjhamby.github.io/'
+baseURL = 'https://ryanjhamby.dev/'
 languageCode = 'en-us'
 title = 'Ryan J Hamby'
 theme = 'PaperMod'
@@ -22,8 +22,8 @@ home = ["HTML", "RSS", "JSON"]
 
 [menu]
 [[menu.main]]
-name = "Experience"
-url = "experience"
+name = "Writing"
+url = "writing"
 weight = 1
 
 [[menu.main]]
@@ -32,29 +32,14 @@ url = "projects"
 weight = 2
 
 [[menu.main]]
-name = "Hobby Projects"
-url = "hobby-projects"
+name = "About"
+url = "about"
 weight = 3
-
-[[menu.main]]
-name = "Education & Skills"
-url = "education"
-weight = 4
-
-[[menu.main]]
-name = "Blog"
-url = "blog"
-weight = 5
 
 [[menu.main]]
 name = "Resume"
 url = "pdfs/Ryan_Hamby_Resume.pdf"
-weight = 6
-
-[[menu.main]]
-name = "Contact"
-url = "contact"
-weight = 7
+weight = 4
 
 [params]
 author = "Ryan J Hamby"
@@ -81,6 +66,10 @@ url = "https://www.linkedin.com/in/ryan-j-hamby/"
 name = "github"
 url = "https://github.com/RyanJHamby"
 
+[[params.socialIcons]]
+name = "substack"
+url = "https://substack.com/@ryanjhamby"
+
 [params.profileMode]
 enabled = false
 title = "Ryan J Hamby"
@@ -99,9 +88,9 @@ name = "Projects"
 url = "/projects"
 
 [[params.profileMode.buttons]]
-name = "Blog"
-url = "/blog"
+name = "Writing"
+url = "/writing"
 
 [[params.profileMode.buttons]]
 name = "Contact"
-url = "mailto:ryan.j.hamby@gmail.com"
+url = "mailto:hi@ryanjhamby.dev"

@@ -1,4 +1,5 @@
 +++
+aliases = ["/blog/optical-cables-multicast-performance/"]
 title = "Optical Cables and Multicast: Why Your Network Hardware Matters More Than You Think"
 date = 2025-01-17
 description = "How fiber optics impact TCP/UDP multicast speeds, and which cables actually optimize for low-latency group communication."
