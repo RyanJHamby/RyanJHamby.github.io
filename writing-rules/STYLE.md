@@ -100,7 +100,7 @@ closing every section with a one-line zinger.
 **AI disclosure:** <honest one-liner, e.g. "Drafted with AI from my notes and
 measured data; experiments, numbers, and conclusions are mine and were
 verified by hand.">
-**Corrections:** If something here is wrong, email hi@ryanjhamby.dev. I fix
+**Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix
 errors publicly in the changelog.
 ```
 

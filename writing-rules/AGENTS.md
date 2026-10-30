@@ -70,9 +70,9 @@ If the seed is thin, leave `{{HUMAN: expand}}` rather than filling it.
 
 ## 7. Confidentiality
 
-- Nothing from Hume or any employer: no customer names, internal metrics,
-  architecture details, or incidents, unless `seed.md` says "cleared by Hume
-  on <date>."
+- Nothing from Hume, AWS, or any current or former employer: no customer names,
+  internal metrics, architecture details, or incidents, unless `seed.md` says
+  "cleared by <employer> on <date>."
 - No private individuals' names without explicit permission in `seed.md`.
 - When in doubt, generalize ("an on-prem customer deployment") and flag it.
 

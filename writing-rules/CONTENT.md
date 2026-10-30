@@ -83,7 +83,7 @@ These are required now and get more valuable as the archive grows:
 
 ## 7. Never publish
 
-- Anything from Hume or any employer without written clearance
+- Anything from Hume, AWS, or any current or former employer without written clearance
 - Numbers without a run or a citation behind them
 - Takes outside the pillars (politics, drama, general AI hype)
 - Content about private individuals without permission
