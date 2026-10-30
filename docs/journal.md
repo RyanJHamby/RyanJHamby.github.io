@@ -53,6 +53,10 @@ FlowState post: Ryan asked me to write the seed. I did not invent beliefs; I ass
 
 Prepared the FlowState post for publication: build_post.py generates content/writing/flowstate-asof-join from draft.md and claims.yaml (evidence tags become footnotes, 17 of them). Gaps resolved by stating what is not known, not by inventing: 'why Polars is faster' is 'I don't know'; expectation and 'could this work elsewhere' dropped; open question taken from the journal's own unverified suspicion. Dates set to 2026-10-30. claims.yaml verified_by/verified_on still empty and CHECKLIST.md not run, so the PR is a draft PR.
 
+## 2026-10-30 14:50 EDT (at 33bc4e4)
+
+Withdrew the FlowState as-of join post (draft = true) pending a fair rerun: the harness had not shown equal work, the wrapper overhead was inside the timed region, and it ran on a laptop only. The changelog in the post records the withdrawal.
+
 ## 2026-10-30 16:42 EDT (at 82aac77)
 
 Set up the writing system in the site repo: copied STYLE, CONTENT, AGENTS, CHECKLIST, templates and lint.py unchanged (baseline commit), then made three edits: AWS and former employers named in the confidentiality rule (Hume-only wording before), gmail in the corrections footer (hi@ before). Added tools/new_post.py (scaffold, tested in a scratch copy: creates the folder, refuses overwrite, rejects bad slugs, lint runs on the fresh template) and writing-rules/backlog.md seeded only from evidence in repos. tokenomics-bench is the strongest anchor: pre-registered, hardware runs not yet performed.

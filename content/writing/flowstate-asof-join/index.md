@@ -3,7 +3,7 @@ title = "My Rust as-of join is slower than Polars"
 date = 2026-10-30
 description = "A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back."
 tags = ["rust", "arrow", "performance"]
-draft = false
+draft = true
 +++
 
 **TL;DR.** In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms)[^readme_march_claim]. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState's median was 13.3 ms against 9.9 ms for Polars on 1M left rows[^asof_fs_1m][^asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows[^asof_fs_10m][^asof_polars_10m]. I removed the March claim. Rebuilding the March kernel did not bring the lead back[^asof_march_build], and I do not know why Polars is faster or what produced the original number.
@@ -118,6 +118,7 @@ Approximate cost to reproduce: about 1.5 minutes on the M4, including the Rust b
 
 ## Changelog
 
+- **2026-10-30:** Withdrawn pending a fair-comparison rerun: the benchmark does not yet show that both engines do the same work, and it ran on a laptop only.
 - **2026-10-30:** Published. Results at FlowState `fdc202b` and `53084c2`.
 
 [^readme_march_claim]: The 2026-03-11 FlowState README table listed a grouped as-of join (1M rows, 1K symbols, 'Apple M-series', Polars 1.x) at 10 ms for FlowState against 18 ms for Polars, labelled 1.8x. It cited no captured run. Source: FlowState repo, README.md at commit 3c7486a, lines 56-61 (git show 3c7486a:README.md).
