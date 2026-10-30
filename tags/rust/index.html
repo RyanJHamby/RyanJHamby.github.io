@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Rust | Ryan J Hamby</title>
+<meta name="keywords" content="">
+<meta name="description" content="Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust &amp; C&#43;&#43;">
+<meta name="author" content="Ryan J Hamby">
+<link rel="canonical" href="https://ryanjhamby.dev/tags/rust/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://ryanjhamby.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ryanjhamby.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ryanjhamby.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ryanjhamby.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ryanjhamby.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://ryanjhamby.dev/tags/rust/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://ryanjhamby.dev/tags/rust/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="stylesheet" href="/css/custom.css">
+<meta property="og:url" content="https://ryanjhamby.dev/tags/rust/">
+  <meta property="og:site_name" content="Ryan J Hamby">
+  <meta property="og:title" content="Rust">
+  <meta property="og:description" content="Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust &amp; C&#43;&#43;">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="https://ryanjhamby.dev/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ryanjhamby.dev/images/og.png">
+<meta name="twitter:title" content="Rust">
+<meta name="twitter:description" content="Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust &amp; C&#43;&#43;">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://ryanjhamby.dev/" accesskey="h" title="Ryan J Hamby (Alt + H)">Ryan J Hamby</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://ryanjhamby.dev/writing" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/projects" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/pdfs/Ryan_Hamby_Resume.pdf" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://ryanjhamby.dev/">Home</a>&nbsp;»&nbsp;<a href="https://ryanjhamby.dev/tags/">Tags</a></div>
+  <h1>
+    Rust
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">My Rust as-of join is slower than Polars
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TL;DR. In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms)1. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState’s median was 13.3 ms against 9.9 ms for Polars on 1M left rows23, and 194.9 ms against 135.8 ms on 10M left rows45. I removed the March claim. Rebuilding the March kernel did not bring the lead back6, and I do not know why Polars is faster or what produced the original number.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-30 00:00:00 +0000 UTC'>October 30, 2026</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
+  <a class="entry-link" aria-label="post link to My Rust as-of join is slower than Polars" href="https://ryanjhamby.dev/writing/flowstate-asof-join/"></a>
+</article>
+    </main>
+    <footer class="footer">
+  <span>© 2026 Ryan J Hamby</span>
+  <span>
+    <a href="mailto:ryan.j.hamby@gmail.com">Email</a> ·
+    <a href="https://github.com/RyanJHamby">GitHub</a> ·
+    <a href="https://www.linkedin.com/in/ryan-j-hamby/">LinkedIn</a> ·
+    <a href="https://substack.com/@ryanjhamby">Substack</a> ·
+    <a href="/index.xml">RSS</a>
+  </span>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+</script>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GPU Flight Recorder</title>
@@ -94,6 +94,13 @@ End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Herm
 &lt;/div&gt;
 &lt;h2 id=&#34;core-hypothesis&#34;&gt;Core Hypothesis&lt;/h2&gt;
 &lt;p&gt;Markets respond to &lt;strong&gt;unexpected&lt;/strong&gt; economic information, not levels. Raw covariance is misleading—it captures expected relationships.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My Rust as-of join is slower than Polars</title>
+      <link>https://ryanjhamby.dev/writing/flowstate-asof-join/</link>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/writing/flowstate-asof-join/</guid>
+      <description>A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.</description>
     </item>
     <item>
       <title>Kubernetes&#39; Second Act: From Container Orchestrator to AI Operating System</title>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My Rust as-of join is slower than Polars | Ryan J Hamby</title>
+<meta name="keywords" content="rust, arrow, performance">
+<meta name="description" content="A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.">
+<meta name="author" content="Ryan J Hamby">
+<link rel="canonical" href="https://ryanjhamby.dev/writing/flowstate-asof-join/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.199042e659bc7245f5609d333d6c044eb554a0640849bb874e1dff8eb0f57209.css" integrity="sha256-GZBC5lm8ckX1YJ0zPWwETrVUoGQISbuHTh3/jrD1cgk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://ryanjhamby.dev/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ryanjhamby.dev/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ryanjhamby.dev/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ryanjhamby.dev/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ryanjhamby.dev/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://ryanjhamby.dev/writing/flowstate-asof-join/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><link rel="stylesheet" href="/css/custom.css">
+<meta property="og:url" content="https://ryanjhamby.dev/writing/flowstate-asof-join/">
+  <meta property="og:site_name" content="Ryan J Hamby">
+  <meta property="og:title" content="My Rust as-of join is slower than Polars">
+  <meta property="og:description" content="A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2026-10-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-30T00:00:00+00:00">
+    <meta property="article:tag" content="Rust">
+    <meta property="article:tag" content="Arrow">
+    <meta property="article:tag" content="Performance">
+      <meta property="og:image" content="https://ryanjhamby.dev/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ryanjhamby.dev/images/og.png">
+<meta name="twitter:title" content="My Rust as-of join is slower than Polars">
+<meta name="twitter:description" content="A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "https://ryanjhamby.dev/writing/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "My Rust as-of join is slower than Polars",
+      "item": "https://ryanjhamby.dev/writing/flowstate-asof-join/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My Rust as-of join is slower than Polars",
+  "name": "My Rust as-of join is slower than Polars",
+  "description": "A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.",
+  "keywords": [
+    "rust", "arrow", "performance"
+  ],
+  "articleBody": "TL;DR. In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms)1. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState’s median was 13.3 ms against 9.9 ms for Polars on 1M left rows23, and 194.9 ms against 135.8 ms on 10M left rows45. I removed the March claim. Rebuilding the March kernel did not bring the lead back6, and I do not know why Polars is faster or what produced the original number.\nWhy this matters. A performance claim with no captured run behind it can sit in a README for months. On this workload the library was faster in batch mode, so anyone considering a custom join kernel for point-in-time ML features should measure against the library first.\nWhat I believed I believed FlowState would beat Polars on grouped as-of joins, and I wrote down why in the design doc on 2026-03-11: it skips the sort verification a general engine has to do, borrows symbol keys without allocating, joins symbol groups in parallel with Rayon, and splits large scans into parallel chunks7. I also believed pandas “falls over at 10M rows.”\nWhat I did The March README table was never backed by a captured run1. On 2026-10-04 I wrote a reproducible benchmark that prints the hardware, versions and dataset, and checks every engine’s output against Polars before timing. I ran it through pow run. The first result showed Polars about 1.4 times faster, and pandas finished the 10M-row join in 0.76 s, so the pandas belief was also wrong8. I removed the March claim from the README. On 2026-10-30 I added the fastest and slowest run to the output and captured 10 runs9.\nDuckDB’s ASOF JOIN did not finish at 1M rows and 1K symbols in my run, so it is opt-in in the script and not in the results here.\nFlowState’s batch kernel is a merge-scan over timestamp-sorted inputs, parallelized with Rayon, exchanging data with Python as Arrow without copying. The benchmark times only the join: data generation, sorting and table construction are excluded.\nWhat happened Figure: median as-of join time, 10 runs per bar, whiskers are the fastest and slowest run. Apple M4, 32 GB. Run 2026-10-30-1412-asof-join-spread @ fdc202b. Generated by figure.py from the capture’s output.log.9\nI measured the join on 1M left and 0.5M right rows, and on 10M left and 5M right rows, with 1,000 symbols each. Each figure is the median of 10 runs after 2 warmup runs, with the fastest and slowest run alongside.9\nEngine 1M left rows: median (min–max) 10M left rows: median (min–max) Polars 9.9 ms (9.3–10.9)3 135.8 ms (127.2–145.3)5 FlowState 13.3 ms (12.7–13.8)2 194.9 ms (182.7–206.2)4 pandas 80.8 ms (78.7–84.9)10 843.4 ms (838.0–858.9)11 FlowState’s median was 1.34 times Polars’ at 1M rows12 and 1.44 times at 10M rows13. In both sizes the ranges do not overlap: Polars’ slowest run was faster than FlowState’s fastest. FlowState was still well ahead of pandas.\nAn earlier capture on 2026-10-04, median of 5 runs with no spread recorded, shows the same ordering: 8.7 ms for Polars and 12.3 ms for FlowState at 1M rows14. The absolute times drifted between the two sessions (Polars went from 8.7 ms to 9.9 ms on identical code and data), so I only compare engines within the same run.\nWhy it failed Measured cause: none. I have not profiled either engine, and I have not tested whether any of the five reasons in my design doc hold. Why the March number did not reproduce: my journal suspected a stale March build of the Rust kernel or a different dataset8. I tested the first guess. I built the kernel and Python package at the commit that carried the claim (3c7486a) and ran today’s script against it with the same pinned libraries. FlowState was still slower: median 12.9 ms against 8.9 ms for Polars on 1M left rows6, 1.45 times Polars’ median with non-overlapping ranges15. A stale kernel does not explain the March figure. Still untested (speculation): a different dataset, and a Polars release in March that was slower than 1.38.1. The March table says only “Polars 1.x” and “Apple M-series”1, and I have no record of how its numbers were produced. Today’s script and Rust toolchain are not the ones I used in March. Why Polars is faster today: I don’t know. What I’d test next: profile both engines on this workload, and run the same data against older Polars releases. What I’d do instead My view, from the README: FlowState’s value is not raw join speed against Polars. It is the pieces around the join: watermark streaming alignment, the SPSC streaming pipeline, partitioned replay and the temporal feature store. That is an opinion, and this benchmark does not test it.\nLimits of this result What I didn’t test: other CPUs, inputs that are not already globally timestamp-sorted, real market data, a join tolerance, thread-count settings, and memory use. I recorded no energy or power data. Threats to validity: one laptop with no recorded power or thermal state; synthetic random-walk quotes; two sessions that disagree on absolute time. Spec Full benchmark specification Hardware Apple M4, 10 logical cores, 32 GB RAM, macOS 26.6.2 (arm64). Power and thermal state: not recorded.9\nSoftware Python 3.14.3; FlowState 0.1.0 with the Rust kernel (rustc 1.94.0); Polars 1.38.1; pandas 3.0.6; DuckDB 1.5.0 (not run); pyarrow 23.0.1.9\nWorkload Backward as-of join, no tolerance. Synthetic random-walk quotes, 1,000 symbols, seeds 42 and 99, globally timestamp-sorted. Sizes: 1M left and 0.5M right rows; 10M left and 5M right rows. Data generation excluded from timing.9\nMetrics definitions Wall time of one join call in milliseconds, from a monotonic clock. Median across timed runs, with the fastest and slowest.\nEnergy method n/a (not measured).\nCost inputs n/a.\nStatistics 10 timed runs after 2 warmup runs per engine and size, single session. No confidence interval computed.9\nMachine-readable: results/2026-10-30-1412-asof-join-spread/ (cmd.txt, env.txt, output.log) @ fdc202b.\nWhat’s open Whether the March figure came from a different dataset or an older, slower Polars release. I do not have the March run, so I may not be able to settle it.\nReproduce git clone https://github.com/RyanJHamby/FlowState \u0026\u0026 cd FlowState git checkout fdc202b uv venv --python /opt/homebrew/bin/python3.14 .venv \u0026\u0026 . .venv/bin/activate uv pip install maturin numpy polars==1.38.1 pandas==3.0.6 pyarrow==23.0.1 (cd flowstate-core \u0026\u0026 maturin develop --release) uv pip install -e . python -W ignore benchmarks/reproduce.py --pandas-scale --runs 10 Use a regular CPython 3.14 build. A free-threaded 3.14 build failed to install Polars 1.38.1 in my attempt16. I ran these commands from a fresh clone and the ordering held, with Polars’ slowest run faster than FlowState’s fastest at both sizes16. The raw log is repro-clean-env.log in the post’s draft folder.\nApproximate cost to reproduce: about 1.5 minutes on the M4, including the Rust build, and no cloud spend17.\nReferences [1] FlowState repository, benchmarks/reproduce.py and results/ at commit fdc202b.\nReproduce: https://github.com/RyanJHamby/FlowState at fdc202b · Raw data: results/2026-10-30-1412-asof-join-spread/ at that commit; the March-build test is results/2026-10-30-1423-asof-join-march-build-3c7486a/ at 53084c2 Published: 2026-10-30 · Last updated: 2026-10-30 · Changelog AI disclosure: Drafted with AI (Claude) from my captured runs and from notes I wrote in the FlowState README, design doc and journal. The benchmarks were run on my machine through an AI assistant at my direction, and every number comes from a captured run or a cited file in that repo. Claim-by-claim verification is not recorded yet. Corrections: If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.\nChangelog 2026-10-30: Published. Results at FlowState fdc202b and 53084c2. The 2026-03-11 FlowState README table listed a grouped as-of join (1M rows, 1K symbols, ‘Apple M-series’, Polars 1.x) at 10 ms for FlowState against 18 ms for Polars, labelled 1.8x. It cited no captured run. Source: FlowState repo, README.md at commit 3c7486a, lines 56-61 (git show 3c7486a:README.md). ↩︎ ↩︎ ↩︎\nFlowState as-of join, same data: median 13.3 ms (min 12.7, max 13.8) Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎ ↩︎\nPolars as-of join, 1,000,000 left x 500,000 right rows: median 9.9 ms (min 9.3, max 10.9), 10 runs after 2 warmup Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎ ↩︎\nFlowState, same data: median 194.9 ms (min 182.7, max 206.2) Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎ ↩︎\nPolars, 10,000,000 left x 5,000,000 right rows: median 135.8 ms (min 127.2, max 145.3) Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎ ↩︎\nKernel and Python package built at commit 3c7486a (the 2026-03-11 README that claimed 1.8x), today’s reproduce.py, same Apple M4, Python 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, release build, 10 runs after 2 warmup, 1M left x 500K right rows, 1,000 symbols: FlowState median 12.9 ms (min 11.8, max 13.6) against Polars 8.9 ms (min 8.5, max 9.7). Source: FlowState results/2026-10-30-1423-asof-join-march-build-3c7486a/output.log @ 53084c2. ↩︎ ↩︎\nDESIGN.md section 3.2, ‘Why we outperform Polars’, written 2026-03-11 and still present in the repo, argues FlowState is faster on grouped temporal joins and lists five reasons. Source: FlowState repo, DESIGN.md line 78 at 3c7486a and at main. ↩︎\nJournal 2026-10-04 17:29: ‘The earlier README claim of 1.8x over Polars did not reproduce and was removed. Suspect the earlier number came from a stale (March) flowstate_core build or a different dataset; not verified.’ Source: FlowState repo, docs/journal.md, entry 2026-10-04 17:29 (at 0df6f05). ↩︎ ↩︎\nApple M4, 10 logical cores, 32 GB; Python 3.14.3; polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1; flowstate 0.1.0 with Rust kernel; backward join, no tolerance; synthetic random-walk quotes, 1,000 symbols, seeds 42 and 99; data generation excluded Source: results/2026-10-30-1412-asof-join-spread/output.log and env.txt. ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎\npandas as-of join, same data: median 80.8 ms (min 78.7, max 84.9) Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎\npandas, same data: median 843.4 ms (min 838.0, max 858.9) Source: results/2026-10-30-1412-asof-join-spread/output.log. ↩︎\nFlowState median / Polars median = 1.34 at 1M rows; ranges do not overlap (Polars max 10.9 ms \u003c FlowState min 12.7 ms). Derived by derive.py. Source: drafts/flowstate-asof-join/derive.py on the output.log above. ↩︎\nFlowState median / Polars median = 1.44 at 10M rows; ranges do not overlap (Polars max 145.3 ms \u003c FlowState min 182.7 ms). Derived by derive.py. Source: drafts/flowstate-asof-join/derive.py on the output.log above. ↩︎\nEarlier capture, 2026-10-04, median of 5 runs, no spread recorded: Polars 8.7 ms, FlowState 12.3 ms at 1M rows; Polars 128.7 ms, FlowState 182.1 ms at 10M rows Source: results/2026-10-04-1729-asof-join-vs-polars-pandas/output.log. ↩︎\nFlowState median / Polars median = 1.45 for the March build; ranges do not overlap (Polars max 9.7 ms \u003c FlowState min 11.8 ms). Derived by derive.py. The March kernel was built with today’s Rust toolchain and the script is today’s, not March’s. Source: drafts/flowstate-asof-join/derive.py on the log above. ↩︎\nClean-environment rerun (fresh clone at fdc202b, uv venv, regular CPython 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, maturin develop –release): same ordering, and Polars’ slowest run was faster than FlowState’s fastest at both sizes. A free-threaded CPython 3.14.7 failed to install Polars 1.38.1. This was not a pow run capture, so the rerun’s own timings are not quoted. Source: drafts/flowstate-asof-join/repro-clean-env.log and repro-clean-env.sh. ↩︎ ↩︎\nAbout 1.5 minutes end to end on the M4 for the clean setup, Rust build and benchmark, from the elapsed time in the clean-environment log (1:28.90). No cloud cost. Source: drafts/flowstate-asof-join/repro-clean-env.log (last lines). ↩︎\n",
+  "wordCount" : "1822",
+  "inLanguage": "en",
+  "image": "https://ryanjhamby.dev/images/og.png","datePublished": "2026-10-30T00:00:00Z",
+  "dateModified": "2026-10-30T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Ryan J Hamby"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ryanjhamby.dev/writing/flowstate-asof-join/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ryan J Hamby",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ryanjhamby.dev/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://ryanjhamby.dev/" accesskey="h" title="Ryan J Hamby (Alt + H)">Ryan J Hamby</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://ryanjhamby.dev/writing" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/projects" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/about" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ryanjhamby.dev/pdfs/Ryan_Hamby_Resume.pdf" title="Resume">
+                    <span>Resume</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://ryanjhamby.dev/">Home</a>&nbsp;»&nbsp;<a href="https://ryanjhamby.dev/writing/">Writing</a></div>
+    <h1 class="post-title entry-hint-parent">
+      My Rust as-of join is slower than Polars
+    </h1>
+    <div class="post-description">
+      A Rust as-of join I claimed was faster than Polars. A reproducible benchmark showed the opposite, and a rebuild of the March kernel did not bring the lead back.
+    </div>
+    <div class="post-meta"><span title='2026-10-30 00:00:00 +0000 UTC'>October 30, 2026</span>&nbsp;·&nbsp;<span>9 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#what-i-believed" aria-label="What I believed">What I believed</a></li>
+                <li>
+                    <a href="#what-i-did" aria-label="What I did">What I did</a></li>
+                <li>
+                    <a href="#what-happened" aria-label="What happened">What happened</a></li>
+                <li>
+                    <a href="#why-it-failed" aria-label="Why it failed">Why it failed</a></li>
+                <li>
+                    <a href="#what-id-do-instead" aria-label="What I&rsquo;d do instead">What I&rsquo;d do instead</a></li>
+                <li>
+                    <a href="#limits-of-this-result" aria-label="Limits of this result">Limits of this result</a></li>
+                <li>
+                    <a href="#spec" aria-label="Spec">Spec</a><ul>
+                        
+                <li>
+                    <a href="#hardware" aria-label="Hardware">Hardware</a></li>
+                <li>
+                    <a href="#software" aria-label="Software">Software</a></li>
+                <li>
+                    <a href="#workload" aria-label="Workload">Workload</a></li>
+                <li>
+                    <a href="#metrics-definitions" aria-label="Metrics definitions">Metrics definitions</a></li>
+                <li>
+                    <a href="#energy-method" aria-label="Energy method">Energy method</a></li>
+                <li>
+                    <a href="#cost-inputs" aria-label="Cost inputs">Cost inputs</a></li>
+                <li>
+                    <a href="#statistics" aria-label="Statistics">Statistics</a></li></ul>
+                </li>
+                <li>
+                    <a href="#whats-open" aria-label="What&rsquo;s open">What&rsquo;s open</a></li>
+                <li>
+                    <a href="#reproduce" aria-label="Reproduce">Reproduce</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a></li>
+                <li>
+                    <a href="#changelog" aria-label="Changelog">Changelog</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><strong>TL;DR.</strong> In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms)<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState&rsquo;s median was 13.3 ms against 9.9 ms for Polars on 1M left rows<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>, and 194.9 ms against 135.8 ms on 10M left rows<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. I removed the March claim. Rebuilding the March kernel did not bring the lead back<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, and I do not know why Polars is faster or what produced the original number.</p>
+<p><strong>Why this matters.</strong> A performance claim with no captured run behind it can sit in a README for months. On this workload the library was faster in batch mode, so anyone considering a custom join kernel for point-in-time ML features should measure against the library first.</p>
+<h2 id="what-i-believed">What I believed<a hidden class="anchor" aria-hidden="true" href="#what-i-believed">#</a></h2>
+<p>I believed FlowState would beat Polars on grouped as-of joins, and I wrote down why in the design doc on 2026-03-11: it skips the sort verification a general engine has to do, borrows symbol keys without allocating, joins symbol groups in parallel with Rayon, and splits large scans into parallel chunks<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>. I also believed pandas &ldquo;falls over at 10M rows.&rdquo;</p>
+<h2 id="what-i-did">What I did<a hidden class="anchor" aria-hidden="true" href="#what-i-did">#</a></h2>
+<p>The March README table was never backed by a captured run<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. On 2026-10-04 I wrote a reproducible benchmark that prints the hardware, versions and dataset, and checks every engine&rsquo;s output against Polars before timing. I ran it through <code>pow run</code>. The first result showed Polars about 1.4 times faster, and pandas finished the 10M-row join in 0.76 s, so the pandas belief was also wrong<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. I removed the March claim from the README. On 2026-10-30 I added the fastest and slowest run to the output and captured 10 runs<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>.</p>
+<p>DuckDB&rsquo;s <code>ASOF JOIN</code> did not finish at 1M rows and 1K symbols in my run, so it is opt-in in the script and not in the results here.</p>
+<p>FlowState&rsquo;s batch kernel is a merge-scan over timestamp-sorted inputs, parallelized with Rayon, exchanging data with Python as Arrow without copying. The benchmark times only the join: data generation, sorting and table construction are excluded.</p>
+<h2 id="what-happened">What happened<a hidden class="anchor" aria-hidden="true" href="#what-happened">#</a></h2>
+<p><img alt="FlowState&rsquo;s as-of join was slower than Polars at both dataset sizes, and both were far faster than pandas. Bar chart, log scale, median of ten runs with the fastest and slowest run as whiskers." loading="lazy" src="/writing/flowstate-asof-join/figure.png"></p>
+<p><em>Figure: median as-of join time, 10 runs per bar, whiskers are the fastest and slowest run. Apple M4, 32 GB. Run 2026-10-30-1412-asof-join-spread @ fdc202b. Generated by <code>figure.py</code> from the capture&rsquo;s <code>output.log</code>.</em><sup id="fnref1:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<p>I measured the join on 1M left and 0.5M right rows, and on 10M left and 5M right rows, with 1,000 symbols each. Each figure is the median of 10 runs after 2 warmup runs, with the fastest and slowest run alongside.<sup id="fnref2:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<table>
+	<thead>
+			<tr>
+					<th>Engine</th>
+					<th>1M left rows: median (min–max)</th>
+					<th>10M left rows: median (min–max)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Polars</td>
+					<td>9.9 ms (9.3–10.9)<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></td>
+					<td>135.8 ms (127.2–145.3)<sup id="fnref1:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></td>
+			</tr>
+			<tr>
+					<td>FlowState</td>
+					<td>13.3 ms (12.7–13.8)<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></td>
+					<td>194.9 ms (182.7–206.2)<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></td>
+			</tr>
+			<tr>
+					<td>pandas</td>
+					<td>80.8 ms (78.7–84.9)<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup></td>
+					<td>843.4 ms (838.0–858.9)<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></td>
+			</tr>
+	</tbody>
+</table>
+<p>FlowState&rsquo;s median was 1.34 times Polars&rsquo; at 1M rows<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup> and 1.44 times at 10M rows<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>. In both sizes the ranges do not overlap: Polars&rsquo; slowest run was faster than FlowState&rsquo;s fastest. FlowState was still well ahead of pandas.</p>
+<p>An earlier capture on 2026-10-04, median of 5 runs with no spread recorded, shows the same ordering: 8.7 ms for Polars and 12.3 ms for FlowState at 1M rows<sup id="fnref:14"><a href="#fn:14" class="footnote-ref" role="doc-noteref">14</a></sup>. The absolute times drifted between the two sessions (Polars went from 8.7 ms to 9.9 ms on identical code and data), so I only compare engines within the same run.</p>
+<h2 id="why-it-failed">Why it failed<a hidden class="anchor" aria-hidden="true" href="#why-it-failed">#</a></h2>
+<ul>
+<li><strong>Measured cause:</strong> none. I have not profiled either engine, and I have not tested whether any of the five reasons in my design doc hold.</li>
+<li><strong>Why the March number did not reproduce:</strong> my journal suspected a stale March build of the Rust kernel or a different dataset<sup id="fnref1:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>. I tested the first guess. I built the kernel and Python package at the commit that carried the claim (<code>3c7486a</code>) and ran today&rsquo;s script against it with the same pinned libraries. FlowState was still slower: median 12.9 ms against 8.9 ms for Polars on 1M left rows<sup id="fnref1:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>, 1.45 times Polars&rsquo; median with non-overlapping ranges<sup id="fnref:15"><a href="#fn:15" class="footnote-ref" role="doc-noteref">15</a></sup>. A stale kernel does not explain the March figure.</li>
+<li><strong>Still untested (speculation):</strong> a different dataset, and a Polars release in March that was slower than 1.38.1. The March table says only &ldquo;Polars 1.x&rdquo; and &ldquo;Apple M-series&rdquo;<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, and I have no record of how its numbers were produced. Today&rsquo;s script and Rust toolchain are not the ones I used in March.</li>
+<li><strong>Why Polars is faster today:</strong> I don&rsquo;t know.</li>
+<li><strong>What I&rsquo;d test next:</strong> profile both engines on this workload, and run the same data against older Polars releases.</li>
+</ul>
+<h2 id="what-id-do-instead">What I&rsquo;d do instead<a hidden class="anchor" aria-hidden="true" href="#what-id-do-instead">#</a></h2>
+<p>My view, from the README: FlowState&rsquo;s value is not raw join speed against Polars. It is the pieces around the join: watermark streaming alignment, the SPSC streaming pipeline, partitioned replay and the temporal feature store. That is an opinion, and this benchmark does not test it.</p>
+<h2 id="limits-of-this-result">Limits of this result<a hidden class="anchor" aria-hidden="true" href="#limits-of-this-result">#</a></h2>
+<ul>
+<li><strong>What I didn&rsquo;t test:</strong> other CPUs, inputs that are not already globally timestamp-sorted, real market data, a join tolerance, thread-count settings, and memory use. I recorded no energy or power data.</li>
+<li><strong>Threats to validity:</strong> one laptop with no recorded power or thermal state; synthetic random-walk quotes; two sessions that disagree on absolute time.</li>
+</ul>
+<h2 id="spec">Spec<a hidden class="anchor" aria-hidden="true" href="#spec">#</a></h2>
+<details>
+<summary>Full benchmark specification</summary>
+<h3 id="hardware">Hardware<a hidden class="anchor" aria-hidden="true" href="#hardware">#</a></h3>
+<p>Apple M4, 10 logical cores, 32 GB RAM, macOS 26.6.2 (arm64). Power and thermal state: not recorded.<sup id="fnref3:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<h3 id="software">Software<a hidden class="anchor" aria-hidden="true" href="#software">#</a></h3>
+<p>Python 3.14.3; FlowState 0.1.0 with the Rust kernel (rustc 1.94.0); Polars 1.38.1; pandas 3.0.6; DuckDB 1.5.0 (not run); pyarrow 23.0.1.<sup id="fnref4:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<h3 id="workload">Workload<a hidden class="anchor" aria-hidden="true" href="#workload">#</a></h3>
+<p>Backward as-of join, no tolerance. Synthetic random-walk quotes, 1,000 symbols, seeds 42 and 99, globally timestamp-sorted. Sizes: 1M left and 0.5M right rows; 10M left and 5M right rows. Data generation excluded from timing.<sup id="fnref5:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<h3 id="metrics-definitions">Metrics definitions<a hidden class="anchor" aria-hidden="true" href="#metrics-definitions">#</a></h3>
+<p>Wall time of one join call in milliseconds, from a monotonic clock. Median across timed runs, with the fastest and slowest.</p>
+<h3 id="energy-method">Energy method<a hidden class="anchor" aria-hidden="true" href="#energy-method">#</a></h3>
+<p>n/a (not measured).</p>
+<h3 id="cost-inputs">Cost inputs<a hidden class="anchor" aria-hidden="true" href="#cost-inputs">#</a></h3>
+<p>n/a.</p>
+<h3 id="statistics">Statistics<a hidden class="anchor" aria-hidden="true" href="#statistics">#</a></h3>
+<p>10 timed runs after 2 warmup runs per engine and size, single session. No confidence interval computed.<sup id="fnref6:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<p>Machine-readable: <code>results/2026-10-30-1412-asof-join-spread/</code> (<code>cmd.txt</code>, <code>env.txt</code>, <code>output.log</code>) @ <code>fdc202b</code>.</p>
+</details>
+<h2 id="whats-open">What&rsquo;s open<a hidden class="anchor" aria-hidden="true" href="#whats-open">#</a></h2>
+<p>Whether the March figure came from a different dataset or an older, slower Polars release. I do not have the March run, so I may not be able to settle it.</p>
+<h2 id="reproduce">Reproduce<a hidden class="anchor" aria-hidden="true" href="#reproduce">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/RyanJHamby/FlowState <span style="color:#f92672">&amp;&amp;</span> cd FlowState
+</span></span><span style="display:flex;"><span>git checkout fdc202b
+</span></span><span style="display:flex;"><span>uv venv --python /opt/homebrew/bin/python3.14 .venv <span style="color:#f92672">&amp;&amp;</span> . .venv/bin/activate
+</span></span><span style="display:flex;"><span>uv pip install maturin numpy polars<span style="color:#f92672">==</span>1.38.1 pandas<span style="color:#f92672">==</span>3.0.6 pyarrow<span style="color:#f92672">==</span>23.0.1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>cd flowstate-core <span style="color:#f92672">&amp;&amp;</span> maturin develop --release<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>uv pip install -e .
+</span></span><span style="display:flex;"><span>python -W ignore benchmarks/reproduce.py --pandas-scale --runs <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>Use a regular CPython 3.14 build. A free-threaded 3.14 build failed to install Polars 1.38.1 in my attempt<sup id="fnref:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>. I ran these commands from a fresh clone and the ordering held, with Polars&rsquo; slowest run faster than FlowState&rsquo;s fastest at both sizes<sup id="fnref1:16"><a href="#fn:16" class="footnote-ref" role="doc-noteref">16</a></sup>. The raw log is <code>repro-clean-env.log</code> in the post&rsquo;s draft folder.</p>
+<p>Approximate cost to reproduce: about 1.5 minutes on the M4, including the Rust build, and no cloud spend<sup id="fnref:17"><a href="#fn:17" class="footnote-ref" role="doc-noteref">17</a></sup>.</p>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p>[1] FlowState repository, <code>benchmarks/reproduce.py</code> and <code>results/</code> at commit <code>fdc202b</code>.</p>
+<hr>
+<p><strong>Reproduce:</strong> <a href="https://github.com/RyanJHamby/FlowState">https://github.com/RyanJHamby/FlowState</a> at <code>fdc202b</code> · <strong>Raw data:</strong> <code>results/2026-10-30-1412-asof-join-spread/</code> at that commit; the March-build test is <code>results/2026-10-30-1423-asof-join-march-build-3c7486a/</code> at <code>53084c2</code>
+<strong>Published:</strong> 2026-10-30 · <strong>Last updated:</strong> 2026-10-30 · <a href="#changelog">Changelog</a>
+<strong>AI disclosure:</strong> Drafted with AI (Claude) from my captured runs and from notes I wrote in the FlowState README, design doc and journal. The benchmarks were run on my machine through an AI assistant at my direction, and every number comes from a captured run or a cited file in that repo. Claim-by-claim verification is not recorded yet.
+<strong>Corrections:</strong> If something here is wrong, email <a href="mailto:ryan.j.hamby@gmail.com">ryan.j.hamby@gmail.com</a>. I fix errors publicly in the changelog.</p>
+<h2 id="changelog">Changelog<a hidden class="anchor" aria-hidden="true" href="#changelog">#</a></h2>
+<ul>
+<li><strong>2026-10-30:</strong> Published. Results at FlowState <code>fdc202b</code> and <code>53084c2</code>.</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The 2026-03-11 FlowState README table listed a grouped as-of join (1M rows, 1K symbols, &lsquo;Apple M-series&rsquo;, Polars 1.x) at 10 ms for FlowState against 18 ms for Polars, labelled 1.8x. It cited no captured run. Source: FlowState repo, README.md at commit 3c7486a, lines 56-61 (git show 3c7486a:README.md).&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>FlowState as-of join, same data: median 13.3 ms (min 12.7, max 13.8) Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Polars as-of join, 1,000,000 left x 500,000 right rows: median 9.9 ms (min 9.3, max 10.9), 10 runs after 2 warmup Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>FlowState, same data: median 194.9 ms (min 182.7, max 206.2) Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Polars, 10,000,000 left x 5,000,000 right rows: median 135.8 ms (min 127.2, max 145.3) Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Kernel and Python package built at commit 3c7486a (the 2026-03-11 README that claimed 1.8x), today&rsquo;s reproduce.py, same Apple M4, Python 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, release build, 10 runs after 2 warmup, 1M left x 500K right rows, 1,000 symbols: FlowState median 12.9 ms (min 11.8, max 13.6) against Polars 8.9 ms (min 8.5, max 9.7). Source: FlowState results/2026-10-30-1423-asof-join-march-build-3c7486a/output.log @ 53084c2.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>DESIGN.md section 3.2, &lsquo;Why we outperform Polars&rsquo;, written 2026-03-11 and still present in the repo, argues FlowState is faster on grouped temporal joins and lists five reasons. Source: FlowState repo, DESIGN.md line 78 at 3c7486a and at main.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Journal 2026-10-04 17:29: &lsquo;The earlier README claim of 1.8x over Polars did not reproduce and was removed. Suspect the earlier number came from a stale (March) flowstate_core build or a different dataset; not verified.&rsquo; Source: FlowState repo, docs/journal.md, entry 2026-10-04 17:29 (at 0df6f05).&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Apple M4, 10 logical cores, 32 GB; Python 3.14.3; polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1; flowstate 0.1.0 with Rust kernel; backward join, no tolerance; synthetic random-walk quotes, 1,000 symbols, seeds 42 and 99; data generation excluded Source: results/2026-10-30-1412-asof-join-spread/output.log and env.txt.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref5:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref6:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10">
+<p>pandas as-of join, same data: median 80.8 ms (min 78.7, max 84.9) Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11">
+<p>pandas, same data: median 843.4 ms (min 838.0, max 858.9) Source: results/2026-10-30-1412-asof-join-spread/output.log.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12">
+<p>FlowState median / Polars median = 1.34 at 1M rows; ranges do not overlap (Polars max 10.9 ms &lt; FlowState min 12.7 ms). Derived by derive.py. Source: drafts/flowstate-asof-join/derive.py on the output.log above.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13">
+<p>FlowState median / Polars median = 1.44 at 10M rows; ranges do not overlap (Polars max 145.3 ms &lt; FlowState min 182.7 ms). Derived by derive.py. Source: drafts/flowstate-asof-join/derive.py on the output.log above.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:14">
+<p>Earlier capture, 2026-10-04, median of 5 runs, no spread recorded: Polars 8.7 ms, FlowState 12.3 ms at 1M rows; Polars 128.7 ms, FlowState 182.1 ms at 10M rows Source: results/2026-10-04-1729-asof-join-vs-polars-pandas/output.log.&#160;<a href="#fnref:14" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:15">
+<p>FlowState median / Polars median = 1.45 for the March build; ranges do not overlap (Polars max 9.7 ms &lt; FlowState min 11.8 ms). Derived by derive.py. The March kernel was built with today&rsquo;s Rust toolchain and the script is today&rsquo;s, not March&rsquo;s. Source: drafts/flowstate-asof-join/derive.py on the log above.&#160;<a href="#fnref:15" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:16">
+<p>Clean-environment rerun (fresh clone at fdc202b, uv venv, regular CPython 3.14.3, polars 1.38.1, pandas 3.0.6, pyarrow 23.0.1, maturin develop &ndash;release): same ordering, and Polars&rsquo; slowest run was faster than FlowState&rsquo;s fastest at both sizes. A free-threaded CPython 3.14.7 failed to install Polars 1.38.1. This was not a pow run capture, so the rerun&rsquo;s own timings are not quoted. Source: drafts/flowstate-asof-join/repro-clean-env.log and repro-clean-env.sh.&#160;<a href="#fnref:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:16" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:17">
+<p>About 1.5 minutes end to end on the M4 for the clean setup, Rust build and benchmark, from the elapsed time in the clean-environment log (1:28.90). No cloud cost. Source: drafts/flowstate-asof-join/repro-clean-env.log (last lines).&#160;<a href="#fnref:17" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://ryanjhamby.dev/tags/rust/">Rust</a></li>
+      <li><a href="https://ryanjhamby.dev/tags/arrow/">Arrow</a></li>
+      <li><a href="https://ryanjhamby.dev/tags/performance/">Performance</a></li>
+    </ul>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on x"
+            href="https://x.com/intent/tweet/?text=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars&amp;url=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f&amp;hashtags=rust%2carrow%2cperformance">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f&amp;title=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars&amp;summary=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars&amp;source=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f&title=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on whatsapp"
+            href="https://api.whatsapp.com/send?text=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars%20-%20https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on telegram"
+            href="https://telegram.me/share/url?text=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars&amp;url=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share My Rust as-of join is slower than Polars on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=My%20Rust%20as-of%20join%20is%20slower%20than%20Polars&u=https%3a%2f%2fryanjhamby.dev%2fwriting%2fflowstate-asof-join%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+  <span>© 2026 Ryan J Hamby</span>
+  <span>
+    <a href="mailto:ryan.j.hamby@gmail.com">Email</a> ·
+    <a href="https://github.com/RyanJHamby">GitHub</a> ·
+    <a href="https://www.linkedin.com/in/ryan-j-hamby/">LinkedIn</a> ·
+    <a href="https://substack.com/@ryanjhamby">Substack</a> ·
+    <a href="/index.xml">RSS</a>
+  </span>
+</footer>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+</script>
+</body>
+
+</html>
