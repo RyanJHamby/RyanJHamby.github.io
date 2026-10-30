@@ -26,11 +26,15 @@ Leadership & Involvement:
 
 ## Technical Skills
 
-**Languages:** Java, Python, TypeScript (production) | C++ (projects) | SQL (proficient) | Rust (learning)
+**Languages:** Rust, C++ (C++20), Python, Java (strong) | Go, TypeScript, SQL (familiar)
 
-**Infrastructure & DevOps:** Linux, Redis, Kafka, PostgreSQL, gRPC, Docker, Terraform, AWS (EC2, Lambda, DynamoDB, RDS, ECS, S3, Step Functions)
+**ML / GPU Systems:** vLLM (contributor), PyTorch Distributed (DDP), NCCL, NVML, KV Cache, CUDA Graphs
 
-**ML/Data Engineering:** PyTorch, TensorFlow, AWS SageMaker, Pandas, NumPy
+**Systems & Performance:** Concurrency, Lock-Free Data Structures, Memory Ordering, Profiling (perf), ThreadSanitizer, Apache Arrow
+
+**Distributed Systems:** Kafka, gRPC/Protobuf, Exactly-Once Delivery, Idempotency, Circuit Breakers, Stream Processing
+
+**Cloud & Infra:** AWS (EC2, Lambda, DynamoDB, SQS, S3, Step Functions), Linux, Kubernetes, Docker, Terraform, Redis, PostgreSQL, Prometheus, CI/CD
 
 **Frontend:** React, Node.js, Flutter, iOS (Swift), Android (Kotlin), TailwindCSS, Figma
 

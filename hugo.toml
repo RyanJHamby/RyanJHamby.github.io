@@ -36,10 +36,15 @@ name = "About"
 url = "about"
 weight = 3
 
+[[menu.main]]
+name = "Resume"
+url = "pdfs/Ryan_Hamby_Resume.pdf"
+weight = 4
+
 [params]
 author = "Ryan J Hamby"
-description = "Software Engineer II @ AWS | Fintech & Cloud-Native Systems"
-keywords = ["software engineer", "AWS", "fintech", "cloud", "portfolio"]
+description = "Software Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
+keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
 defaultTheme = "auto"
 ShowReadingTime = true
 ShowShareButtons = true
@@ -51,7 +56,7 @@ TocOpen = false
 
 [params.homeInfoParams]
 Title = "Ryan J Hamby"
-Content = "**📍 New York, NY | Software Engineer II @ AWS**\n\nI strive for simple solutions to complex problems. Passionate about fintech, cloud-native architectures, and building resilient systems at scale."
+Content = "**📍 New York, NY | Software Engineer II @ AWS**\n\nI make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it."
 
 [[params.socialIcons]]
 name = "linkedin"
@@ -68,8 +73,8 @@ url = "https://substack.com/@ryanjhamby"
 [params.profileMode]
 enabled = false
 title = "Ryan J Hamby"
-subtitle = "Software Engineer II @ AWS | Fintech • Cloud Architecture • System Design"
-imageUrl = "/images/engin.JPG"
+subtitle = "Software Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
+imageUrl = "/images/headshot.jpg"
 imageTitle = "Profile Picture"
 imageWidth = 150
 imageHeight = 150
@@ -83,8 +88,8 @@ name = "Projects"
 url = "/projects"
 
 [[params.profileMode.buttons]]
-name = "Blog"
-url = "/blog"
+name = "Writing"
+url = "/writing"
 
 [[params.profileMode.buttons]]
 name = "Contact"

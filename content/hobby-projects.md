@@ -4,11 +4,11 @@ title = "Hobby Projects"
 
 ## Java4Java — iOS/Android Anki-like LeetCode Learning Platform
 
-**May 2025 - Present | 100+ installs**
+**Sep 2025 - Present | 250+ installs**
 
 <div class="project-showcase">
 
-Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android with 100+ active installs.
+Built cross-platform mobile app (Swift, Kotlin) for algorithm practice through spaced repetition. Deployed on iOS, macOS, iPad, and Android with 250+ installs.
 
 [⬇️ Download on the App Store](https://apps.apple.com/us/app/java4java/id6754247227)
 
@@ -53,7 +53,7 @@ Developed a website displaying sustainable fuel vehicles to gain experience with
 
 ## M-HEAL Solar Fridge
 
-**Project Team Lead & Electrical Sub Team Lead | Jan 2019 - Present**
+**Project Team Lead & Electrical Sub Team Lead | Jan 2019 - Dec 2022**
 
 ![Solar Fridge Project](/images/mheal.jpg)
 

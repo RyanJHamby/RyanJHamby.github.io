@@ -11,7 +11,7 @@ title = "Experience"
 ### Key Achievements
 
 <div class="achievement">
-Architected dual-partition multi-tenant infrastructure enabling AWS Marketplace expansion into 27-country sovereign cloud, supporting <span class="metric">$200M+ in new international GMV annually</span>
+Owned dual-partition, multi-tenant infrastructure upgrades with cross-partition DynamoDB replication, enabling AWS Marketplace expansion into the EU sovereign cloud and supporting <span class="metric">$112M+/yr in new GMV</span>
 </div>
 
 <div class="achievement">
@@ -19,11 +19,11 @@ Led pre-launch compliance review identifying <span class="metric">7 regulatory g
 </div>
 
 <div class="achievement">
-Eliminated <span class="metric">$2M+ annual reconciliation errors</span> by building event-driven sync service maintaining consistency across 3 payment workflows with exactly-once delivery of 50K+ daily updates
+Built an event-driven sync service guaranteeing exactly-once delivery via SQS FIFO and DynamoDB conditional writes across 3 payment workflows, eliminating <span class="metric">$2M+/yr in reconciliation errors</span>
 </div>
 
 <div class="achievement">
-Reduced Japan seller onboarding from <span class="metric">6 days to 2 days</span> through KYC workflow redesign with Step Functions retry optimization and automated validation, unlocking <span class="metric">$10M+ in blocked inventory</span>
+Led build of the Payment Adapter Service (parallel third-party verification, circuit breakers, idempotent retries, async callbacks), reducing Japanese seller onboarding from <span class="metric">6 days to 5 minutes</span> and unlocking <span class="metric">$10M+/yr in sales</span>
 </div>
 
 ---
@@ -40,6 +40,14 @@ Redesigned AWS IoT SiteWise asset hierarchy reducing customer onboarding by <spa
 
 <div class="achievement">
 Eliminated UUID collision vulnerabilities affecting 3 high-traffic APIs by implementing token-based idempotency with 3-hour expiration windows, preventing duplicate resource creation in distributed systems processing <span class="metric">1M+ requests/day</span>
+</div>
+
+<div class="achievement">
+Replaced a coarse synchronized block with a lock-striped ConcurrentHashMap dedup index in the SiteWise Java control plane, unblocking <span class="metric">10K+ concurrent writes</span>
+</div>
+
+<div class="achievement">
+First engineer on the new AWS IoT SiteWise Boston team; onboarded 7 engineers to production in 30 days
 </div>
 
 ### Featured Projects
