@@ -4,3 +4,7 @@ Dated notes on what I tried, what happened, and why I made each call, including
 the dead ends. Entries are appended with `pow log` and `pow run`, so dates match
 commit history. Raw outputs for any number quoted in the README live in
 [`results/`](../results/).
+
+## 2026-10-30 12:14 EDT (at fcee4d0)
+
+Archived old site to archive/old-blog (pushed). Restructured to Writing/Projects/About; kept all 3 old posts, moved content/blog to content/writing with /blog/ aliases. Added static/CNAME + baseURL for ryanjhamby.dev on branch agent/new-site-structure; deliberately NOT merged to main until domain is verified on GitHub. hugo --minify builds clean; live DNS/HTTPS/email not verified (dashboard steps are Ryan's).
