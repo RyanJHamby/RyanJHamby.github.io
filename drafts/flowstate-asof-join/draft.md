@@ -1,31 +1,25 @@
 ---
 title: "My Rust as-of join is slower than Polars"
-date: {{TODO: publish date}}
+date: 2026-10-30
 type: dead-end
 tags: [rust, arrow, performance]
-run_ids: [2026-10-30-1412-asof-join-spread]
+run_ids: [2026-10-30-1412-asof-join-spread, 2026-10-30-1423-asof-join-march-build-3c7486a]
 results_commit: fdc202b
 ---
 
 <!-- NOTES
-TODO: publish and updated dates, changelog link; Spec fields beyond what the capture records (EVIDENCE.md was not provided); the figure's alt text needs Ryan's review.
-HUMAN gaps now: what I expected in October; why Polars is faster today; 'Could this work elsewhere'; the open question. Other HUMAN sections were drafted from seed.md, which was assembled from Ryan's own repo notes and needs his confirmation.
-Unsure how to classify: nothing here is a measured cause; the cause section is deliberately empty.
-Figure: figure.py + figure.png; needs alt-text review by Ryan. Title carries no number on purpose.
-FLAG (AGENTS.md rule 5): FlowState DESIGN.md section 3.2 still says 'Why we outperform Polars', which conflicts with the README and the captures. Not changed; Ryan to decide.
-Not marked verified: every claim in claims.yaml has verified_by / verified_on empty.
-Pillar fit: "Build log" (CONTENT.md §2); not one of the benchmark pillars.
+Resolved: dates set to 2026-10-30 (change if published later); changelog is a section at the bottom.
+Not satisfied: claims.yaml verified_by / verified_on are empty (only Ryan fills them); CHECKLIST.md not yet run; EVIDENCE.md not provided so the Spec block has only the fields the captures record; figure alt text needs Ryan's review.
+FLAG (AGENTS.md rule 5): FlowState DESIGN.md section 3.2 still says 'Why we outperform Polars', which conflicts with the README and the captures. Not changed.
 -->
 
-**TL;DR.** In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms) [cite:readme_march_claim]. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState's median was 13.3 ms against 9.9 ms for Polars on 1M left rows [run:asof_fs_1m] [run:asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows [run:asof_fs_10m] [run:asof_polars_10m]. I removed the March claim, I have not found out why Polars is faster, and I don't know yet what caused the original number.
+**TL;DR.** In March 2026 I published a README table saying my Rust as-of join, FlowState, was 1.8 times faster than Polars (10 ms against 18 ms) [cite:readme_march_claim]. When I wrote a reproducible benchmark in October, the result reversed: in my runs on one Apple M4 laptop FlowState's median was 13.3 ms against 9.9 ms for Polars on 1M left rows [run:asof_fs_1m] [run:asof_polars_1m], and 194.9 ms against 135.8 ms on 10M left rows [run:asof_fs_10m] [run:asof_polars_10m]. I removed the March claim. Rebuilding the March kernel did not bring the lead back [run:asof_march_build], and I do not know why Polars is faster or what produced the original number.
 
 **Why this matters.** A performance claim with no captured run behind it can sit in a README for months. On this workload the library was faster in batch mode, so anyone considering a custom join kernel for point-in-time ML features should measure against the library first.
 
 ## What I believed  [HUMAN]
 
 I believed FlowState would beat Polars on grouped as-of joins, and I wrote down why in the design doc on 2026-03-11: it skips the sort verification a general engine has to do, borrows symbol keys without allocating, joins symbol groups in parallel with Rayon, and splits large scans into parallel chunks [cite:design_doc_claim]. I also believed pandas "falls over at 10M rows."
-
-{{HUMAN: expand}} (what I expected the October benchmark to show)
 
 ## What I did  [HUMAN]
 
@@ -56,9 +50,10 @@ An earlier capture on 2026-10-04, median of 5 runs with no spread recorded, show
 ## Why it failed
 
 - **Measured cause:** none. I have not profiled either engine, and I have not tested whether any of the five reasons in my design doc hold.
-- **Why the March number did not reproduce (speculation):** my journal says I suspect it came from a stale March build of the Rust kernel or from a different dataset, and that this is not verified [cite:journal_not_reproduced].
-- **Why Polars is faster today:** {{HUMAN: expand}}
-- **What would confirm it:** rebuilding the kernel at commit `3c7486a` and running the current script against it would test the stale-build explanation. I have not done that.
+- **Why the March number did not reproduce:** my journal suspected a stale March build of the Rust kernel or a different dataset [cite:journal_not_reproduced]. I tested the first guess. I built the kernel and Python package at the commit that carried the claim (`3c7486a`) and ran today's script against it with the same pinned libraries. FlowState was still slower: median 12.9 ms against 8.9 ms for Polars on 1M left rows [run:asof_march_build], 1.45 times Polars' median with non-overlapping ranges [run:asof_march_ratio]. A stale kernel does not explain the March figure.
+- **Still untested (speculation):** a different dataset, and a Polars release in March that was slower than 1.38.1. The March table says only "Polars 1.x" and "Apple M-series" [cite:readme_march_claim], and I have no record of how its numbers were produced. Today's script and Rust toolchain are not the ones I used in March.
+- **Why Polars is faster today:** I don't know.
+- **What I'd test next:** profile both engines on this workload, and run the same data against older Polars releases.
 
 ## What I'd do instead  [HUMAN]
 
@@ -67,7 +62,6 @@ My view, from the README: FlowState's value is not raw join speed against Polars
 ## Limits of this result
 
 - **What I didn't test:** other CPUs, inputs that are not already globally timestamp-sorted, real market data, a join tolerance, thread-count settings, and memory use. I recorded no energy or power data.
-- **Could this work elsewhere?** {{HUMAN: expand}}
 - **Threats to validity:** one laptop with no recorded power or thermal state; synthetic random-walk quotes; two sessions that disagree on absolute time.
 
 ## Spec
@@ -101,7 +95,7 @@ Machine-readable: `results/2026-10-30-1412-asof-join-spread/` (`cmd.txt`, `env.t
 
 ## What's open
 
-{{HUMAN: expand}} (one open question this raises)
+Whether the March figure came from a different dataset or an older, slower Polars release. I do not have the March run, so I may not be able to settle it.
 
 ## Reproduce
 
@@ -124,7 +118,11 @@ Approximate cost to reproduce: about 1.5 minutes on the M4, including the Rust b
 [1] FlowState repository, `benchmarks/reproduce.py` and `results/` at commit `fdc202b`.
 
 ---
-**Reproduce:** https://github.com/RyanJHamby/FlowState at `fdc202b` · **Raw data:** `results/2026-10-30-1412-asof-join-spread/` at the same commit
-**Published:** {{TODO: YYYY-MM-DD}} · **Last updated:** {{TODO: YYYY-MM-DD}} · Changelog: {{TODO: link}}
-**AI disclosure:** Drafted with AI (Claude) from the captured run data and the repo; the benchmark script was run on my machine through an AI assistant at my direction, and every number comes from that captured run. The sections marked HUMAN are still empty and must be written by me from my own notes. Claims are unverified until I mark them.
+**Reproduce:** https://github.com/RyanJHamby/FlowState at `fdc202b` · **Raw data:** `results/2026-10-30-1412-asof-join-spread/` at that commit; the March-build test is `results/2026-10-30-1423-asof-join-march-build-3c7486a/` at `53084c2`
+**Published:** 2026-10-30 · **Last updated:** 2026-10-30 · [Changelog](#changelog)
+**AI disclosure:** Drafted with AI (Claude) from my captured runs and from notes I wrote in the FlowState README, design doc and journal. The benchmarks were run on my machine through an AI assistant at my direction, and every number comes from a captured run or a cited file in that repo. Claim-by-claim verification is not recorded yet.
 **Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
+
+## Changelog
+
+- **2026-10-30:** Published. Results at FlowState `fdc202b` and `53084c2`.
