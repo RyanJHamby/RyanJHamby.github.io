@@ -4,7 +4,7 @@ title = "Projects"
 
 ## GPU Flight Recorder
 
-**Mar 2026 - Present**
+**Mar 2026**
 
 [📊 View GitHub Repository](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder)
 
@@ -14,11 +14,7 @@ Finds the straggler in a distributed data-parallel training job and explains why
 Go agents stream per-rank events over gRPC to a coordinator that correlates collectives by <code>(process_group, sequence_id)</code>, so no cross-node clock synchronization is needed
 </div>
 
-<div class="achievement">
-Replaced per-collective thresholds (<span class="metric">0/30</span> detected at 10% jitter) with block-median lag tests: <span class="metric">30/30 detection and attribution across 9 injected fault types, 0 false stragglers</span> in simulation
-</div>
-
-**Status:** results so far are from a seeded fault simulator; a budget-capped real-GPU validation run is next, and its results will be published whether or not they match.
+**Status:** early build. The agent, ring buffer, correlator, attribution engine and gRPC transport exist; there are no validation results yet. Results will be published, with hardware named, once a captured run exists.
 
 ---
 
