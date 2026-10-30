@@ -64,3 +64,7 @@ Set up the writing system in the site repo: copied STYLE, CONTENT, AGENTS, CHECK
 ## 2026-10-30 17:04 EDT (at 9e69d03)
 
 Feed fix: the home RSS feed listed every page (About, Contact, project pages) with 0001 dates because the theme feeds site.RegularPages. Added layouts/index.xml to list only the writing section, newest first, with the home description as the channel description. Verified on a clean build: 3 items, no 0001 dates, XML well-formed. Not verified in a feed reader or W3C validator.
+
+## 2026-10-30 17:20 EDT (at 4d2d06d)
+
+RSS links: post and other non-home pages had no feed discovery link (only the home page did), a stray /projects/index.xml feed was published, and the feed's channel image linked to the PNG. Added a site-wide discovery link (titled with the site name, not the theme's generic 'rss'), turned off the projects feed, pointed the image link at the site. Verified on a clean build; not tested in a feed reader.

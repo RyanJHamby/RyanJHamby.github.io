@@ -1,1 +1,4 @@
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+{{- if not .IsHome }}
+<link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ site.Title }}: posts">
+{{- end }}
