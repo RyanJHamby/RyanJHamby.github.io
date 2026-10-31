@@ -22,16 +22,16 @@ C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX
 </div>
 
 <div class="achievement">
-End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ = UΛUᵀ) → S3, covered by <span class="metric">240+ unit tests</span>
+End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (\(\Sigma = U \Lambda U^{\top}\)) → S3, covered by <span class="metric">240+ unit tests</span>
 </div>
 
 ## Core Hypothesis
 
 Markets respond to **unexpected** economic information, not levels. Raw covariance is misleading—it captures expected relationships.
 
-Standard assumption: E[r_t | X_t] = α + βX_t
+Standard assumption: \(\mathbb{E}[r_t \mid X_t] = \alpha + \beta X_t\)
 
-Reality: Markets react to **surprises: ΔX_t - E_t[ΔX_t]**
+Reality: Markets react to **surprises**: \(\Delta X_t - \mathbb{E}_t[\Delta X_t]\)
 
 Solution: Decompose surprise covariance via PCA to identify 3-4 interpretable macro factors (growth, inflation, policy, volatility) and measure ES exposure across regimes.
 
@@ -39,14 +39,14 @@ Solution: Decompose surprise covariance via PCA to identify 3-4 interpretable ma
 
 1. **Data Acquisition:** FRED API (CPI, GDP, Unemployment, Sentiment, Fed Funds, Treasury yields) + VIX
 2. **Temporal Alignment:** Daily → month-end LOCF, Quarterly → Hermite interpolation to monthly
-3. **Covariance Estimation:** Σ_ij = (1/(n-1)) ∑_t (X_it - X̄_i)(X_jt - X̄_j)
-4. **Spectral Decomposition:** Σ = UΛUᵀ → First 3-4 eigenvalues capture 85-92% variance
-5. **Regime Quantification:** Frobenius norm ‖Σ‖_F = √(∑_i,j σ²_ij) maps to regime state
+3. **Covariance Estimation:** \(\Sigma_{ij} = \frac{1}{n-1} \sum_t (X_{it} - \bar{X}_i)(X_{jt} - \bar{X}_j)\)
+4. **Spectral Decomposition:** \(\Sigma = U \Lambda U^{\top}\) → First 3-4 eigenvalues capture 85-92% variance
+5. **Regime Quantification:** Frobenius norm \(\|\Sigma\|_F = \sqrt{\sum_{i,j} \sigma_{ij}^2}\) maps to regime state
 
 **Regime Classification:**
-- **Stable** (‖Σ‖_F < μ - σ): Low uncertainty, tight co-movement
-- **Neutral** (μ - σ ≤ ‖Σ‖_F ≤ μ + σ): Moderate uncertainty
-- **Elevated** (‖Σ‖_F > μ + σ): High uncertainty, factor decoupling
+- **Stable** (\(\|\Sigma\|_F < \mu - \sigma\)): Low uncertainty, tight co-movement
+- **Neutral** (\(\mu - \sigma \le \|\Sigma\|_F \le \mu + \sigma\)): Moderate uncertainty
+- **Elevated** (\(\|\Sigma\|_F > \mu + \sigma\)): High uncertainty, factor decoupling
 
 ## Infrastructure
 
