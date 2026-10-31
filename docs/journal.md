@@ -76,3 +76,7 @@ CORRECTION of my own error. I audited repos from local clones without running gi
 ## 2026-10-31 11:40 EDT (at e01e922)
 
 Added a browser tab icon: RH monogram on the site accent blue (static/favicon.svg, ico, 32px png, full-bleed apple-touch icon). PaperMod already emitted icon links to files that did not exist (favicon-16x16.png, safari-pinned-tab.svg), so I pointed params.assets at the real files instead of adding duplicates; [params.assets] sits after the scalar params. Verified: clean hugo build, one set of icon links in the built home page, preview of the 180px render. Not verified: rendering in Safari/Firefox tabs or iOS home screen, and the deployed site.
+
+## 2026-10-31 11:41 EDT (at e01e922)
+
+Wrote 2 site specs (site-integrity-check, build-post-tool) with strict-xfail tests. Dropped the llms.txt generator spec: PR #15 edits static/llms.txt. Found a real defect while proving the check: /writing/ has two RSS links and a duplicate /writing/index.xml feed; spec makes the agent fix it via hugo.toml section outputs. build-post --publish requires verified claims; draft=true by default.
