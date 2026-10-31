@@ -68,3 +68,7 @@ Feed fix: the home RSS feed listed every page (About, Contact, project pages) wi
 ## 2026-10-30 17:20 EDT (at 4d2d06d)
 
 RSS links: post and other non-home pages had no feed discovery link (only the home page did), a stray /projects/index.xml feed was published, and the feed's channel image linked to the PNG. Added a site-wide discovery link (titled with the site name, not the theme's generic 'rss'), turned off the projects feed, pointed the image link at the site. Verified on a clean build; not tested in a feed reader.
+
+## 2026-10-31 11:41 EDT (at e01e922)
+
+Wrote 2 site specs (site-integrity-check, build-post-tool) with strict-xfail tests. Dropped the llms.txt generator spec: PR #15 edits static/llms.txt. Found a real defect while proving the check: /writing/ has two RSS links and a duplicate /writing/index.xml feed; spec makes the agent fix it via hugo.toml section outputs. build-post --publish requires verified claims; draft=true by default.
