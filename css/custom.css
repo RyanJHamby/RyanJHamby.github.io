@@ -230,3 +230,5 @@ code, pre { font-family: var(--mono); }
 .project-index .tags { font-family: var(--mono); font-size: 12px; color: var(--secondary); }
 .page-header { margin: 1.5rem 0; }
 @media (max-width: 600px) { .project-index li { flex-direction: column; gap: 2px; } }
+
+.footer-note { display: block; width: 100%; margin-top: 4px; font-size: 12.5px; color: var(--secondary); }
