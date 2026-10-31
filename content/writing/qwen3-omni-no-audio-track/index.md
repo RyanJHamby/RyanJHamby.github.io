@@ -75,6 +75,7 @@ uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchv
 ## Changelog
 
 - 2026-10-31: published.
+- 2026-10-31: fixed two source notes where `--json` displayed as an en dash; no content or numbers changed.
 
 ---
 **Reproduce:** site repo `drafts/qwen3-omni-no-audio-track` · **Raw data:** `repro-clean-env.log`
@@ -83,11 +84,11 @@ uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchv
 **Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
 
 [^pr_shape]: Reported video shape (16, 3, 480, 256), uint8 Source: https://github.com/vllm-project/vllm/issues/48383 (traceback in body), read 2026-10-31.
-[^pr_diff]: Merged diff: 3 files changed, 57 additions, 1 deletion (32+18+7 additions) Source: gh pr view 48420 -R vllm-project/vllm --json files, read 2026-10-31; merged 2026-08-03.
+[^pr_diff]: Merged diff: 3 files changed, 57 additions, 1 deletion (32+18+7 additions) Source: `gh pr view 48420 -R vllm-project/vllm --json files`, read 2026-10-31; merged 2026-08-03.
 [^pr_body_fallback]: The PR body's stated reason for the first fix: when no audio was extracted but use_audio_in_video=True was requested, fall back to False because there is nothing to interleave Source: https://github.com/vllm-project/vllm/pull/48420 (body, 'Fix' section), read 2026-10-31; re-read 2026-10-31 in the verification pass.
 [^review_comment]: The maintainer's inline review comment preferred raising a ValueError over silently falling back to use_audio_in_video=False, because a user may treat the output as audio-in-video output Source: https://github.com/vllm-project/vllm/pull/48420, inline review comment on vllm/model_executor/models/qwen3_omni_moe_thinker.py, read 2026-10-31 via the PR page. Commit f25d0ca message: 'Per the reviewer's review, silently falling back ... could mislead the caller into thinking audio-in-video was applied when it wasn't.'.
 [^pr_traceback]: PR #48420 body reports the StopIteration at processing_qwen3_omni_moe.py line 247, np.arange(next(audio_lengths)) Source: https://github.com/vllm-project/vllm/pull/48420 (body), read 2026-10-31. transformers version at the time is not stated in the PR..
-[^commit_authors]: f25d0ca (raise ValueError instead of fallback) and 2d8f7ee (fix false positives) are authored by RyanJHamby; 7166e20 ('clean') is authored by a maintainer Source: gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31.
+[^commit_authors]: f25d0ca (raise ValueError instead of fallback) and 2d8f7ee (fix false positives) are authored by RyanJHamby; 7166e20 ('clean') is authored by a maintainer Source: `gh pr view 48420 -R vllm-project/vllm --json commits`, read 2026-10-31.
 [^commit_7166]: 7166e20 added a guard branch to _call_hf_processor in qwen2_5_omni_thinker.py (the shared parent class): elif mm_kwargs.get('use_audio_in_video'): raise ValueError(...), and moved the no-audio test into test_audio_in_video.py Source: https://github.com/vllm-project/vllm/commit/7166e20, read 2026-10-31. Author's own PR comment of 2026-07-18 says the parent guard was added in 7166e20..
 [^repro_line]: Clean-environment repro: same StopIteration at line 249 of processing_qwen3_omni_moe.py with transformers 5.22.1, use_audio_in_video=True; use_audio_in_video=False succeeds. macOS arm64, CPU, Python 3.12.12, numpy 2.5.4, torch 2.15.0. Processor loaded from Qwen/Qwen3-Omni-30B-A3B-Instruct (processor files only, no model weights). The PR reports line 247; the PR does not state a transformers version, so the cause of the 2-line difference is unknown. Source: drafts/qwen3-omni-no-audio-track/repro-clean-env.log, produced by repro.py, 2026-10-31. Not a pow run capture; no timings are quoted..
 [^pr_tests]: Author's comment of 2026-07-18: after pushing 2d8f7ee, all 6 tests in test_audio_in_video.py pass locally on a CPU build (both models, new and existing tests) Source: https://github.com/vllm-project/vllm/pull/48420 (comment 2026-07-18). Self-reported; I did not rerun vLLM's test suite..
