@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The fix for a Qwen3-Omni crash broke CI two ways before it merged</title>
+      <link>https://ryanjhamby.dev/writing/qwen3-omni-no-audio-track/</link>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/writing/qwen3-omni-no-audio-track/</guid>
+      <description>A reported Qwen3-Omni crash on videos with no audio track: my first fix, the review that replaced it, and the two CI failures the new guard caused.</description>
+    </item>
     <item>
       <title>Kubernetes&#39; Second Act: From Container Orchestrator to AI Operating System</title>
       <link>https://ryanjhamby.dev/writing/kubernetes-second-act-ai-backbone/</link>

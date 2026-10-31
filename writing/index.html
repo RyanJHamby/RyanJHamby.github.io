@@ -166,6 +166,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">The fix for a Qwen3-Omni crash broke CI two ways before it merged
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TL;DR. A vLLM user reported that Qwen3-Omni crashes on a video with no audio track when use_audio_in_video=True1. My first fix silently fell back to use_audio_in_video=False. A maintainer’s review asked for a clear ValueError instead, and a maintainer’s cleanup commit then put the same check in the shared parent class. There it failed an existing cache-correctness test in CI, on two paths: the parent never sees the audio, and a cache hit arrives with empty input. The merged change touches 3 files2.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-10-31 00:00:00 +0000 UTC'>October 31, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
+  <a class="entry-link" aria-label="post link to The fix for a Qwen3-Omni crash broke CI two ways before it merged" href="https://ryanjhamby.dev/writing/qwen3-omni-no-audio-track/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Kubernetes&#39; Second Act: From Container Orchestrator to AI Operating System
     </h2>
   </header>
