@@ -1,33 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" width="880" height="470" font-family="-apple-system,Helvetica,Arial,sans-serif" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 730" width="440" height="730" font-family="-apple-system,Helvetica,Arial,sans-serif" role="img" aria-labelledby="t d">
 <title id="t">The guard failed because the parent processor never saw the audio</title>
-<desc id="d">Two boxes: the Qwen3-Omni processor pops the audios key and calls the Qwen2.5-Omni parent, which pops it again and sees nothing, so the guard raised even with real audio. A second path: on a processor-cache hit the input is empty and the guard read that as no audio track.</desc>
-<rect width="880" height="470" fill="#fbfaf7"/>
-<text x="24" y="38" font-size="20" font-weight="700" fill="#1d1d1f">The guard failed because the parent never saw the audio</text>
-<text x="24" y="62" font-size="13" fill="#5a5a5f">vLLM PR #48420, _call_hf_processor with use_audio_in_video=True. Source: the author's PR comment of 2026-07-18.</text>
-<rect x="24" y="90" width="380" height="120" rx="8" fill="#fff" stroke="#1d4e89" stroke-width="2"/>
-<text x="38" y="116" font-size="14" font-weight="700" fill="#1d1d1f">Qwen3-Omni processor (child)</text>
-<text x="38" y="140" font-size="13" fill="#5a5a5f">pops mm_data[&quot;audios&quot;]</text>
-<text x="38" y="160" font-size="13" fill="#5a5a5f">builds mm_data[&quot;audio&quot;]</text>
-<text x="38" y="180" font-size="13" fill="#5a5a5f">calls super()._call_hf_processor(...)</text>
-<path d="M404 150 H476" stroke="#1d1d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
-<rect x="476" y="90" width="380" height="120" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
-<text x="490" y="116" font-size="14" font-weight="700" fill="#1d1d1f">Qwen2.5-Omni processor (parent)</text>
-<text x="490" y="140" font-size="13" fill="#5a5a5f">pops &quot;audios&quot; again: already gone</text>
-<text x="490" y="160" font-size="13" fill="#5a5a5f">so it always sees an empty list</text>
-<text x="490" y="180" font-size="13" fill="#5a5a5f">new guard raised, even with real audio</text>
-<text x="24" y="246" font-size="15" font-weight="700" fill="#1d1d1f">Path 1: inheritance</text>
-<text x="24" y="268" font-size="13" fill="#5a5a5f">Fix: raise only if mm_data still has videos and no "audio" key was already built by a subclass.</text>
-<rect x="24" y="296" width="380" height="120" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
-<text x="38" y="322" font-size="14" font-weight="700" fill="#1d1d1f">Full processor-cache hit</text>
-<text x="38" y="346" font-size="13" fill="#5a5a5f">_call_hf_processor receives empty mm_data</text>
-<text x="38" y="366" font-size="13" fill="#5a5a5f">nothing to reprocess; result is cached</text>
-<text x="38" y="386" font-size="13" fill="#5a5a5f">guard read empty input as &quot;no audio track&quot;</text>
-<path d="M404 356 H476" stroke="#1d1d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
-<rect x="476" y="296" width="380" height="120" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
-<text x="490" y="322" font-size="14" font-weight="700" fill="#1d1d1f">Both guards (child and parent)</text>
-<text x="490" y="346" font-size="13" fill="#5a5a5f">raised ValueError on the second call</text>
-<text x="490" y="366" font-size="13" fill="#5a5a5f">of test_audio_in_video_cache_correctness</text>
-<text x="490" y="386" font-size="13" fill="#5a5a5f">Fix: skip the check when there are no videos</text>
-<text x="24" y="448" font-size="13" fill="#5a5a5f">Path 2: cache hit. Both were found while investigating CI failures. Not a measurement.</text>
+<desc id="d">Path 1: the Qwen3-Omni processor pops the audios key and calls the Qwen2.5-Omni parent, which pops it again, sees an empty list, and raised even with real audio. Path 2: on a processor-cache hit the input is empty and both guards read that as no audio track.</desc>
 <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1d1d1f"/></marker></defs>
+<rect width="440" height="730" fill="#fbfaf7"/>
+<text x="16" y="30" font-size="18" font-weight="700" fill="#1d1d1f">The guard failed because the parent</text>
+<text x="16" y="52" font-size="18" font-weight="700" fill="#1d1d1f">never saw the audio</text>
+<text x="16" y="74" font-size="12" font-weight="400" fill="#5a5a5f">vLLM PR #48420, _call_hf_processor with</text>
+<text x="16" y="90" font-size="12" font-weight="400" fill="#5a5a5f">use_audio_in_video=True. Source: the PR comment of 2026-07-18.</text>
+<text x="16" y="124" font-size="15" font-weight="700" fill="#1d1d1f">Path 1: inheritance</text>
+<rect x="16" y="136" width="408" height="100" rx="8" fill="#fff" stroke="#1d4e89" stroke-width="2"/>
+<text x="30" y="162" font-size="14" font-weight="700" fill="#1d1d1f">Qwen3-Omni processor (child)</text>
+<text x="30" y="186" font-size="13" font-weight="400" fill="#5a5a5f">pops mm_data[&quot;audios&quot;]</text>
+<text x="30" y="206" font-size="13" font-weight="400" fill="#5a5a5f">builds mm_data[&quot;audio&quot;]</text>
+<text x="30" y="226" font-size="13" font-weight="400" fill="#5a5a5f">calls super()._call_hf_processor(...)</text>
+<path d="M220 236 V258" stroke="#1d1d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<rect x="16" y="262" width="408" height="100" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
+<text x="30" y="288" font-size="14" font-weight="700" fill="#1d1d1f">Qwen2.5-Omni processor (parent)</text>
+<text x="30" y="312" font-size="13" font-weight="400" fill="#5a5a5f">pops &quot;audios&quot; again: already gone</text>
+<text x="30" y="332" font-size="13" font-weight="400" fill="#5a5a5f">so it always sees an empty list</text>
+<text x="30" y="352" font-size="13" font-weight="400" fill="#5a5a5f">guard raised, even with real audio</text>
+<text x="16" y="386" font-size="12" font-weight="400" fill="#5a5a5f">Fix: raise only if mm_data still has videos</text>
+<text x="16" y="402" font-size="12" font-weight="400" fill="#5a5a5f">and no &quot;audio&quot; key was built by a subclass.</text>
+<text x="16" y="434" font-size="15" font-weight="700" fill="#1d1d1f">Path 2: cache hit</text>
+<rect x="16" y="446" width="408" height="100" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
+<text x="30" y="472" font-size="14" font-weight="700" fill="#1d1d1f">Full processor-cache hit</text>
+<text x="30" y="496" font-size="13" font-weight="400" fill="#5a5a5f">_call_hf_processor gets empty mm_data</text>
+<text x="30" y="516" font-size="13" font-weight="400" fill="#5a5a5f">nothing to reprocess; result is cached</text>
+<text x="30" y="536" font-size="13" font-weight="400" fill="#5a5a5f">guard read empty input as &quot;no audio&quot;</text>
+<path d="M220 546 V568" stroke="#1d1d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<rect x="16" y="572" width="408" height="80" rx="8" fill="#fff" stroke="#b35900" stroke-width="2"/>
+<text x="30" y="598" font-size="14" font-weight="700" fill="#1d1d1f">Both guards (child and parent)</text>
+<text x="30" y="622" font-size="13" font-weight="400" fill="#5a5a5f">raised ValueError on the second call of</text>
+<text x="30" y="642" font-size="13" font-weight="400" fill="#5a5a5f">test_audio_in_video_cache_correctness</text>
+<text x="16" y="676" font-size="12" font-weight="400" fill="#5a5a5f">Fix: skip the check when there are no videos.</text>
+<text x="16" y="698" font-size="12" font-weight="400" fill="#5a5a5f">Both were found while investigating CI failures.</text>
+<text x="16" y="714" font-size="12" font-weight="400" fill="#5a5a5f">Not a measurement.</text>
 </svg>
