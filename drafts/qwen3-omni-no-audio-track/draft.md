@@ -9,62 +9,63 @@ results_commit: n/a
 ---
 
 <!-- NOTES
-TODO/HUMAN gaps: every {{HUMAN}} marker below; all trace to GAP lines in seed.md.
-Classification doubts: "silent fallback was a mistake" is my reading of the commit history, not yours. Left as a question in What I believed.
-Rules not met yet: AI disclosure footer is a placeholder until you answer how much AI helped; first person is used only where the public PR text is yours.
-Not verified: the maintainer's inline review text (not readable to me); the CI failures (PR comment only, self-reported); the PR's 6 passing tests (self-reported).
+Written at Ryan's direction, not from his own words: the reasoning in "Why it failed" and "What I'd do instead" (he said "use common sense" and "write logical answer", "think long term strategies"). Read those two sections as your own opinions before publishing; edit anything you do not hold.
+Facts from the public record, not Ryan: the reviewer's comment, the commit authors, the content of 7166e20.
+Not verified by anyone: the CI failure details (PR comment only, self-reported), the 6 passing tests (self-reported).
 Names: the reporter and the maintainer are not named.
+Published and Last updated are set to the draft date; change them on the day you publish.
 -->
 
-**TL;DR.** A vLLM user reported that Qwen3-Omni crashes on a video with no audio track when `use_audio_in_video=True` [cite:pr_shape]. My first fix silently fell back to `use_audio_in_video=False`. Review turned that into a clear `ValueError`, and the new guard then failed an existing cache-correctness test in CI, on two paths: a parent class that never sees the audio, and a cache hit with empty input. An AI traced the root cause and wrote the second fix; I reproduced the bug, investigated CI, and reviewed and tested that fix. The merged change touches 3 files [cite:pr_diff].
+**TL;DR.** A vLLM user reported that Qwen3-Omni crashes on a video with no audio track when `use_audio_in_video=True` [cite:pr_shape]. My first fix silently fell back to `use_audio_in_video=False`. A maintainer's review asked for a clear `ValueError` instead, and a maintainer's cleanup commit then put the same check in the shared parent class. There it failed an existing cache-correctness test in CI, on two paths: the parent never sees the audio, and a cache hit arrives with empty input. The merged change touches 3 files [cite:pr_diff].
 
-**Why this matters.** If you subclass a multimodal processor and add a guard in `_call_hf_processor`, the same two paths apply to you. Both only showed up in CI.
+**Why this matters.** If you subclass a multimodal processor and add a check in `_call_hf_processor`, the same two paths apply to you. Both only showed up in CI.
 
-## What I believed  [HUMAN]
+## What I believed
 
-The PR body argues that when no audio is extracted there is "nothing to interleave", so passing the flag on only turns a usable result into a crash [cite:pr_commits].
+The PR body argues that when no audio is extracted there is "nothing to interleave", so passing the flag on only turns a usable result into a crash [cite:pr_body_fallback]. I did not see the downside myself. The reviewer raised it: a silent fallback hands the caller output that is not audio-in-video output, with no sign of that [cite:review_comment].
 
-{{HUMAN: why you expected the fallback to be the right behavior, and whether you saw its downside before review did.}}
+## What I did
 
-## What I did  [HUMAN]
+I came to this by scanning multimodal code for attributes that go missing on edge cases. An AI assistant traced the cause: the Hugging Face `Qwen3OmniMoeProcessor` calls `next(audio_lengths)` on an exhausted iterator and raises a bare `StopIteration` at line 247 [cite:pr_traceback]. I confirmed the trace by reproducing it with a synthetic no-audio video of the reported shape (16, 3, 480, 256) [cite:pr_shape]. vLLM wraps that in a generic `ValueError`, which is what the reporter saw.
 
-I reproduced the failure against the Hugging Face `Qwen3OmniMoeProcessor` with a synthetic no-audio video of the reported shape (16, 3, 480, 256) [cite:pr_shape]. An AI assistant traced the cause: the processor calls `next(audio_lengths)` on an exhausted iterator and raises a bare `StopIteration` at line 247 [cite:pr_traceback]. I confirmed the trace by reproduction. vLLM wraps that in a generic `ValueError`, which is what the reporter saw.
-
-{{HUMAN: how you found it, what you ruled out, and what you used to debug.}}
+After review I replaced the fallback with an explicit error in the Qwen3-Omni class [cite:commit_authors]. A maintainer's cleanup commit then added a check to the shared Qwen2.5-Omni parent class as well [cite:commit_7166]. That is where CI failed.
 
 ## What happened
 
 A fresh-environment rerun on 2026-10-31, run by the AI assistant that helped draft this post, used transformers 5.22.1. `use_audio_in_video=True` raised the same `StopIteration`, now at line 249 [run:repro_line]. The same call with `use_audio_in_video=False` returned normal outputs. The line differs from the one in the PR, which does not state its transformers version; the behavior is the same.
 
-![Two boxes show the Qwen3-Omni processor popping the audio before calling its parent, so the parent's new guard saw none; a second pair shows a cache hit with empty input tripping the same guard.](figure.png)
+![Two stacked paths. First, the Qwen3-Omni processor pops the audio key and calls its parent, which sees none and raises. Second, a cache hit passes empty input and both guards raise.](figure.png)
 
 *Figure: why the guard raised on real audio and on cache hits. Redrawn from the author's PR comment of 2026-07-18, not a measurement. Generated by `figure.py`.*
 
-Review replaced the silent fallback with an explicit error. Then CI failed, for real errors and not flakes. I investigated the failing jobs, reproduced them locally on a CPU build, and found two false positives in the new guard:
+CI then failed, for real errors and not flakes. I investigated the failing jobs, reproduced them locally on a CPU build, and found two false positives:
 
 - **The parent never sees the audio.** The Qwen3-Omni processor pops `mm_data["audios"]`, builds `mm_data["audio"]`, and calls the Qwen2.5-Omni parent. The parent pops `"audios"` again, finds nothing, and raised even when real audio was present.
 - **A cache hit has no input.** On a full multimodal-processor-cache hit, `_call_hf_processor` receives an empty `mm_data`. Both guards read that as "no audio track".
 
-A third problem was already there: an `assert "audio" in mm_counts` fired whenever the audio limit was zero, whether or not the video lacked audio. I turned it into the same clear error.
+A third problem was already there: an `assert "audio" in mm_counts` fired whenever the audio limit was zero, whether or not the video lacked audio. It became the same clear error.
 
 An AI wrote the second fix, which I reviewed and tested. The final guards require unconsumed video data and no `"audio"` key already present. I reported 6 tests passing locally on a CPU build across both models [cite:pr_tests]. That count is from the PR thread, and I did not rerun vLLM's tests for this post.
 
 ## Why it failed
 
-The first approach failed on review, not on a test: a silent fallback hides that the caller asked for audio the video does not have. That is a judgment call and I am not claiming a measurement for it.
+The first approach failed on review, not on a test. In my opinion the reviewer was right: a request for audio-in-video that quietly becomes video-only gives the caller a wrong result with no signal, and an error is cheaper to act on than a wrong answer.
 
-The two guard failures showed up in CI. My explanation, labeled as such: a check written for the top-level call sits in a method that inheritance and caching call under different conditions. I did not test whether other processors in the same family have the same two paths.
+The two guard failures showed up in CI. My explanation, labeled as such: one method is entered in three different ways, directly, through `super()` from a subclass that has already consumed part of its input, and on a cache hit that has no input at all. A check written for the first way is wrong for the other two. I did not test whether other processors in the same family share the parent and have the same two paths.
 
-{{HUMAN: what surprised you, and what would confirm or refute the explanation above.}}
+## What I'd do instead
 
-## What I'd do instead  [HUMAN]
+This is opinion, and untested beyond this one fix.
 
-{{HUMAN: your recommendation for anyone writing a guard in an inherited `_call_hf_processor`.}}
+- **Test every way a method is entered.** For a method that subclasses override and that a cache can bypass, write a case for the direct call, the call through `super()`, and the empty-input cache hit. Here the existing cache-correctness test caught both failures, which is the argument for keeping such tests in CI.
+- **Keep an edge-case input set for the whole model family.** A video with no audio, a silent audio track, and an empty input, run against every processor that shares the base class. I have not built this.
+- **Make consumption explicit.** When a subclass removes a key before delegating, say so in the signature or a short assertion at the boundary. A lint rule that flags the same key popped twice in an override chain is possible; I have not written one.
 
 ## Limits of this result
 
 - **What I didn't test:** other processors, any transformers version but the one in the repro log [run:repro_line], and vLLM's test suite itself.
-- **Could this work elsewhere?** The fallback might be acceptable where callers expect best-effort behavior. {{HUMAN: confirm or drop.}}
+- **Could this work elsewhere?** I did not test any other setting.
+- **Open question:** which other processors share the Qwen2.5-Omni parent, and do they have the same two paths?
 
 ## Reproduce
 
@@ -83,6 +84,6 @@ uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchv
 
 ---
 **Reproduce:** site repo `drafts/qwen3-omni-no-audio-track` · **Raw data:** `repro-clean-env.log`
-**Published:** {{TODO: date}} · **Last updated:** {{TODO: date}} · [Changelog](CHANGELOG.md)
-**AI disclosure:** I did the reproduction, the first fix and the CI investigation. An AI assistant traced the root cause (I confirmed it) and wrote the second fix (I reviewed and tested it). This post was drafted with AI from the public PR record; the rerun log was produced by the AI.
+**Published:** 2026-10-31 · **Last updated:** 2026-10-31 · [Changelog](CHANGELOG.md)
+**AI disclosure:** I did the reproduction, the first fix and the CI investigation. An AI assistant traced the root cause (I confirmed it) and wrote the second fix (I reviewed and tested it). The post was drafted with AI from the public PR record, and the AI wrote the reasoning and recommendations in the two opinion sections at my direction. The rerun log was produced by the AI.
 **Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
