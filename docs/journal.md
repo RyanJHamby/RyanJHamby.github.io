@@ -73,6 +73,10 @@ RSS links: post and other non-home pages had no feed discovery link (only the ho
 
 CORRECTION of my own error. I audited repos from local clones without running git fetch. The GPU Flight Recorder clone was 23 commits behind origin/main (7 vs 30 commits, last commit 2026-09-21), so I wrongly told Ryan the repo had no simulator, no results and no support for the 30/30 figures, and I rewrote the site page as 'early build, no validation results' and removed the numbers. The real repo has a seeded simulator, a scorecard, a README results table (30/30, 0 false stragglers, explicitly synthetic) and a real-GPU runbook that was never run. The stock-screener clone was 130 commits behind (active through 2026-10-30), so 'Nov 2025 - May 2026' on the site was wrong; now 'Present'. Fixed in this branch: GPU page, home, llms.txt, backlog, screener date. Macro: the cleaned README is on a non-default branch (last commit 2026-05-31) while main ends 2026-03-03; flagged, not changed. Rule going forward: git fetch and compare to origin/main before any audit. The 'Reproduce/withdraw' decisions for the FlowState post did not depend on this.
 
+## 2026-10-31 11:40 EDT (at e01e922)
+
+Added a browser tab icon: RH monogram on the site accent blue (static/favicon.svg, ico, 32px png, full-bleed apple-touch icon). PaperMod already emitted icon links to files that did not exist (favicon-16x16.png, safari-pinned-tab.svg), so I pointed params.assets at the real files instead of adding duplicates; [params.assets] sits after the scalar params. Verified: clean hugo build, one set of icon links in the built home page, preview of the 180px render. Not verified: rendering in Safari/Firefox tabs or iOS home screen, and the deployed site.
+
 ## 2026-10-31 11:41 EDT (at e01e922)
 
 Wrote 2 site specs (site-integrity-check, build-post-tool) with strict-xfail tests. Dropped the llms.txt generator spec: PR #15 edits static/llms.txt. Found a real defect while proving the check: /writing/ has two RSS links and a duplicate /writing/index.xml feed; spec makes the agent fix it via hugo.toml section outputs. build-post --publish requires verified claims; draft=true by default.
