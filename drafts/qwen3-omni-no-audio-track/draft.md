@@ -82,8 +82,12 @@ uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchv
 [1] vLLM issue 48383: https://github.com/vllm-project/vllm/issues/48383
 [2] vLLM PR 48420: https://github.com/vllm-project/vllm/pull/48420
 
+## Changelog
+
+- 2026-10-31: published.
+
 ---
 **Reproduce:** site repo `drafts/qwen3-omni-no-audio-track` · **Raw data:** `repro-clean-env.log`
-**Published:** 2026-10-31 · **Last updated:** 2026-10-31 · [Changelog](CHANGELOG.md)
+**Published:** 2026-10-31 · **Last updated:** 2026-10-31 · [Changelog](#changelog)
 **AI disclosure:** I did the reproduction, the first fix and the CI investigation. An AI assistant traced the root cause (I confirmed it) and wrote the second fix (I reviewed and tested it). The post was drafted with AI from the public PR record, and the AI wrote the reasoning and recommendations in the two opinion sections at my direction. The rerun log was produced by the AI.
 **Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
