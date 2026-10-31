@@ -1,0 +1,38 @@
+# Evidence for draft.md. Every tagged number needs an entry here.
+# verified_by / verified_on are filled by Ryan only.
+- key: pr_traceback
+  kind: cite
+  claim: "PR #48420 body reports the StopIteration at processing_qwen3_omni_moe.py line 247, np.arange(next(audio_lengths))"
+  evidence: "https://github.com/vllm-project/vllm/pull/48420 (body), read 2026-10-31. transformers version at the time is not stated in the PR."
+  verified_by:
+  verified_on:
+- key: repro_line
+  kind: run
+  claim: "Clean-environment repro: same StopIteration at line 249 of processing_qwen3_omni_moe.py with transformers 5.22.1, use_audio_in_video=True; use_audio_in_video=False succeeds. macOS arm64, CPU, Python 3.12.12, numpy 2.5.4, torch 2.15.0. Processor loaded from Qwen/Qwen3-Omni-30B-A3B-Instruct (processor files only, no model weights). The PR reports line 247; the PR does not state a transformers version, so the cause of the 2-line difference is unknown."
+  evidence: "drafts/qwen3-omni-no-audio-track/repro-clean-env.log, produced by repro.py, 2026-10-31. Not a pow run capture; no timings are quoted."
+  verified_by:
+  verified_on:
+- key: pr_shape
+  kind: cite
+  claim: "Reported video shape (16, 3, 480, 256), uint8"
+  evidence: "https://github.com/vllm-project/vllm/issues/48383 (traceback in body), read 2026-10-31"
+  verified_by:
+  verified_on:
+- key: pr_diff
+  kind: cite
+  claim: "Merged diff: 3 files changed, 57 additions, 1 deletion (32+18+7 additions)"
+  evidence: "gh pr view 48420 -R vllm-project/vllm --json files, read 2026-10-31; merged 2026-08-03"
+  verified_by:
+  verified_on:
+- key: pr_tests
+  kind: cite
+  claim: "Author's comment of 2026-07-18: after pushing 2d8f7ee, all 6 tests in test_audio_in_video.py pass locally on a CPU build (both models, new and existing tests)"
+  evidence: "https://github.com/vllm-project/vllm/pull/48420 (comment 2026-07-18). Self-reported; I did not rerun vLLM's test suite."
+  verified_by:
+  verified_on:
+- key: pr_commits
+  kind: cite
+  claim: "Commit sequence: c38b98f (fallback), f25d0ca (ValueError per review), 7166e20 (clean), 2d8f7ee (false-positive fix)"
+  evidence: "gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31"
+  verified_by:
+  verified_on:
