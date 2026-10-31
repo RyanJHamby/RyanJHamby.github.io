@@ -16,10 +16,10 @@ def box(x, y, w, h, title, lines, stroke):
     return "\n".join(out)
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" font-family="-apple-system,Helvetica,Arial,sans-serif" role="img" aria-labelledby="t d">
-<title id="t">My guard failed because the parent processor never saw the audio</title>
+<title id="t">The guard failed because the parent processor never saw the audio</title>
 <desc id="d">Two boxes: the Qwen3-Omni processor pops the audios key and calls the Qwen2.5-Omni parent, which pops it again and sees nothing, so the guard raised even with real audio. A second path: on a processor-cache hit the input is empty and the guard read that as no audio track.</desc>
 <rect width="{W}" height="{H}" fill="{BG}"/>
-<text x="24" y="38" font-size="20" font-weight="700" fill="{INK}">My guard failed because the parent never saw the audio</text>
+<text x="24" y="38" font-size="20" font-weight="700" fill="{INK}">The guard failed because the parent never saw the audio</text>
 <text x="24" y="62" font-size="13" fill="{MUTED}">vLLM PR #48420, _call_hf_processor with use_audio_in_video=True. Source: the author's PR comment of 2026-07-18.</text>
 {box(24, 90, 380, 120, "Qwen3-Omni processor (child)", ["pops mm_data[&quot;audios&quot;]", "builds mm_data[&quot;audio&quot;]", "calls super()._call_hf_processor(...)"], BLUE)}
 <path d="M404 150 H476" stroke="{INK}" stroke-width="2" fill="none" marker-end="url(#a)"/>

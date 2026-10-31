@@ -36,3 +36,21 @@
   evidence: "gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31"
   verified_by:
   verified_on:
+- key: review_comment
+  kind: cite
+  claim: "The maintainer's inline review comment preferred raising a ValueError over silently falling back to use_audio_in_video=False, because a user may treat the output as audio-in-video output"
+  evidence: "https://github.com/vllm-project/vllm/pull/48420, inline review comment on vllm/model_executor/models/qwen3_omni_moe_thinker.py, read 2026-10-31 via the PR page. Commit f25d0ca message: 'Per the reviewer's review, silently falling back ... could mislead the caller into thinking audio-in-video was applied when it wasn't.'"
+  verified_by:
+  verified_on:
+- key: commit_authors
+  kind: cite
+  claim: "f25d0ca (raise ValueError instead of fallback) and 2d8f7ee (fix false positives) are authored by RyanJHamby; 7166e20 ('clean') is authored by a maintainer"
+  evidence: "gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31"
+  verified_by:
+  verified_on:
+- key: commit_7166
+  kind: cite
+  claim: "7166e20 added a guard branch to _call_hf_processor in qwen2_5_omni_thinker.py (the shared parent class): elif mm_kwargs.get('use_audio_in_video'): raise ValueError(...), and moved the no-audio test into test_audio_in_video.py"
+  evidence: "https://github.com/vllm-project/vllm/commit/7166e20, read 2026-10-31. Author's own PR comment of 2026-07-18 says the parent guard was added in 7166e20."
+  verified_by:
+  verified_on:
