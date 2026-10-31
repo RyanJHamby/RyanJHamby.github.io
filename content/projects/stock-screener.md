@@ -4,10 +4,10 @@ weight = 4
 aliases = []
 [params]
 tags_line = "Python · GitHub Actions"
-status = "Nov 2025 – May 2026"
+status = "Nov 2025 – Present"
 +++
 
-**Nov 2025 - May 2026**
+**Nov 2025 - Present**
 
 [GitHub repository](https://github.com/RyanJHamby/stock-screener)
 

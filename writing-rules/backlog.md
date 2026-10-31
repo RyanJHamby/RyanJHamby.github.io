@@ -16,7 +16,7 @@ turns into a finding.
 | 4 | A VMM panic on ACPI device restore under fd exhaustion | Build log / note | merged Firecracker PR #6032 (public) | needs-seed | Same: your account of the debugging path |
 | 5 | A DNS lookup delay from an IPv6 resolver stall in a microVM | Build log / note | merged Firecracker docs PR #6033 | needs-seed | Same; keep to what the PR shows |
 | 6 | Latency of a lock-free order book on a cloud instance, with the losing configurations | Measure / benchmark | `OrderBookEngine` README figures (EC2 `c6i.large`) are **not** from a `pow run` capture | blocked | Re-run the benchmark under `pow run`; your README already notes PMU counters are unavailable on that instance size |
-| 7 | Straggler detection in distributed training, validated | Measure / benchmark | `GPU Flight Recorder` is an early build with no validation results | blocked | Needs a budget-capped real-GPU run; publish the result whether or not it matches |
+| 7 | Straggler detection in distributed training, validated | Measure / benchmark | `GPU Flight Recorder` is implemented with a seeded simulator and scorecard (synthetic); real-GPU runbook is in `bench/README.md`; no real-hardware results | blocked | Needs the budget-capped real-GPU run from `bench/README.md`; publish the result whether or not it matches the synthetic scorecard |
 
 ## Cadence (realistic)
 - One **anchor** post per quarter, from a pillar-1 or pillar-4 finding with a full Spec block.
