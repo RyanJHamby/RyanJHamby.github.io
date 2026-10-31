@@ -116,3 +116,7 @@ GoatCounter switched on: `goatcounter = "ryanjhamby"` in hugo.toml (Ryan created
 ## 2026-10-31 20:40 EDT (at 5372604)
 
 Found while preparing the Substack version: two footnotes on the published Qwen3-Omni post showed `--json` as an en dash ("–json"), because Hugo's typographer rewrites double hyphens, so the quoted command would fail if copied. Wrapped the two commands in code spans in claims.yaml and added a Changelog line. No content or numbers changed. Verified on a clean build: no en dash in any command, code spans render. Not verified: the deployed page until merged.
+
+## 2026-10-31 21:10 EDT (at 0cac7ce)
+
+Substack links point at the publication (ryanjhamby.substack.com, found from Ryan's Substack settings) instead of the substack.com/@ profile: home, about, footer, profile button, llms.txt; the home "Subscribe on Substack" goes to /subscribe. Checked that the publication and its subscribe page are live. Found, not fixed (it is Ryan's Substack, not this repo): the publication bio still reads "Software engineer at AWS ... systems performance, benchmarking rigor, and numerical correctness ... low-latency trading infra on the side", which does not match the site's AI-compute positioning. Not verified: the links on the deployed site until merged.
