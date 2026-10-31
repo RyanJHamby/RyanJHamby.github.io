@@ -68,3 +68,7 @@ Feed fix: the home RSS feed listed every page (About, Contact, project pages) wi
 ## 2026-10-30 17:20 EDT (at 4d2d06d)
 
 RSS links: post and other non-home pages had no feed discovery link (only the home page did), a stray /projects/index.xml feed was published, and the feed's channel image linked to the PNG. Added a site-wide discovery link (titled with the site name, not the theme's generic 'rss'), turned off the projects feed, pointed the image link at the site. Verified on a clean build; not tested in a feed reader.
+
+## 2026-10-31 11:40 EDT (at e01e922)
+
+Added a browser tab icon: RH monogram on the site accent blue (static/favicon.svg, ico, 32px png, full-bleed apple-touch icon). PaperMod already emitted icon links to files that did not exist (favicon-16x16.png, safari-pinned-tab.svg), so I pointed params.assets at the real files instead of adding duplicates; [params.assets] sits after the scalar params. Verified: clean hugo build, one set of icon links in the built home page, preview of the 180px render. Not verified: rendering in Safari/Firefox tabs or iOS home screen, and the deployed site.
