@@ -19,7 +19,7 @@ Sources:
 - Added a regression test following the existing `test_audio_in_video.py` pattern, for both Qwen2.5-Omni-3B and Qwen3-Omni-30B-A3B-Instruct. [PR body]
 - After review, replaced the silent fallback with a clear `ValueError` ("Raise clear ValueError instead of silent fallback per review"). [f25d0ca]
 - GAP: what the review said and why it persuaded you (or not). The inline review text was not readable from my tools.
-- AI role (Ryan, 2026-10-31): about half and half. GAP: which steps were AI's and which were Ryan's; needed before any first-person claim like "I reproduced".
+- AI role (Ryan, 2026-10-31): about half and half. Ryan's own, by his statement: the reproduction, the first fix (the silent fallback), and the CI investigation. GAP: who found the root cause and who wrote the second fix (the guards in 2d8f7ee); not stated yet, so the draft must not attribute them.
 
 ## What I expected
 - GAP: not written anywhere public. The PR body implies the fallback was expected to be enough.
