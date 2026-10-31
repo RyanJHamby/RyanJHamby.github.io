@@ -60,6 +60,15 @@ TocOpen = false
 [params.schema]
 publisherType = "Person"
 
+[params.assets]
+favicon = "favicon.ico"
+favicon16x16 = "favicon-32.png"
+favicon32x32 = "favicon-32.png"
+apple_touch_icon = "apple-touch-icon.png"
+safari_pinned_tab = "favicon.svg"
+theme_color = "#1d4e89"
+msapplication_TileColor = "#1d4e89"
+
 [[params.socialIcons]]
 name = "linkedin"
 url = "https://www.linkedin.com/in/ryan-j-hamby/"
