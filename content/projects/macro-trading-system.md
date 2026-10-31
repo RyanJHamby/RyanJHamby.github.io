@@ -22,7 +22,9 @@ C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX
 </div>
 
 <div class="achievement">
+
 End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (\(\Sigma = U \Lambda U^{\top}\)) → S3, covered by <span class="metric">240+ unit tests</span>
+
 </div>
 
 ## Core Hypothesis

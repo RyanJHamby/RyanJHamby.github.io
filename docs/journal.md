@@ -88,3 +88,7 @@ Math rendering and a mobile audit. Math is rendered at build time by Hugo (passt
 ## 2026-10-31 17:40 EDT (at f7e3e10)
 
 Home page: added a dated "Merged upstream" section (vLLM #48420, Firecracker #6032 and #6033 merged; vLLM #57722 open) and removed the vague "vLLM and Firecracker" line from Selected work. Dates and states come from `gh search prs --author RyanJHamby` on 2026-10-31, not from memory. The open PR was missing from the Projects page and is now listed there, labeled open. Verified: clean build, desktop screenshot. Not verified: mobile layout of the new section, dark mode, deployed site. The merged-PR dates will go stale if a state changes, so re-check the list when a new PR merges.
+
+## 2026-10-31 18:40 EDT (at e2e9bab)
+
+Raw LaTeX showed on the macro page ("spectral decomposition (\(\Sigma = U \Lambda U^{\top}\))"). Cause: that line sat inside a raw `<div class="achievement">` block, where Markdown and the math passthrough are not processed. Fix: blank lines after the opening tag and before the closing tag so the content is parsed as Markdown. I missed it in the earlier check, which counted KaTeX nodes (8) but never searched the built pages for leftover raw delimiters. Verified: 9 KaTeX nodes on the page, no katex-error, and no raw `\(`, `\[` or `$$` in any built page; screenshot checked. Not verified: other raw HTML blocks that may later hold math (the same trap applies to any future formula inside a div).
