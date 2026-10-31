@@ -17,6 +17,15 @@ style = "monokai"
 [markup.goldmark.renderer]
 unsafe = true
 
+# Math: \( ... \) inline and $$ ... $$ or \[ ... \] display. Single-$ inline is deliberately
+# off: prices such as $2.49/GPU-hr are common in posts and would be parsed as equations.
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)']]
+
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 taxonomy = ["HTML"]
