@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>GPU Flight Recorder | Ryan J Hamby</title>
 <meta name="keywords" content="">
-<meta name="description" content="Mar 2026
+<meta name="description" content="Mar 2026 - Sep 2026
 GitHub repository
 Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.">
 <meta name="author" content="Ryan J Hamby">
@@ -77,7 +77,7 @@ Finds the straggler in a distributed data-parallel training job and explains why
 <meta property="og:url" content="https://ryanjhamby.dev/projects/gpu-flight-recorder/">
   <meta property="og:site_name" content="Ryan J Hamby">
   <meta property="og:title" content="GPU Flight Recorder">
-  <meta property="og:description" content="Mar 2026
+  <meta property="og:description" content="Mar 2026 - Sep 2026
 GitHub repository
 Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.">
   <meta property="og:locale" content="en-us">
@@ -87,7 +87,7 @@ Finds the straggler in a distributed data-parallel training job and explains why
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://ryanjhamby.dev/images/og.png">
 <meta name="twitter:title" content="GPU Flight Recorder">
-<meta name="twitter:description" content="Mar 2026
+<meta name="twitter:description" content="Mar 2026 - Sep 2026
 GitHub repository
 Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.">
 
@@ -118,12 +118,12 @@ Finds the straggler in a distributed data-parallel training job and explains why
   "@type": "BlogPosting",
   "headline": "GPU Flight Recorder",
   "name": "GPU Flight Recorder",
-  "description": "Mar 2026\nGitHub repository\nFinds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.\n",
+  "description": "Mar 2026 - Sep 2026\nGitHub repository\nFinds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.\n",
   "keywords": [
     
   ],
-  "articleBody": "Mar 2026\nGitHub repository\nFinds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.\nGo agents stream per-rank events over gRPC to a coordinator that correlates collectives by (process_group, sequence_id), so no cross-node clock synchronization is needed Status: early build. The agent, ring buffer, correlator, attribution engine and gRPC transport exist; there are no validation results yet. Results will be published, with hardware named, once a captured run exists.\n",
-  "wordCount" : "137",
+  "articleBody": "Mar 2026 - Sep 2026\nGitHub repository\nFinds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.\nGo agents stream per-rank events over gRPC to a coordinator that correlates collectives by (process_group, sequence_id), so no cross-node clock synchronization is needed Results (synthetic) Eight ranks, 600 steps, one fault injected on a random rank at the midpoint, 30 seeds per cell, seeded and deterministic. Reproduce with make sim; the scorecard is docs/scorecard.md in the repository.\nCondition Detected Attributed correctly False stragglers 9 fault types, 3% op jitter, 30% straggler lag 30/30 each 30/30 each 0 9 fault types, 10% op jitter, 30% straggler lag 30/30 each 30/30 each 0 Clean runs (both noise levels) n/a n/a 0 Sensitivity of thermal-fault detection to straggler lag (3% jitter): 2% lag detected 0/30, 5% lag and above 30/30. A first version that thresholded each collective scored 0/30 at 10% jitter; detection now uses block medians over a fault span.\nThese figures are from the repository’s own README and scorecard, produced by its seeded simulator, not from a pow run capture. They are simulated. The simulator’s noise is independent Gaussian, real clusters are correlated and heavy-tailed, and each attribution rule is tested against a fault the simulator generated to trigger it. The results show the logic is sound, not that it works on hardware.\nStatus Implemented and tested in CI: detection, attribution, transport, agent and CLI, with a containerized demo in which eight agents stream a replayed trace to a coordinator. Not yet done: the Python shim has never run against real PyTorch or NVML, the real-GPU harness is drafts, the Kubernetes manifests have never been applied, and there are no real-hardware results. The next step is a budget-capped real-GPU run; a result that disagrees with the synthetic scorecard will be published, not tuned away.\n",
+  "wordCount" : "368",
   "inLanguage": "en",
   "image": "https://ryanjhamby.dev/images/og.png","datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -206,18 +206,68 @@ Finds the straggler in a distributed data-parallel training job and explains why
     <h1 class="post-title entry-hint-parent">
       GPU Flight Recorder
     </h1>
-    <div class="post-meta"><span>1 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span>
+    <div class="post-meta"><span>2 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span>
 
 </div>
-  </header> 
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
 
-  <div class="post-content"><p><strong>Mar 2026</strong></p>
+        <div class="inner"><ul>
+                <li>
+                    <a href="#results-synthetic" aria-label="Results (synthetic)">Results (synthetic)</a></li>
+                <li>
+                    <a href="#status" aria-label="Status">Status</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><strong>Mar 2026 - Sep 2026</strong></p>
 <p><a href="https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder">GitHub repository</a></p>
 <p>Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.</p>
 <div class="achievement">
 Go agents stream per-rank events over gRPC to a coordinator that correlates collectives by <code>(process_group, sequence_id)</code>, so no cross-node clock synchronization is needed
 </div>
-<p><strong>Status:</strong> early build. The agent, ring buffer, correlator, attribution engine and gRPC transport exist; there are no validation results yet. Results will be published, with hardware named, once a captured run exists.</p>
+<h2 id="results-synthetic">Results (synthetic)<a hidden class="anchor" aria-hidden="true" href="#results-synthetic">#</a></h2>
+<p>Eight ranks, 600 steps, one fault injected on a random rank at the midpoint, 30 seeds per cell, seeded and deterministic. Reproduce with <code>make sim</code>; the scorecard is <code>docs/scorecard.md</code> in the repository.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Condition</th>
+					<th>Detected</th>
+					<th>Attributed correctly</th>
+					<th>False stragglers</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>9 fault types, 3% op jitter, 30% straggler lag</td>
+					<td>30/30 each</td>
+					<td>30/30 each</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>9 fault types, 10% op jitter, 30% straggler lag</td>
+					<td>30/30 each</td>
+					<td>30/30 each</td>
+					<td>0</td>
+			</tr>
+			<tr>
+					<td>Clean runs (both noise levels)</td>
+					<td>n/a</td>
+					<td>n/a</td>
+					<td>0</td>
+			</tr>
+	</tbody>
+</table>
+<p>Sensitivity of thermal-fault detection to straggler lag (3% jitter): 2% lag detected 0/30, 5% lag and above 30/30. A first version that thresholded each collective scored 0/30 at 10% jitter; detection now uses block medians over a fault span.</p>
+<p><em>These figures are from the repository&rsquo;s own README and scorecard, produced by its seeded simulator, not from a <code>pow run</code> capture. They are simulated.</em> The simulator&rsquo;s noise is independent Gaussian, real clusters are correlated and heavy-tailed, and each attribution rule is tested against a fault the simulator generated to trigger it. The results show the logic is sound, not that it works on hardware.</p>
+<h2 id="status">Status<a hidden class="anchor" aria-hidden="true" href="#status">#</a></h2>
+<p>Implemented and tested in CI: detection, attribution, transport, agent and CLI, with a containerized demo in which eight agents stream a replayed trace to a coordinator. <strong>Not yet done:</strong> the Python shim has never run against real PyTorch or NVML, the real-GPU harness is drafts, the Kubernetes manifests have never been applied, and there are no real-hardware results. The next step is a budget-capped real-GPU run; a result that disagrees with the synthetic scorecard will be published, not tuned away.</p>
 
 
   </div>
