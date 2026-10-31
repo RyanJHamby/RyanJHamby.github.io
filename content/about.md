@@ -27,7 +27,7 @@ I'm passionate about continuous learning. I've built multiple mobile apps (iOS/A
 
 ---
 
-Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/), [GitHub](https://github.com/RyanJHamby), [Substack](https://substack.com/@ryanjhamby), or email me at [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com).
+Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/), [GitHub](https://github.com/RyanJHamby), [Substack](https://ryanjhamby.substack.com), or email me at [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com).
 
 ## More
 
