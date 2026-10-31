@@ -1,0 +1,83 @@
+---
+title: "My fix for a Qwen3-Omni crash broke CI two ways before it merged"
+date: 2026-10-31
+type: dead-end
+tags: ["vllm", "multimodal", "qwen3-omni", "build-log"]
+run_ids: ["repro-clean-env"]
+results_commit: n/a
+---
+
+<!-- NOTES
+TODO/HUMAN gaps: every {{HUMAN}} marker below; all trace to GAP lines in seed.md.
+Classification doubts: "silent fallback was a mistake" is my reading of the commit history, not yours. Left as a question in What I believed.
+Rules not met yet: AI disclosure footer is a placeholder until you answer how much AI helped; first person is used only where the public PR text is yours.
+Not verified: the maintainer's inline review text (not readable to me); the CI failures (PR comment only, self-reported); the PR's 6 passing tests (self-reported).
+Names: the reporter and the maintainer are not named.
+-->
+
+**TL;DR.** A vLLM user reported that Qwen3-Omni crashes on a video with no audio track when `use_audio_in_video=True` [cite:pr_shape]. My first fix silently fell back to `use_audio_in_video=False`. Review turned that into a clear `ValueError`, and the guard I wrote for it then failed on two paths I had not considered: a parent class that never sees the audio, and a cache hit with empty input. The merged change touches 3 files [cite:pr_diff].
+
+**Why this matters.** If you subclass a multimodal processor and add a guard in `_call_hf_processor`, the same two paths apply to you. Both only showed up in CI.
+
+## What I believed  [HUMAN]
+
+The PR body argues that when no audio is extracted there is "nothing to interleave", so passing the flag on only turns a usable result into a crash [cite:pr_commits].
+
+{{HUMAN: why you expected the fallback to be the right behavior, and whether you saw its downside before review did.}}
+
+## What I did  [HUMAN]
+
+I reproduced the failure against the Hugging Face `Qwen3OmniMoeProcessor` with a synthetic no-audio video of the reported shape (16, 3, 480, 256) [cite:pr_shape]. The processor calls `next(audio_lengths)` on an exhausted iterator and raises a bare `StopIteration` at line 247 [cite:pr_traceback]. vLLM wraps that in a generic `ValueError`, which is what the reporter saw.
+
+{{HUMAN: how you found it, what you ruled out, and what you used to debug.}}
+
+## What happened
+
+I reran the reproduction on 2026-10-31 in a fresh environment with transformers 5.22.1. `use_audio_in_video=True` raised the same `StopIteration`, now at line 249 [cite:repro_line]. The same call with `use_audio_in_video=False` returned normal outputs. The line moved because the library did; the behavior did not.
+
+Review replaced the silent fallback with an explicit error. Then CI failed, for real errors and not flakes, and I found two false positives in my new guard:
+
+- **The parent never sees the audio.** The Qwen3-Omni processor pops `mm_data["audios"]`, builds `mm_data["audio"]`, and calls the Qwen2.5-Omni parent. The parent pops `"audios"` again, finds nothing, and raised even when real audio was present.
+- **A cache hit has no input.** On a full multimodal-processor-cache hit, `_call_hf_processor` receives an empty `mm_data`. Both guards read that as "no audio track".
+
+A third problem was already there: an `assert "audio" in mm_counts` fired whenever the audio limit was zero, whether or not the video lacked audio. I turned it into the same clear error.
+
+The final guards require unconsumed video data and no `"audio"` key already present. I reported 6 tests passing locally on a CPU build across both models [cite:pr_tests]. That count is from the PR thread, and I did not rerun vLLM's tests for this post.
+
+## Why it failed
+
+The first approach failed on review, not on a test: a silent fallback hides that the caller asked for audio the video does not have. That is a judgment call and I am not claiming a measurement for it.
+
+The two guard failures were measured by CI. My explanation, labeled as such: a check written for the top-level call sits in a method that inheritance and caching call under different conditions. I did not test whether other processors in the same family have the same two paths.
+
+{{HUMAN: what surprised you, and what would confirm or refute the explanation above.}}
+
+## What I'd do instead  [HUMAN]
+
+{{HUMAN: your recommendation for anyone writing a guard in an inherited `_call_hf_processor`.}}
+
+## Limits of this result
+
+- **What I didn't test:** other processors, any transformers version but the one in the repro log [run:repro_line], and vLLM's test suite itself.
+- **Could this work elsewhere?** The fallback might be acceptable where callers expect best-effort behavior. {{HUMAN: confirm or drop.}}
+
+## Reproduce
+
+```bash
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchvision
+.venv/bin/python repro.py
+```
+
+`repro.py` and its log are in the draft folder. The log records versions and the line where `StopIteration` is raised.
+
+## References
+
+[1] vLLM issue 48383: https://github.com/vllm-project/vllm/issues/48383
+[2] vLLM PR 48420: https://github.com/vllm-project/vllm/pull/48420
+
+---
+**Reproduce:** site repo `drafts/qwen3-omni-no-audio-track` · **Raw data:** `repro-clean-env.log`
+**Published:** {{TODO: date}} · **Last updated:** {{TODO: date}} · [Changelog](CHANGELOG.md)
+**AI disclosure:** {{HUMAN: honest one-liner. Drafted with AI from the public PR record; the debugging and review account are yours.}}
+**Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
