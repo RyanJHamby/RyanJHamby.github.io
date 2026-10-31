@@ -7,3 +7,6 @@
 {{- if .Store.Get "hasMath" }}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 {{- end }}
+{{- with site.Params.goatcounter }}{{ if not hugo.IsServer }}
+<script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{{- end }}{{ end }}
