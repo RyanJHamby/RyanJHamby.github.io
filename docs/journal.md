@@ -112,3 +112,7 @@ Share buttons trimmed to LinkedIn, X, Reddit and Hacker News (theme keys: linked
 ## 2026-10-31 20:05 EDT (at 5f7a3b4)
 
 GoatCounter switched on: `goatcounter = "ryanjhamby"` in hugo.toml (Ryan created the account; the dashboard's own snippet matches what the site renders). Verified on a clean build: the script and the footer note are on every real page; the only pages without it are 13 redirect stubs (old /blog/ aliases and /page/1/ pagination), whose visitors are redirected to counted pages. Not verified: that GoatCounter actually receives hits, which needs one real visit from a browser with the ad blocker off after deploy; mobile layout of the footer note.
+
+## 2026-10-31 20:40 EDT (at 5372604)
+
+Found while preparing the Substack version: two footnotes on the published Qwen3-Omni post showed `--json` as an en dash ("–json"), because Hugo's typographer rewrites double hyphens, so the quoted command would fail if copied. Wrapped the two commands in code spans in claims.yaml and added a Changelog line. No content or numbers changed. Verified on a clean build: no en dash in any command, code spans render. Not verified: the deployed page until merged.

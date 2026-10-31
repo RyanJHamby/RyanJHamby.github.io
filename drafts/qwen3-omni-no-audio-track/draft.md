@@ -85,6 +85,7 @@ uv pip install --python .venv/bin/python transformers==5.22.1 numpy torch torchv
 ## Changelog
 
 - 2026-10-31: published.
+- 2026-10-31: fixed two source notes where `--json` displayed as an en dash; no content or numbers changed.
 
 ---
 **Reproduce:** site repo `drafts/qwen3-omni-no-audio-track` · **Raw data:** `repro-clean-env.log`

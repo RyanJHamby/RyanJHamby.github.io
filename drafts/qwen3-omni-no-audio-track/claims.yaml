@@ -21,7 +21,7 @@
 - key: pr_diff
   kind: cite
   claim: "Merged diff: 3 files changed, 57 additions, 1 deletion (32+18+7 additions)"
-  evidence: "gh pr view 48420 -R vllm-project/vllm --json files, read 2026-10-31; merged 2026-08-03"
+  evidence: "`gh pr view 48420 -R vllm-project/vllm --json files`, read 2026-10-31; merged 2026-08-03"
   verified_by:
   verified_on:
 - key: pr_tests
@@ -33,7 +33,7 @@
 - key: pr_commits
   kind: cite
   claim: "Commit sequence: c38b98f (fallback), f25d0ca (ValueError per review), 7166e20 (clean), 2d8f7ee (false-positive fix)"
-  evidence: "gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31"
+  evidence: "`gh pr view 48420 -R vllm-project/vllm --json commits`, read 2026-10-31"
   verified_by:
   verified_on:
 - key: review_comment
@@ -45,7 +45,7 @@
 - key: commit_authors
   kind: cite
   claim: "f25d0ca (raise ValueError instead of fallback) and 2d8f7ee (fix false positives) are authored by RyanJHamby; 7166e20 ('clean') is authored by a maintainer"
-  evidence: "gh pr view 48420 -R vllm-project/vllm --json commits, read 2026-10-31"
+  evidence: "`gh pr view 48420 -R vllm-project/vllm --json commits`, read 2026-10-31"
   verified_by:
   verified_on:
 - key: commit_7166
