@@ -80,3 +80,7 @@ Added a browser tab icon: RH monogram on the site accent blue (static/favicon.sv
 ## 2026-10-31 11:41 EDT (at e01e922)
 
 Wrote 2 site specs (site-integrity-check, build-post-tool) with strict-xfail tests. Dropped the llms.txt generator spec: PR #15 edits static/llms.txt. Found a real defect while proving the check: /writing/ has two RSS links and a duplicate /writing/index.xml feed; spec makes the agent fix it via hugo.toml section outputs. build-post --publish requires verified claims; draft=true by default.
+
+## 2026-10-31 17:05 EDT (at f7e3e10)
+
+Math rendering and a mobile audit. Math is rendered at build time by Hugo (passthrough + transform.ToMath, KaTeX), so pages ship no JS; the KaTeX stylesheet (katex@0.16.11, jsDelivr) loads only on pages that contain math. Inline is `\( ... \)`, display is `$$ ... $$` or `\[ ... \]`. Single-$ inline is off on purpose: STYLE.md writes prices like $2.49/GPU-hr and they would parse as equations. Verified: clean build of a throwaway test page (1 inline, 2 display equations, no katex-error, price left as text); desktop and 390 px renders checked by eye. Mobile audit: 10 pages at 390 px, none overflow horizontally. My first audit reported overflow on two posts; that was my error (the pages were loaded without their CSS), caught by re-running over HTTP. Not verified: dark mode, Safari/Firefox, iOS, the KaTeX CSS from the CDN on the deployed site, and the Hugo version in CI (latest) rather than local 0.154. Wide equations scroll inside their box with no visual hint.
