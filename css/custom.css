@@ -117,6 +117,9 @@ code, pre { font-family: var(--mono); }
 }
 .post-content pre code { background: transparent; padding: 0; }
 .post-content pre code, .post-content pre span { color: var(--content) !important; }
+/* Math: wide display equations scroll in their own box */
+.post-content .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.4rem 0; max-width: 100%; }
+.post-content .katex { font-size: 1.05em; }
 
 /* Tables */
 .post-content table { font-family: var(--sans); font-size: 14.5px; border-collapse: collapse; width: 100%; }
