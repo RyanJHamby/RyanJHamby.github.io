@@ -19,7 +19,8 @@ non_goals:
 risk_tier: 2
 max_runs: 3
 autonomy: inherit
-status: draft
+status: ready
+issue: 18
 ---
 
 ## Why
@@ -67,3 +68,4 @@ throwaway run to make the real site pass; Hugo 0.154.4 locally, CI uses latest).
 
 ## Log
 - 2026-10-31 draft; throwaway reference run: 11 of 11 tests pass with a ~60-line checker plus the one-line hugo.toml fix, then deleted.
+- 2026-10-31 ready, issue #18 (handshake was provisional; repo not yet onboarded with ap init; waiting for the owner's agent-ready label)
