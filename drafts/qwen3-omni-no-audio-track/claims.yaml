@@ -8,7 +8,7 @@
   verified_on:
 - key: repro_line
   kind: run
-  claim: "Clean-environment repro: same StopIteration at line 249 of processing_qwen3_omni_moe.py with transformers 5.22.1, use_audio_in_video=True; use_audio_in_video=False succeeds. macOS arm64, CPU, Python 3.12.12, numpy 2.5.4, torch 2.15.0. Processor loaded from Qwen/Qwen3-Omni-30B-A3B-Instruct (processor files only, no model weights). The 2 line numbers differ because the library versions differ."
+  claim: "Clean-environment repro: same StopIteration at line 249 of processing_qwen3_omni_moe.py with transformers 5.22.1, use_audio_in_video=True; use_audio_in_video=False succeeds. macOS arm64, CPU, Python 3.12.12, numpy 2.5.4, torch 2.15.0. Processor loaded from Qwen/Qwen3-Omni-30B-A3B-Instruct (processor files only, no model weights). The PR reports line 247; the PR does not state a transformers version, so the cause of the 2-line difference is unknown."
   evidence: "drafts/qwen3-omni-no-audio-track/repro-clean-env.log, produced by repro.py, 2026-10-31. Not a pow run capture; no timings are quoted."
   verified_by:
   verified_on:
