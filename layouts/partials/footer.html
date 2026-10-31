@@ -7,6 +7,9 @@
     <a href="https://substack.com/@ryanjhamby">Substack</a> ·
     <a href="/index.xml">RSS</a>
   </span>
+{{- if site.Params.goatcounter }}
+  <span class="footer-note">Anonymous page counts via GoatCounter. No cookies.</span>
+{{- end }}
 </footer>
 
 {{- if (not site.Params.disableThemeToggle) }}
