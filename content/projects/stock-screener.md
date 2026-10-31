@@ -37,8 +37,8 @@ Risk-managed position management with <span class="metric">max 10% risk, min 2:1
 
 **Volatility Contraction Pattern (VCP):**
 - Identifies price consolidation before explosive breakout
-- Formula: Range_i = ((High_i - Low_i) / Close_i) × 100
-- VCP_Score = (∑ Contractions / Total_Periods) × Trend_Quality
+- Formula: \(\text{Range}_i = \frac{\text{High}_i - \text{Low}_i}{\text{Close}_i} \times 100\)
+- \(\text{VCP\_Score} = \frac{\sum \text{Contractions}}{\text{Total\_Periods}} \times \text{Trend\_Quality}\)
 - Example: 13 contractions (6.5% → 5.8% → 7.6% → 6.0%) with 54/100 quality score indicates imminent breakout
 
 **Intelligent Market Regime Filtering:**
