@@ -153,20 +153,20 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
+<main class="main">
 <div class="post-content"><p>I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.</p>
 <p>Software Development Engineer II at AWS, New York. At work: fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.</p>
 <div class="links-line">
 <p><a href="/pdfs/Ryan_Hamby_Resume.pdf">Resume</a> <a href="https://github.com/RyanJHamby">GitHub</a> <a href="https://www.linkedin.com/in/ryan-j-hamby/">LinkedIn</a> <a href="https://substack.com/@ryanjhamby">Substack</a> <a href="mailto:ryan.j.hamby@gmail.com">Email</a></p>
 </div>
-<h2 id="selected-work">Selected work<a hidden class="anchor" aria-hidden="true" href="#selected-work">#</a></h2>
+<h2 id="selected-work">Selected work</h2>
 <ul class="work-list">
 <li><span class="meta">OPEN SOURCE · MERGED</span><strong><a href="/projects/#open-source">vLLM and Firecracker</a></strong><br>Root-caused a multimodal crash in vLLM's Qwen3-Omni processing; fixed a VMM panic on ACPI device restore in Firecracker.</li>
 <li><span class="meta">RUST · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust temporal join engine for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
 <li><span class="meta">GO · GRPC · SIMULATED RESULTS</span><strong><a href="/projects/gpu-flight-recorder/">GPU Flight Recorder</a></strong><br>Names the straggling rank in distributed GPU training by joining NCCL collective timings with per-GPU telemetry. Validated in simulation; no real-hardware results yet.</li>
 <li><span class="meta">C++20 · 2025–2026</span><strong><a href="/projects/order-book-engine/">Low-Latency Order Book Engine</a></strong><br>Lock-free SPSC ingestion and thread-local slab pools, benchmarked on EC2.</li>
 </ul>
-<h2 id="writing">Writing<a hidden class="anchor" aria-hidden="true" href="#writing">#</a></h2>
+<h2 id="writing">Writing</h2>
 
 
 <ul class="post-index">
@@ -177,86 +177,7 @@
 
 <p><a href="/writing">All posts</a> · <a href="https://substack.com/@ryanjhamby">Subscribe on Substack</a></p>
 
-
 </div>
-
-<article class="first-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">GPU Flight Recorder
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Mar 2026 - Sep 2026
-GitHub repository
-Finds the straggler in a distributed data-parallel training job and explains why it is slow. One slow rank makes every other rank wait at every collective; the symptom (step time went up) says nothing about the cause. Flight Recorder joins per-rank collective timing from the PyTorch NCCL flight recorder with per-GPU NVML telemetry, names the straggling rank, and ranks likely causes (thermal or power throttle, ECC errors, degraded PCIe/NVLink, GPU contention, host stall) with the evidence behind each.
-...</p>
-  </div>
-  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
-  <a class="entry-link" aria-label="post link to GPU Flight Recorder" href="https://ryanjhamby.dev/projects/gpu-flight-recorder/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">FlowState
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Mar 2026 - Oct 2026
-GitHub repository
-Rust-accelerated temporal join engine for point-in-time ML feature pipelines: join trades, quotes, and signals without look-ahead bias, in batch or streaming.
-Rust as-of join engine with O(n&#43;m) merge-scan kernels, zero-copy Arrow via the PyCapsule interface, and lock-free UnsafeCell writes across Rayon workers Streaming incremental join with watermark-based emission, per-symbol state, and configurable lateness tolerance; streaming output verified identical to batch 132 Rust tests, including property-based checks of every kernel against reference implementations </p>
-  </div>
-  <footer class="entry-footer"><span>1 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
-  <a class="entry-link" aria-label="post link to FlowState" href="https://ryanjhamby.dev/projects/flowstate/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Low-Latency Order Book Engine
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Sep 2025 - Sep 2026
-GitHub repository
-Minimal, high-performance order book engine in C&#43;&#43; designed to explore the foundations of low-latency trading systems. Includes nanosecond-level order matcher skeleton, lock-free queues, thread-local memory pools, and automated benchmarking on AWS EC2 spot instances.
-Built C&#43;&#43;20 order matching engine with lock-free SPSC ingestion, thread-local slab pools, and inlined matching. On an isolated EC2 c6i.large core over 1M orders: P50 0.21 µs, P99.9 3.1–3.2 µs, 1.4–1.8M orders/sec Automated EC2 spot benchmarking with cloud-init for reproducible, low-cost latency profiling Latency and throughput figures are from the repo README (EC2 c6i.large, isolated core, 3 runs), not a pow run capture.
-...</p>
-  </div>
-  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
-  <a class="entry-link" aria-label="post link to Low-Latency Order Book Engine" href="https://ryanjhamby.dev/projects/order-book-engine/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Intelligent Stock Screener
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Nov 2025 - Present
-GitHub repository
-Fully automated stock screening system scanning 3,800&#43; US stocks daily using Mark Minervini’s Trend Template methodology. Identifies high-conviction buy/sell signals via phase-based trend classification, relative strength momentum, and fundamental quality filters.
-Automated daily scans of 3,800&#43; stocks with 74% API reduction via Git-based fundamental caching and GitHub Actions automation Phase-based classification identifying Phase 2 uptrend breakouts passing 7 of 8 Minervini criteria (50&gt;150&gt;200 SMA alignment, relative strength ≥70, volume confirmation) Risk-managed position management with max 10% risk, min 2:1 R:R ratio, automated stop-loss trailing, and tax-aware filtering for long-term positions Figures on this project are from the repo README, not a captured run.
-...</p>
-  </div>
-  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
-  <a class="entry-link" aria-label="post link to Intelligent Stock Screener" href="https://ryanjhamby.dev/projects/stock-screener/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Covariance-Based Macro Trading System
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Aug 2023 - May 2026
-GitHub repository
-Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
-Backtested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing C&#43;&#43; factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators &#43; VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ = UΛUᵀ) → S3, covered by 240&#43; unit tests Core Hypothesis Markets respond to unexpected economic information, not levels. Raw covariance is misleading—it captures expected relationships.
-...</p>
-  </div>
-  <footer class="entry-footer"><span>2 min</span>&nbsp;·&nbsp;<span>Ryan J Hamby</span></footer>
-  <a class="entry-link" aria-label="post link to Covariance-Based Macro Trading System" href="https://ryanjhamby.dev/projects/macro-trading-system/"></a>
-</article>
     </main>
     <footer class="footer">
   <span>© 2026 Ryan J Hamby</span>
