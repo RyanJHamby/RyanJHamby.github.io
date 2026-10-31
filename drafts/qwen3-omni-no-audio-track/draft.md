@@ -1,5 +1,6 @@
 ---
 title: "The fix for a Qwen3-Omni crash broke CI two ways before it merged"
+description: "A reported Qwen3-Omni crash on videos with no audio track: my first fix, the review that replaced it, and the two CI failures the new guard caused."
 date: 2026-10-31
 type: dead-end
 tags: ["vllm", "multimodal", "qwen3-omni", "build-log"]
