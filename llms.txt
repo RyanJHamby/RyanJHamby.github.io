@@ -15,7 +15,7 @@ Public claims here are backed by repos and dated history. Where a figure is not 
 ## Writing
 
 - [Writing](https://ryanjhamby.dev/writing/)
-- [Substack](https://substack.com/@ryanjhamby)
+- [Substack](https://ryanjhamby.substack.com)
 
 ## Contact
 
