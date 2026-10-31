@@ -16,7 +16,8 @@ non_goals:
 risk_tier: 1
 max_runs: 3
 autonomy: inherit
-status: draft
+status: ready
+issue: 19
 ---
 
 ## Why
@@ -56,3 +57,4 @@ Changes from the original:
 
 ## Log
 - 2026-10-31 draft; throwaway reference run: 8 of 8 tests pass with a ~35-line generalization, then deleted.
+- 2026-10-31 ready, issue #19 (handshake was provisional; repo not yet onboarded with ap init; waiting for the owner's agent-ready label)
