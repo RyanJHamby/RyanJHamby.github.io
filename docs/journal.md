@@ -120,3 +120,7 @@ Found while preparing the Substack version: two footnotes on the published Qwen3
 ## 2026-10-31 21:10 EDT (at 0cac7ce)
 
 Substack links point at the publication (ryanjhamby.substack.com, found from Ryan's Substack settings) instead of the substack.com/@ profile: home, about, footer, profile button, llms.txt; the home "Subscribe on Substack" goes to /subscribe. Checked that the publication and its subscribe page are live. Found, not fixed (it is Ryan's Substack, not this repo): the publication bio still reads "Software engineer at AWS ... systems performance, benchmarking rigor, and numerical correctness ... low-latency trading infra on the side", which does not match the site's AI-compute positioning. Not verified: the links on the deployed site until merged.
+
+## 2026-11-08 12:19 EST (at 4f79c17)
+
+standard/scaffold PR hit an add/add conflict on .github/ISSUE_TEMPLATE/bug.md: main had gained its own template (pow init) after I ran ap standard fix. Kept main's version, since the scaffolder never overwrites. Lesson: run the scaffolder against a freshly pulled main.
