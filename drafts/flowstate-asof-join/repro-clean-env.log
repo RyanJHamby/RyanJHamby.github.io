@@ -1,0 +1,137 @@
+Using CPython 3.14.3 interpreter at: /opt/homebrew/opt/python@3.14/bin/python3.14
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+Resolved 9 packages in 120ms
+Downloading pyarrow (32.7MiB)
+Downloading polars-runtime-32 (38.4MiB)
+Downloading pandas (9.7MiB)
+Downloading numpy (5.2MiB)
+ Downloaded numpy
+ Downloaded pandas
+ Downloaded pyarrow
+ Downloaded polars-runtime-32
+Prepared 4 packages in 2.93s
+Installed 9 packages in 45ms
+ + maturin==1.16.0
+ + numpy==2.5.4
+ + pandas==3.0.6
+ + polars==1.38.1
+ + polars-runtime-32==1.38.1
+ + pyarrow==23.0.1
+ + python-dateutil==3.0.0
+ + six==1.17.0
+ + tzdata==2026.6
+🐍 Found CPython 3.14 at /private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState/.venv/bin/python
+🔗 Found pyo3 bindings with abi3-py3.11 support
+📡 Using build options features from pyproject.toml
+Using Python 3.14.3 environment at: /private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState/.venv
+Checked 1 package in 1ms
+   Compiling autocfg v1.5.0
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling libm v0.2.16
+   Compiling target-lexicon v0.13.5
+   Compiling zerocopy v0.8.42
+   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling siphasher v1.0.2
+   Compiling core-foundation-sys v0.8.7
+   Compiling chrono-tz v0.10.4
+   Compiling phf_shared v0.12.1
+   Compiling iana-time-zone v0.1.65
+   Compiling phf v0.12.1
+   Compiling num-traits v0.2.19
+   Compiling getrandom v0.3.4
+   Compiling bitflags v2.11.0
+   Compiling version_check v0.9.5
+   Compiling once_cell v1.21.3
+   Compiling hashbrown v0.16.1
+   Compiling ahash v0.8.12
+   Compiling bytes v1.11.1
+   Compiling arrow-schema v58.0.0
+   Compiling lexical-util v1.0.7
+   Compiling syn v2.0.117
+   Compiling crossbeam-utils v0.8.21
+   Compiling matrixmultiply v0.3.10
+   Compiling semver v1.0.27
+   Compiling heck v0.5.0
+   Compiling lexical-write-integer v1.0.6
+   Compiling lexical-parse-integer v1.0.6
+   Compiling rustc_version v0.4.1
+   Compiling equivalent v1.0.2
+   Compiling pyo3-build-config v0.28.2
+   Compiling rawpointer v0.2.1
+   Compiling indexmap v2.13.0
+   Compiling flatbuffers v25.12.19
+   Compiling lexical-parse-float v1.0.6
+   Compiling lexical-write-float v1.0.6
+   Compiling unicode-segmentation v1.12.0
+   Compiling rayon-core v1.13.0
+   Compiling num-integer v0.1.46
+   Compiling chrono v0.4.44
+   Compiling num-complex v0.4.6
+   Compiling unicode-width v0.2.2
+   Compiling num-bigint v0.4.6
+   Compiling crossbeam-epoch v0.9.18
+   Compiling thiserror v1.0.69
+   Compiling comfy-table v7.2.2
+   Compiling crossbeam-deque v0.8.6
+   Compiling atoi v2.0.0
+   Compiling lexical-core v1.0.6
+   Compiling ndarray v0.17.2
+   Compiling rustc-hash v2.1.1
+   Compiling ryu v1.0.23
+   Compiling base64 v0.22.1
+   Compiling either v1.15.0
+   Compiling pyo3-ffi v0.28.2
+   Compiling pyo3-macros-backend v0.28.2
+   Compiling pyo3 v0.28.2
+   Compiling numpy v0.28.0
+   Compiling rayon v1.11.0
+   Compiling zerocopy-derive v0.8.42
+   Compiling thiserror-impl v1.0.69
+   Compiling pyo3-macros v0.28.2
+   Compiling half v2.7.1
+   Compiling arrow-buffer v58.0.0
+   Compiling arrow-data v58.0.0
+   Compiling arrow-array v58.0.0
+   Compiling arrow-select v58.0.0
+   Compiling arrow-ord v58.0.0
+   Compiling arrow-ipc v58.0.0
+   Compiling arrow-cast v58.0.0
+   Compiling pyo3-arrow v0.17.0
+   Compiling flowstate-core v0.1.0 (/private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState/flowstate-core)
+    Finished `release` profile [optimized] target(s) in 51.38s
+📦 Built wheel for abi3 Python ≥ 3.11 to /var/folders/n7/6rffgrz57nz8jmz85gl_0rwh0000gn/T/.tmpQHS1BM/flowstate_asof_core-0.1.0-cp311-abi3-macosx_11_0_arm64.whl
+✏️ Setting installed package as editable
+🛠 Installed flowstate-asof-core-0.1.0
+Resolved 8 packages in 519ms
+   Building flowstate-asof @ file:///private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState
+      Built flowstate-asof @ file:///private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState
+Prepared 4 packages in 70ms
+Installed 5 packages in 5ms
+ + flowstate-asof==0.1.0 (from file:///private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/repro/FlowState)
+ + fsspec==2026.9.0
+ + orjson==3.13.0
+ + websockets==17.4
+ + xxhash==4.0.2
+FlowState as-of join benchmark
+  hardware : Apple M4, 10 logical cores, 32 GB RAM
+  os       : macOS-26.6.2-arm64-arm-64bit-Mach-O
+  python   : 3.14.3
+  flowstate: 0.1.0 (Rust kernel: yes)
+  polars   : 1.38.1   pandas: 3.0.6   duckdb: not installed   pyarrow: 23.0.1
+  method   : median of 10 runs after 2 warmup; backward join, tolerance none; excludes data generation
+
+dataset: 1,000,000 left x 500,000 right rows, 1,000 symbols, synthetic random-walk quotes (seeds 42/99), globally timestamp-sorted
+  polars            9.3 ms   (min 9.0, max 11.3; 1.00x vs polars)
+  flowstate        12.7 ms   (min 12.1, max 13.3; 0.73x vs polars)
+  pandas           77.6 ms   (min 76.1, max 78.9; 0.12x vs polars)
+
+dataset: 10,000,000 left x 5,000,000 right rows, 1,000 symbols, synthetic random-walk quotes (seeds 42/99), globally timestamp-sorted
+  polars          128.5 ms   (min 125.8, max 137.4; 1.00x vs polars)
+  flowstate       186.4 ms   (min 178.6, max 195.1; 0.69x vs polars)
+  pandas          796.2 ms   (min 790.1, max 818.3; 0.16x vs polars)
+bash repro.sh $S/repro  136.93s user 8.81s system 163% cpu 1:28.90 total
+exit 0

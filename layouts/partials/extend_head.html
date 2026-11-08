@@ -1,1 +1,12 @@
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+{{- if not .IsHome }}
+<link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ site.Title }}: posts">
+{{- end }}
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+{{- $_ := .Content }}
+{{- if .Store.Get "hasMath" }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+{{- end }}
+{{- with site.Params.goatcounter }}{{ if not hugo.IsServer }}
+<script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+{{- end }}{{ end }}

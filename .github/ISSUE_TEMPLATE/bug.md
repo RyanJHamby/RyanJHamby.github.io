@@ -1,17 +1,13 @@
 ---
 name: Bug
-about: Something does not work as described
+about: Something broke; record the symptom, root cause, and fix
 labels: bug
 ---
 
-## What happened
+**Symptom**
 
-## What you expected
+**How to reproduce**
 
-## How to reproduce
+**Root cause**
 
-Exact commands or steps, and the version or commit.
-
-## Environment
-
-OS, language and tool versions.
+**Fix** (link the commit or PR)

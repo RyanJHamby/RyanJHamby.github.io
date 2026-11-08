@@ -1,8 +1,9 @@
 +++
+description = "Ryan J Hamby: software engineer working on AI compute, from serving to hardware. Background, interests and contact."
 title = "About"
 +++
 
-I'm a Software Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
+I'm a Software Development Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
 ## What I Do
 
@@ -26,4 +27,8 @@ I'm passionate about continuous learning. I've built multiple mobile apps (iOS/A
 
 ---
 
-Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/), [GitHub](https://github.com/RyanJHamby), or email me at [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com).
+Feel free to reach out on [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/), [GitHub](https://github.com/RyanJHamby), [Substack](https://ryanjhamby.substack.com), or email me at [ryan.j.hamby@gmail.com](mailto:ryan.j.hamby@gmail.com).
+
+## More
+
+[Experience](/experience) · [Hobby Projects](/hobby-projects) · [Education & Skills](/education) · [Contact](/contact)

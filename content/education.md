@@ -1,4 +1,5 @@
 +++
+description = "Education and skills."
 title = "Education & Skills"
 +++
 

@@ -1,4 +1,4 @@
-baseURL = 'https://ryanjhamby.github.io/'
+baseURL = 'https://ryanjhamby.dev/'
 languageCode = 'en-us'
 title = 'Ryan J Hamby'
 theme = 'PaperMod'
@@ -17,13 +17,24 @@ style = "monokai"
 [markup.goldmark.renderer]
 unsafe = true
 
+# Math: \( ... \) inline and $$ ... $$ or \[ ... \] display. Single-$ inline is deliberately
+# off: prices such as $2.49/GPU-hr are common in posts and would be parsed as equations.
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)']]
+
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+taxonomy = ["HTML"]
+term = ["HTML"]
 
 [menu]
 [[menu.main]]
-name = "Experience"
-url = "experience"
+name = "Writing"
+url = "writing"
 weight = 1
 
 [[menu.main]]
@@ -32,46 +43,43 @@ url = "projects"
 weight = 2
 
 [[menu.main]]
-name = "Hobby Projects"
-url = "hobby-projects"
+name = "About"
+url = "about"
 weight = 3
-
-[[menu.main]]
-name = "Education & Skills"
-url = "education"
-weight = 4
-
-[[menu.main]]
-name = "Blog"
-url = "blog"
-weight = 5
 
 [[menu.main]]
 name = "Resume"
 url = "pdfs/Ryan_Hamby_Resume.pdf"
-weight = 6
-
-[[menu.main]]
-name = "Contact"
-url = "contact"
-weight = 7
+weight = 4
 
 [params]
+images = ["images/og.png"]
 author = "Ryan J Hamby"
-description = "Software Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
+description = "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
 keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
 defaultTheme = "auto"
 ShowReadingTime = true
 ShowShareButtons = true
+ShareButtons = ["linkedin", "twitter", "reddit", "ycombinator"]
+# GoatCounter site code (the part before .goatcounter.com). Empty = no analytics script and no privacy note.
+goatcounter = "ryanjhamby"
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
 TocOpen = false
 
-[params.homeInfoParams]
-Title = "Ryan J Hamby"
-Content = "**📍 New York, NY | Software Engineer II @ AWS**\n\nI make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it."
+[params.schema]
+publisherType = "Person"
+
+[params.assets]
+favicon = "favicon.ico"
+favicon16x16 = "favicon-32.png"
+favicon32x32 = "favicon-32.png"
+apple_touch_icon = "apple-touch-icon.png"
+safari_pinned_tab = "favicon.svg"
+theme_color = "#1d4e89"
+msapplication_TileColor = "#1d4e89"
 
 [[params.socialIcons]]
 name = "linkedin"
@@ -81,10 +89,14 @@ url = "https://www.linkedin.com/in/ryan-j-hamby/"
 name = "github"
 url = "https://github.com/RyanJHamby"
 
+[[params.socialIcons]]
+name = "substack"
+url = "https://ryanjhamby.substack.com"
+
 [params.profileMode]
 enabled = false
 title = "Ryan J Hamby"
-subtitle = "Software Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
+subtitle = "Software Development Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
 imageUrl = "/images/headshot.jpg"
 imageTitle = "Profile Picture"
 imageWidth = 150
@@ -99,8 +111,8 @@ name = "Projects"
 url = "/projects"
 
 [[params.profileMode.buttons]]
-name = "Blog"
-url = "/blog"
+name = "Writing"
+url = "/writing"
 
 [[params.profileMode.buttons]]
 name = "Contact"
