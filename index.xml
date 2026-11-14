@@ -18,7 +18,7 @@
       <link>https://ryanjhamby.dev/writing/zonevex-retrospective/</link>
       <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
       <guid>https://ryanjhamby.dev/writing/zonevex-retrospective/</guid>
-      <description>Why I paused Zonevex, software that checked site control against interconnection-queue rules: the commit history, the outreach result, PJM&amp;#39;s own AI review tool, and what I would build instead.</description>
+      <description>Why I paused Zonevex, software that checked site control against interconnection-queue rules: the outreach result, PJM&amp;#39;s own AI review tool, and what I would build instead.</description>
     </item>
     <item>
       <title>The fix for a Qwen3-Omni crash broke CI two ways before it merged</title>
