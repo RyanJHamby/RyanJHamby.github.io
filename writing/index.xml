@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- 0.169.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Oct 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ryanjhamby.dev/writing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I paused the site-control checker I built for PJM&#39;s interconnection queue</title>
+      <link>https://ryanjhamby.dev/writing/zonevex-retrospective/</link>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://ryanjhamby.dev/writing/zonevex-retrospective/</guid>
+      <description>Why I paused Zonevex, software that checked site control against interconnection-queue rules: the commit history, the outreach result, PJM&amp;#39;s own AI review tool, and what I would build instead.</description>
+    </item>
     <item>
       <title>The fix for a Qwen3-Omni crash broke CI two ways before it merged</title>
       <link>https://ryanjhamby.dev/writing/qwen3-omni-no-audio-track/</link>
