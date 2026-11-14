@@ -3,7 +3,7 @@ title: "Why I paused the site-control checker I built for PJM's interconnection 
 date: 2026-11-13
 type: dead-end
 tags: [zonevex, postmortem, interconnection]
-description: "Why I paused Zonevex, software that checked site control against interconnection-queue rules: the commit history, the outreach result, PJM's own AI review tool, and what I would build instead."
+description: "Why I paused Zonevex, software that checked site control against interconnection-queue rules: the outreach result, PJM's own AI review tool, and what I would build instead."
 run_ids: [zonevex-repo-stats, zonevex-commits-by-month, zonevex-october-commits]
 results_commit: "see the commit that adds these results folders"
 ---
@@ -16,7 +16,7 @@ Lint: "Tapestry" trips the banned-phrase rule; it is a company name here.
 Counts come from a private repository; the captured runs are in results/.
 -->
 
-**TL;DR.** I built Zonevex, software that checks whether a developer's site control would hold up against an RTO's interconnection-queue rules: 836 commits on its main branch [run:repo_commits], almost all of them between February and June 2026 [run:commits_by_month]. After a silent summer I paused it in November. Two reasons: PJM, the RTO my free toolkits were built for, was already using an AI tool from Tapestry to review application documents [cite:pjm_release_hyperq], and I never found a channel to the people who buy this kind of software. The first is documented. The second is my judgment, not a measurement. The result was no paying customers, one booked call and one reply to 2,454 cold emails [est:outreach].
+**TL;DR.** I built Zonevex, software that checks whether a developer's site control would hold up against an RTO's interconnection-queue rules. It got no paying customers: 2,454 cold emails produced one reply and one booked call [est:outreach]. I paused it in November. Two reasons: PJM, the RTO my free toolkits were built for, was already using an AI tool from Tapestry to review application documents [cite:pjm_release_hyperq], and I never found a channel to the people who buy this kind of software. The first is documented. The second is my judgment, not a measurement.
 
 **Why this matters.** It cost me about 150 hours and $185 to find out [est:cost]. If you are thinking about compliance software for grid and power, the engineering is the part you can control, and it is the part I got furthest on.
 
@@ -30,10 +30,7 @@ I framed Zonevex from the start as a time-capped bet on distribution, not a prod
 
 Zonevex took lease and easement PDFs. Claude Vision extracted the fields, a parser turned legal descriptions into geometry, PostGIS computed parcel coverage, and per-RTO rules held in a database table produced the report. The code stayed in a private repository: first commit 2026-02-21, last 2026-10-22 [run:repo_span]. Around it I built a marketing site, free PJM toolkits and 25 blog posts [run:repo_blog_posts].
 
-![Bar chart of Zonevex commits per month in 2026: 148 in February, 199 in March, 44 in April, 338 in May, 100 in June, none in July, August or September, and 7 in October.](figure.png) [run:commits_by_month]
-*Commits per month on the Zonevex main branch. Counts commits, not effort.*
-
-The activity stopped after June. The repository has no commits in July, August or September, and a handful in October [run:commits_by_month]. The chart excludes the pause documents written in November. Three things overlapped over the summer: I decided to stop, other priorities took the time, and I was waiting on outreach.
+Work on the code stopped after June [run:commits_by_month]. Three things overlapped over the summer: I decided to stop, other priorities took the time, and I was waiting on outreach.
 
 The October commits were all between October 20 and 22 and were cleanup, not new product: removing prices from the public pages and the app, correcting claims in my HyperQ post, adding a PJM large-load post, fixing the web deploy workflow, and a first draft of a specification for an open interconnection rules register [run:october_commits].
 
@@ -42,6 +39,9 @@ In October I tried something smaller than selling: short, sourced notes that tol
 ## What happened
 
 The outcome was thin. Only some people downloaded the free calculator and toolkits, mostly from private equity firms. One call was booked through Cal.com with a founder in the site-control field. I sent 2,454 cold emails, one person replied, and they said they did not need it [est:outreach].
+
+![Horizontal bars to scale: 2,454 cold emails sent, 1 reply, 1 call booked, 0 paying customers.](figure.png) [est:outreach]
+*Outreach results, drawn to scale. My own figures.*
 
 My read: one reply from that many emails says something about my targeting and message. It does not show that the market has no need.
 
@@ -77,7 +77,7 @@ I would start with point-in-time capture: engines that record the state of inter
 [2] PJM Interconnection, news release "Over 800 New Generation Projects Seek To Connect Under PJM's Reformed Process," 2026-04-29. Accessed 2026-11-13. Archived 2026-07-03: web.archive.org/web/20260703040154/https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260429-over-800-new-generation-projects-seek-to-connect-under-pjms-reformed-process.pdf
 
 ---
-**Reproduce:** not applicable (a postmortem, not a benchmark). The counts come from a private repository. · **Raw data:** `results/2026-11-13-1729-zonevex-repo-stats/`, `results/2026-11-13-1729-zonevex-commits-by-month/` and `results/2026-11-13-1729-zonevex-october-commits/` in this site's repository
+**Reproduce:** not applicable (a postmortem, not a benchmark). The counts come from a private repository. · **Raw data:** `results/2026-11-13-1729-zonevex-repo-stats/`, `results/2026-11-13-1729-zonevex-commits-by-month/` and `results/2026-11-13-1729-zonevex-october-commits/` in this site's repository; the outreach figures are mine and are in `drafts/zonevex-retrospective/outreach.csv`
 **Published:** 2026-11-13 · **Last updated:** 2026-11-13 · [Changelog](#changelog)
 **AI disclosure:** Drafted with AI from my notes, my answers to its questions, my repository records and two primary sources it read. The decisions and judgments are mine. Figures marked as estimates are my recollection.
 **Corrections:** If something here is wrong, email ryan.j.hamby@gmail.com. I fix errors publicly in the changelog.
@@ -85,3 +85,4 @@ I would start with point-in-time capture: engines that record the state of inter
 ## Changelog
 
 - **2026-11-13:** Published. Counts from runs captured the same day.
+- **2026-11-13:** Replaced the chart of commits per month with the outreach results, and removed commit counts from the summary. Commit counts say little about effort or progress.
