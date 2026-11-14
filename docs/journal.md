@@ -148,3 +148,7 @@ Author verified the 12 claims cited by the Zonevex postmortem and completed the 
 ## 2026-11-13 20:12 EST (at 672ad52)
 
 Revised the published Zonevex postmortem after the author objected that commit counts as the figure and the story's focus looked sloppy (fair: commits are a poor proxy for effort, and the assistant had chosen that chart only because the writing rules ask for a figure and it was the only captured data). Now: the TL;DR leads with the outcome, the figure is the outreach results drawn to scale from outreach.csv (the author's own verified figures, claim outreach), commit counts reduced to one sentence about when work stopped. Removed claim repo_commits; trimmed one sentence from the commits_by_month evidence (the figure reference); verified fields untouched. Added a changelog line. Lint: only the company name Tapestry. Not verified: browser rendering.
+
+## 2026-11-13 21:16 EST (at 03932d3)
+
+Homepage fixes: renamed 'Merged upstream' to 'Upstream contributions' because it already listed an open, unmerged vLLM PR (the item is labelled OPEN), sorted the merged items newest first, and added Zonevex (paused) to Selected work with a link to the postmortem. The entry makes no new claims or numbers: it states what the tool checked, that it was paused in November 2026, and what the post covers. Not changed: the employer line (AWS) and the Experience page, pending the author's exact wording for the new role. Not verified: visual or layout problems the author mentioned but did not describe; browser rendering.
