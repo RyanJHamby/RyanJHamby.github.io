@@ -1,12 +1,6 @@
 # Evidence for draft.md. Every tagged number needs an entry here.
 # verified_by / verified_on are filled by Ryan only. Until every cited claim is verified, the post builds as a hidden draft.
 # Claim and evidence text becomes a public footnote, so write it for readers.
-- key: repo_commits
-  kind: run
-  claim: "836 commits on the main branch of the private Zonevex repository, counted through 2026-10-31 with git rev-list"
-  evidence: "results/2026-11-13-1729-zonevex-repo-stats/output.log, captured with pow run on 2026-11-13 (command in cmd.txt, hardware in env.txt). The repository itself is private"
-  verified_by: Ryan Hamby
-  verified_on: 2026-11-13
 - key: repo_span
   kind: run
   claim: "First commit 2026-02-21; last commit before the pause 2026-10-22, on the same main branch"
@@ -22,7 +16,7 @@
 - key: commits_by_month
   kind: run
   claim: "Commits on the Zonevex main branch per month in 2026: February 148, March 199, April 44, May 338, June 100, July 0, August 0, September 0, October 7. They sum to 836. November's commits record the pause and are excluded"
-  evidence: "results/2026-11-13-1729-zonevex-commits-by-month/output.log (command in cmd.txt, hardware in env.txt: Apple M4, 10 cores, 32 GB). The figure is generated from that log by figure.py in this post's draft folder. The repository is private"
+  evidence: "results/2026-11-13-1729-zonevex-commits-by-month/output.log (command in cmd.txt, hardware in env.txt: Apple M4, 10 cores, 32 GB). The repository is private"
   verified_by: Ryan Hamby
   verified_on: 2026-11-13
 - key: october_commits

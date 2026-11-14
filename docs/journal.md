@@ -144,3 +144,7 @@ Drafted the Zonevex postmortem and staged it as a hidden draft page (draft = tru
 ## 2026-11-13 20:03 EST (at c1416f7)
 
 Author verified the 12 claims cited by the Zonevex postmortem and completed the checklist (his statement; verified_by and verified_on were filled by him with a one-line command, not by me). Ran build_post.py --publish: 12 footnotes, draft = false, no unverified claims. Checked the live build: page present in the sitemap, both feeds and the writing index; no leftover tags or markers. Not verified by me: the author's claim checks, browser rendering. Merging the PR publishes the page; I did not merge.
+
+## 2026-11-13 20:12 EST (at 672ad52)
+
+Revised the published Zonevex postmortem after the author objected that commit counts as the figure and the story's focus looked sloppy (fair: commits are a poor proxy for effort, and the assistant had chosen that chart only because the writing rules ask for a figure and it was the only captured data). Now: the TL;DR leads with the outcome, the figure is the outreach results drawn to scale from outreach.csv (the author's own verified figures, claim outreach), commit counts reduced to one sentence about when work stopped. Removed claim repo_commits; trimmed one sentence from the commits_by_month evidence (the figure reference); verified fields untouched. Added a changelog line. Lint: only the company name Tapestry. Not verified: browser rendering.
