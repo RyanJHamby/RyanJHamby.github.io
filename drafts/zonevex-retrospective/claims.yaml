@@ -5,71 +5,71 @@
   kind: run
   claim: "836 commits on the main branch of the private Zonevex repository, counted through 2026-10-31 with git rev-list"
   evidence: "results/2026-11-13-1729-zonevex-repo-stats/output.log, captured with pow run on 2026-11-13 (command in cmd.txt, hardware in env.txt). The repository itself is private"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: repo_span
   kind: run
   claim: "First commit 2026-02-21; last commit before the pause 2026-10-22, on the same main branch"
   evidence: "results/2026-11-13-1729-zonevex-repo-stats/output.log. The repository is private"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: repo_blog_posts
   kind: run
   claim: "25 blog HTML files in the landing site's blog folder of the Zonevex repository"
   evidence: "results/2026-11-13-1729-zonevex-repo-stats/output.log. The repository is private"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: commits_by_month
   kind: run
   claim: "Commits on the Zonevex main branch per month in 2026: February 148, March 199, April 44, May 338, June 100, July 0, August 0, September 0, October 7. They sum to 836. November's commits record the pause and are excluded"
   evidence: "results/2026-11-13-1729-zonevex-commits-by-month/output.log (command in cmd.txt, hardware in env.txt: Apple M4, 10 cores, 32 GB). The figure is generated from that log by figure.py in this post's draft folder. The repository is private"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: october_commits
   kind: run
   claim: "The seven October 2026 commits all fall between 2026-10-20 and 2026-10-22: removing prices from the landing pages and the web app, excluding internal files from site deploys, correcting claims in a HyperQ post, adding a PJM large-load post, fixing the web deploy workflow, adding a specification for an open interconnection rules register, and adding engineering-journal scaffolding"
   evidence: "results/2026-11-13-1729-zonevex-october-commits/output.log (commit subjects). The repository is private"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: outreach
   kind: est
   claim: "2,454 cold emails sent; one person replied and said they did not need the product; one call was booked through Cal.com with a founder in the site-control field. Free calculator and toolkit downloads were few and came mostly from private equity firms"
   evidence: "My own figures. I have not published an export from the email-sending tool or the Cal.com booking"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: cost
   kind: est
   claim: "About 150 hours of my time and $185 in cash to build and run Zonevex"
   evidence: "My own estimate. I kept no timesheet or receipt export for it"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: pjm_release_811
   kind: cite
   claim: "811 generation projects applied to PJM's first Cycle 1 under the reformed process; the application window closed on 2026-04-27; the process requires proof of site control"
   evidence: "PJM Interconnection news release 'Over 800 New Generation Projects Seek To Connect Under PJM's Reformed Process', 2026-04-29, pages 1 to 2, accessed 2026-11-13. Archived 2026-07-03 at web.archive.org/web/20260703040154/https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260429-over-800-new-generation-projects-seek-to-connect-under-pjms-reformed-process.pdf"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: pjm_release_hyperq
   kind: cite
   claim: "PJM said it is using HyperQ, an AI-enabled tool developed by Google's Tapestry, to help review large volumes of application data, and that HyperQ is already helping with these reviews"
   evidence: "Same PJM release, page 1, accessed 2026-11-13. Same archived copy"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: tapestry_checks
   kind: cite
   claim: "Tapestry says HyperQ evaluates each bundled agreement against four OATT site-control elements: term, conveyance, exclusivity and minimum acreage. This is vendor-reported"
   evidence: "Tapestry, 'Field notes: HyperQ deployment in PJM's Cycle 1', tapestryenergy.com/en/projects/field-notes-hyperq-deployment-in-pjm-s-cycle-1, entries dated 2025-12-08 to 2026-11-10, accessed 2026-11-13. Archived 2026-10-21, before the 2026-11-10 entry, at web.archive.org/web/20261021195727/https://www.tapestryenergy.com/en/projects/field-notes-hyperq-deployment-in-pjm-s-cycle-1"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: tapestry_determinations
   kind: cite
   claim: "Tapestry's page states that 'PJM experts retained full control over all final determinations'. This is vendor-reported"
   evidence: "Same Tapestry page, footnote to the 2026-04-29 entry, accessed 2026-11-13. Same archived copy"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
 - key: tapestry_dev_access
   kind: cite
   claim: "Tapestry's page does not say developers can use HyperQ today. It lists developer pre-submission access as a future item with no date. This is vendor-reported"
   evidence: "Same Tapestry page, 'Looking ahead' section, as of the entry dated 2026-11-10, checked 2026-11-13. A claim about what a page does not say can change; the archived copy predates the 2026-11-10 entry"
-  verified_by:
-  verified_on:
+  verified_by: Ryan Hamby
+  verified_on: 2026-11-13
