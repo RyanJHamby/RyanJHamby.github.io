@@ -1,0 +1,1 @@
+sh -c git\ -C\ \"\$HOME/dev/zonevex\"\ log\ origin/main\ --since=2026-10-01\ --until=2026-11-01\ --format=\"%ad\ %s\"\ --date=short 

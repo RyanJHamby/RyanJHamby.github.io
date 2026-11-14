@@ -1,0 +1,1 @@
+sh -c git\ -C\ \"\$HOME/dev/zonevex\"\ log\ origin/main\ --format=%ad\ --date=format:%Y-%m\ \|\ sort\ \|\ uniq\ -c 

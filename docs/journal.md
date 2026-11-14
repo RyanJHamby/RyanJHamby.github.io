@@ -124,3 +124,19 @@ Substack links point at the publication (ryanjhamby.substack.com, found from Rya
 ## 2026-11-08 12:19 EST (at 4f79c17)
 
 standard/scaffold PR hit an add/add conflict on .github/ISSUE_TEMPLATE/bug.md: main had gained its own template (pow init) after I ran ap standard fix. Kept main's version, since the scaffolder never overwrites. Lesson: run the scaffolder against a freshly pulled main.
+
+## 2026-11-13 17:29 EST (at 4531f13)
+
+Ran `zonevex-repo-stats` → [results/2026-11-13-1729-zonevex-repo-stats](../results/2026-11-13-1729-zonevex-repo-stats) (exit 0, 0s). Notes: Counts from the private Zonevex repository through 2026-10-31 for the postmortem: 836 commits, first 2026-02-21, last before the pause 2026-10-22, 25 landing-site blog pages. These are counts, not performance results.
+
+## 2026-11-13 17:29 EST (at 4531f13)
+
+Ran `zonevex-commits-by-month` → [results/2026-11-13-1729-zonevex-commits-by-month](../results/2026-11-13-1729-zonevex-commits-by-month) (exit 0, 0s). Notes: Commits per month from the same repository; the source of the post's figure. February to October sum to 836; November's commits are pause documents and are excluded from the figure.
+
+## 2026-11-13 17:29 EST (at 4531f13)
+
+Ran `zonevex-october-commits` → [results/2026-11-13-1729-zonevex-october-commits](../results/2026-11-13-1729-zonevex-october-commits) (exit 0, 0s). Notes: Subjects of the seven October commits, used to describe what they were.
+
+## 2026-11-13 19:54 EST (at 4531f13)
+
+Drafted the Zonevex postmortem and staged it as a hidden draft page (draft = true) on branch post/zonevex-retrospective. drafts/zonevex-retrospective/build_post.py builds the page bundle and its --publish mode refuses until every cited claim has verified_by and verified_on filled in; I did not fill those, since only the author verifies. Figures tagged est are the author's own: 2,454 cold emails with one reply, one booked call, about 150 hours and 185 dollars. Sources read on 2026-11-13: PJM's 2026-04-29 release and Tapestry's HyperQ field-notes page (the latter through a summarizing fetch). Not verified: the estimates against the sending tool and booking, the Tapestry claims by opening the page, browser rendering. Found: the PaperMod theme submodule was not checked out in this clone, so site pages rendered blank locally.

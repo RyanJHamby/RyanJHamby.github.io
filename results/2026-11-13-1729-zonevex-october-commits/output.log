@@ -1,0 +1,7 @@
+2026-10-22 fix(ci): drop unused desktop install from web deploy; fail clearly when Vercel secrets are missing (#744)
+2026-10-22 chore: pow scaffolding and engineering journal (#743)
+2026-10-22 Add Open Interconnection Rules Register specification (v0.1) (#738)
+2026-10-22 fix(web): remove plan prices from frontend; confirm PJM dates; index large-load post (#741)
+2026-10-22 fix(landing): correct HyperQ claims (blog rewrite, guide, PDF) (#742)
+2026-10-21 fix(landing): exclude internal files from Vercel deploys (#740)
+2026-10-20 fix(landing): remove pricing from served pages, fix stale dates, refresh calendar, add PJM large-load post (#739)
