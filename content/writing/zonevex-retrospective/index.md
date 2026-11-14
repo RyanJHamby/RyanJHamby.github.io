@@ -3,7 +3,7 @@ title = "Why I paused the site-control checker I built for PJM's interconnection
 date = 2026-11-13
 description = "Why I paused Zonevex, software that checked site control against interconnection-queue rules: the commit history, the outreach result, PJM's own AI review tool, and what I would build instead."
 tags = ["zonevex", "postmortem", "interconnection"]
-draft = true
+draft = false
 +++
 
 **TL;DR.** I built Zonevex, software that checks whether a developer's site control would hold up against an RTO's interconnection-queue rules: 836 commits on its main branch[^repo_commits], almost all of them between February and June 2026[^commits_by_month]. After a silent summer I paused it in November. Two reasons: PJM, the RTO my free toolkits were built for, was already using an AI tool from Tapestry to review application documents[^pjm_release_hyperq], and I never found a channel to the people who buy this kind of software. The first is documented. The second is my judgment, not a measurement. The result was no paying customers, one booked call and one reply to 2,454 cold emails[^outreach].

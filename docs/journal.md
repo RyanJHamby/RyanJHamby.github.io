@@ -140,3 +140,7 @@ Ran `zonevex-october-commits` → [results/2026-11-13-1729-zonevex-october-commi
 ## 2026-11-13 19:54 EST (at 4531f13)
 
 Drafted the Zonevex postmortem and staged it as a hidden draft page (draft = true) on branch post/zonevex-retrospective. drafts/zonevex-retrospective/build_post.py builds the page bundle and its --publish mode refuses until every cited claim has verified_by and verified_on filled in; I did not fill those, since only the author verifies. Figures tagged est are the author's own: 2,454 cold emails with one reply, one booked call, about 150 hours and 185 dollars. Sources read on 2026-11-13: PJM's 2026-04-29 release and Tapestry's HyperQ field-notes page (the latter through a summarizing fetch). Not verified: the estimates against the sending tool and booking, the Tapestry claims by opening the page, browser rendering. Found: the PaperMod theme submodule was not checked out in this clone, so site pages rendered blank locally.
+
+## 2026-11-13 20:03 EST (at c1416f7)
+
+Author verified the 12 claims cited by the Zonevex postmortem and completed the checklist (his statement; verified_by and verified_on were filled by him with a one-line command, not by me). Ran build_post.py --publish: 12 footnotes, draft = false, no unverified claims. Checked the live build: page present in the sitemap, both feeds and the writing index; no leftover tags or markers. Not verified by me: the author's claim checks, browser rendering. Merging the PR publishes the page; I did not merge.
