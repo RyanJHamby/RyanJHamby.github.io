@@ -59,7 +59,7 @@ Withdrew the FlowState as-of join post (draft = true) pending a fair rerun: the 
 
 ## 2026-10-30 16:42 EDT (at 82aac77)
 
-Set up the writing system in the site repo: copied STYLE, CONTENT, AGENTS, CHECKLIST, templates and lint.py unchanged (baseline commit), then made three edits: AWS and former employers named in the confidentiality rule (Hume-only wording before), gmail in the corrections footer (hi@ before). Added tools/new_post.py (scaffold, tested in a scratch copy: creates the folder, refuses overwrite, rejects bad slugs, lint runs on the fresh template) and writing-rules/backlog.md seeded only from evidence in repos. tokenomics-bench is the strongest anchor: pre-registered, hardware runs not yet performed.
+Set up the writing system in the site repo: copied STYLE, CONTENT, AGENTS, CHECKLIST, templates and lint.py unchanged (baseline commit), then made three edits: AWS and former employers named in the confidentiality rule (narrower wording before), gmail in the corrections footer (hi@ before). Added tools/new_post.py (scaffold, tested in a scratch copy: creates the folder, refuses overwrite, rejects bad slugs, lint runs on the fresh template) and writing-rules/backlog.md seeded only from evidence in repos. tokenomics-bench is the strongest anchor: pre-registered, hardware runs not yet performed.
 
 ## 2026-10-30 17:04 EDT (at 9e69d03)
 
