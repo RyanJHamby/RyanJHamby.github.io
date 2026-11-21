@@ -30,6 +30,9 @@ I framed Zonevex from the start as a time-capped bet on distribution, not a prod
 
 Zonevex took lease and easement PDFs. Claude Vision extracted the fields, a parser turned legal descriptions into geometry, PostGIS computed parcel coverage, and per-RTO rules held in a database table produced the report. The code stayed in a private repository: first commit 2026-02-21, last 2026-10-22 [run:repo_span]. Around it I built a marketing site, free PJM toolkits and 25 blog posts [run:repo_blog_posts].
 
+![Zonevex Site Map view: a project boundary over land parcels shaded green where site control counts in full, amber where it counts partly and red where there is a gap, with a coverage badge against the required threshold and the list of lease and permit instruments beside the map.](site-map.jpg)
+*The Site Map view on a demo project with sample data, not a customer's. Each parcel is shaded by whether its lease or permit counts toward the coverage the interconnection stage requires.*
+
 Work on the code stopped after June [run:commits_by_month]. Three things overlapped over the summer: I decided to stop, other priorities took the time, and I was waiting on outreach.
 
 The October commits were all between October 20 and 22 and were cleanup, not new product: removing prices from the public pages and the app, correcting claims in my HyperQ post, adding a PJM large-load post, fixing the web deploy workflow, and a first draft of a specification for an open interconnection rules register [run:october_commits].
@@ -86,3 +89,4 @@ I would start with point-in-time capture: engines that record the state of inter
 
 - **2026-11-13:** Published. Counts from runs captured the same day.
 - **2026-11-13:** Replaced the chart of commits per month with the outreach results, and removed commit counts from the summary. Commit counts say little about effort or progress.
+- **2026-11-21:** Added a screenshot of the Site Map view (demo project, sample data).
