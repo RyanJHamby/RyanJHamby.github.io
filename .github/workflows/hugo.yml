@@ -1,6 +1,8 @@
 name: Deploy Hugo site
 
 on:
+  schedule:
+    - cron: '17 9 * * 1'   # weekly refresh of the receipts ledger
   push:
     branches:
       - main
@@ -27,12 +29,22 @@ jobs:
         with:
           hugo-version: 'latest'
 
+      - name: Collect receipts from public repos
+        run: |
+          mkdir -p _repos data
+          for r in FlowState order-book-engine distributed-gpu-training-flight-recorder tokenomics-bench measured-speedup-harness; do
+            git clone --quiet --depth 1 "https://github.com/RyanJHamby/$r" "_repos/$r"
+          done
+          python3 tools/collect_claims.py --verified-only data/claims.json .=RyanJHamby/RyanJHamby.github.io \
+            $(for d in _repos/*; do echo "$d=RyanJHamby/$(basename "$d")"; done)
+          cp data/claims.json static/claims.json
+
       - name: Build
         run: hugo
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

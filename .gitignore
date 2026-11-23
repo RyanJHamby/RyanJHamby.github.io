@@ -13,3 +13,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+# generated in CI by tools/collect_claims.py
+/data/claims.json
+/static/claims.json
+/_repos/
