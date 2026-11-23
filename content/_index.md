@@ -5,7 +5,7 @@ description = "Software engineer working on AI compute, from the serving layer t
 
 I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
-Software Development Engineer II at AWS, New York. At work: fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.
+Senior Software Engineer on an inference data plane at an AI company, New York. Before that, nearly four years at AWS on fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.
 
 <div class="links-line">
 

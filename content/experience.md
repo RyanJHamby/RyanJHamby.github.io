@@ -3,9 +3,13 @@ description = "Work history and key achievements."
 title = "Experience"
 +++
 
+## Senior Software Engineer, inference data plane
+
+**AI company (not named here yet) | Nov 2026 - Present | New York, NY**
+
 ## Amazon Web Services - Software Development Engineer II
 
-**AWS Marketplace, Payment Compliance Team | Dec 2024 - Present | New York, NY**
+**AWS Marketplace, Payment Compliance Team | Dec 2024 - Nov 2026 | New York, NY**
 
 ![Amazon Logo](/images/amazon.png)
 
