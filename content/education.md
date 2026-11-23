@@ -35,7 +35,7 @@ Leadership & Involvement:
 
 **Distributed Systems:** Kafka, gRPC/Protobuf, Exactly-Once Delivery, Idempotency, Circuit Breakers, Stream Processing
 
-**Cloud & Infra:** AWS (EC2, Lambda, DynamoDB, SQS, S3, Step Functions), Linux, Kubernetes, Docker, Terraform, Redis, PostgreSQL, Prometheus, CI/CD
+**Cloud & Infra:** AWS (EC2, Lambda, DynamoDB, SQS, S3, Step Functions), Linux, Docker, Redis, PostgreSQL, Prometheus, CI/CD
 
 **Frontend:** React, Node.js, Flutter, iOS (Swift), Android (Kotlin), TailwindCSS, Figma
 
