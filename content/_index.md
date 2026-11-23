@@ -13,6 +13,8 @@ Senior Software Engineer on an inference data plane at an AI company, New York. 
 
 </div>
 
+**Open to:** advising AI-infrastructure and payments startups, technical diligence for investors, and early conversations with founders. [Email me](mailto:ryan.j.hamby@gmail.com).
+
 ## Upstream contributions
 
 <ul class="work-list">
