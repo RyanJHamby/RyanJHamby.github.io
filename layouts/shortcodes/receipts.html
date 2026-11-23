@@ -1,0 +1,18 @@
+{{- /* Receipts: renders data/claims.json written in CI by tools/collect_claims.py. */ -}}
+{{- with site.Data.claims }}
+<p class="meta">Generated {{ .generated_at }} · <a href="/claims.json">claims.json</a> · {{ len .runs }} runs · {{ len .claims }} claims</p>
+<h2 id="runs">Captured runs</h2>
+<ul class="work-list">
+{{- range .runs }}
+<li><span class="meta">{{ .repo }} · {{ .date }}{{ if not .real_host }} · LAPTOP RUN, NOT FOR CITING{{ end }}</span><strong><a href="{{ .url }}">{{ .name }}</a></strong><br>{{ with .hardware }}{{ index . "cpu" }}{{ with index . "gpu" }} · {{ . }}{{ end }}{{ with index . "host-os" }} · {{ . }}{{ end }}{{ end }} · commit <code>{{ .commit }}</code></li>
+{{- end }}
+</ul>
+<h2 id="claims">Claims in published writing</h2>
+<ul class="work-list">
+{{- range .claims }}
+<li><span class="meta">{{ .kind | upper }} · {{ if .verified }}VERIFIED {{ .verified_on }}{{ else }}NOT YET VERIFIED{{ end }} · {{ .source }}</span>{{ .claim }}<br><em>Evidence:</em> {{ .evidence }}</li>
+{{- end }}
+</ul>
+{{- else }}
+<p>The receipts ledger is generated during the site build. If you are reading this, the build ran without it.</p>
+{{- end }}

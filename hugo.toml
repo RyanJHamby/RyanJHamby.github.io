@@ -43,14 +43,19 @@ url = "projects"
 weight = 2
 
 [[menu.main]]
+name = "Receipts"
+url = "receipts"
+weight = 3
+
+[[menu.main]]
 name = "About"
 url = "about"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Resume"
 url = "pdfs/Ryan_Hamby_Resume.pdf"
-weight = 4
+weight = 5
 
 [params]
 images = ["images/og.png"]
