@@ -27,7 +27,7 @@ Senior Software Engineer on an inference data plane at an AI company, New York. 
 ## Selected work
 
 <ul class="work-list">
-<li><span class="meta">RUST · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust temporal join engine for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
+<li><span class="meta">RUST + PYTHON · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust-kernel temporal join engine with a Python API for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
 <li><span class="meta">GO · GRPC · SIMULATED RESULTS</span><strong><a href="/projects/gpu-flight-recorder/">GPU Flight Recorder</a></strong><br>Names the straggling rank in distributed GPU training by joining NCCL collective timings with per-GPU telemetry. Validated in simulation; no real-hardware results yet.</li>
 <li><span class="meta">C++20 · 2025–2026</span><strong><a href="/projects/order-book-engine/">Low-Latency Order Book Engine</a></strong><br>Lock-free SPSC ingestion and thread-local slab pools, benchmarked on EC2.</li>
 <li><span class="meta">PYTHON · POSTGIS · 2026 · PAUSED</span><strong><a href="/writing/zonevex-retrospective/">Zonevex</a></strong><br>Checked whether a developer's site control would hold up against interconnection-queue rules. Paused in November 2026; the postmortem covers the outcome, PJM's own AI review tool, and what I would build instead.</li>
