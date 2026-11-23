@@ -11,7 +11,7 @@ I build resilient, high-performance systems. At work that means fault-tolerant, 
 
 ## Background
 
-I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and spent my first nearly four years building production systems at AWS. I've worked on distributed systems processing millions of requests per day, led infrastructure redesigns that unlocked hundreds of millions in annual revenue, and mentored engineers on system design principles.
+I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and then spent nearly four years building production systems at AWS. I've worked on distributed systems processing millions of requests per day, led infrastructure work that supported $112M+ a year in new marketplace GMV, and mentored engineers on system design principles.
 
 ## Interests
 
