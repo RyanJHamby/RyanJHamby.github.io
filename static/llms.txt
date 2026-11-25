@@ -4,7 +4,7 @@
 
 Focus: inference serving, GPU performance, distributed systems, exactly-once payment and metering systems, coding-agent guardrails.
 
-Open to: advising AI-infrastructure and payments startups, technical diligence for investors, and early conversations with founders (email below).
+Get in touch about inference performance, benchmarking methodology, or payments correctness (email below).
 
 Public claims here are backed by repos and dated history. Where a figure is not from a captured run, the page says so.
 
