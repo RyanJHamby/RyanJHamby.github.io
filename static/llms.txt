@@ -18,6 +18,10 @@ Public claims here are backed by repos and dated history. Where a figure is not 
 - [Order Book Engine](https://github.com/RyanJHamby/order-book-engine): C++20 matching engine; P50 0.21 us, P99.9 3.1-3.2 us, 1.4-1.8M orders/sec on an isolated EC2 c6i.large core (3 runs)
 - [GPU Flight Recorder](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder): implemented and validated in simulation only; no real-hardware results yet
 
+## Resume
+
+- [resume.md](https://ryanjhamby.dev/resume.md): plain-text resume built from this site's pages
+
 ## Receipts
 
 - [Receipts](https://ryanjhamby.dev/receipts/): every captured run (command, hardware, commit) and verified claim
