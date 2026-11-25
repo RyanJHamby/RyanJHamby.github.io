@@ -153,6 +153,10 @@ Revised the published Zonevex postmortem after the author objected that commit c
 
 Homepage fixes: renamed 'Merged upstream' to 'Upstream contributions' because it already listed an open, unmerged vLLM PR (the item is labelled OPEN), sorted the merged items newest first, and added Zonevex (paused) to Selected work with a link to the postmortem. The entry makes no new claims or numbers: it states what the tool checked, that it was paused in November 2026, and what the post covers. Not changed: the employer line (AWS) and the Experience page, pending the author's exact wording for the new role. Not verified: visual or layout problems the author mentioned but did not describe; browser rendering.
 
+## 2026-11-13 21:32 EST (at 82fa873)
+
+Cross-posted the Zonevex postmortem to Substack (https://ryanjhamby.substack.com/p/why-i-paused-the-site-control-checker) after it went live on ryanjhamby.dev. The Substack copy carries the canonical link at the top. Checked from outside: the page is readable without a login, shows the outreach figure and its caption, and lists sources 1 to 11 as separate paragraphs. Not checked: how the bold and headings look in a browser, and whether Substack emailed subscribers (the author knows). The first paste put plain markdown into Substack, and the first conversion had colliding reference numbers and a stray footnote marker; both were fixed by rebuilding the article as rich text before it was published. This closes the Substack step of CHECKLIST.md.
+
 ## 2026-11-21 13:57 EST (at 82fa873)
 
 Added a screenshot of the Zonevex Site Map view to the published postmortem and its draft, under "What I did" after the pipeline paragraph, at the author's request. The author supplied the image (file named Zonevex_demo); the caption says it is a demo project with sample data, which I inferred from the file name and the placeholder company names, not confirmed. The screenshot shows a CAISO rule set while the post is about PJM; the caption doesn't name an RTO. The post makes no new claims and quotes none of the numbers on screen. Added a changelog line. Not verified: browser rendering.
