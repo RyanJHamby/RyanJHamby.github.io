@@ -5,13 +5,15 @@ description = "Software engineer working on AI compute, from the serving layer t
 
 I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
-Software Development Engineer II at AWS, New York. At work: fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.
+Senior Software Engineer on an inference data plane at an AI company, New York. Before that, nearly four years at AWS on fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.
 
 <div class="links-line">
 
 [Resume](/pdfs/Ryan_Hamby_Resume.pdf) [GitHub](https://github.com/RyanJHamby) [LinkedIn](https://www.linkedin.com/in/ryan-j-hamby/) [Substack](https://ryanjhamby.substack.com) [Email](mailto:ryan.j.hamby@gmail.com)
 
 </div>
+
+**Open to:** advising AI-infrastructure and payments startups, technical diligence for investors, and early conversations with founders. [Email me](mailto:ryan.j.hamby@gmail.com).
 
 ## Upstream contributions
 
@@ -27,9 +29,10 @@ Software Development Engineer II at AWS, New York. At work: fault-tolerant, mult
 ## Selected work
 
 <ul class="work-list">
-<li><span class="meta">RUST · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust temporal join engine for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
+<li><span class="meta">RUST + PYTHON · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust-kernel temporal join engine with a Python API for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
 <li><span class="meta">GO · GRPC · SIMULATED RESULTS</span><strong><a href="/projects/gpu-flight-recorder/">GPU Flight Recorder</a></strong><br>Names the straggling rank in distributed GPU training by joining NCCL collective timings with per-GPU telemetry. Validated in simulation; no real-hardware results yet.</li>
 <li><span class="meta">C++20 · 2025–2026</span><strong><a href="/projects/order-book-engine/">Low-Latency Order Book Engine</a></strong><br>Lock-free SPSC ingestion and thread-local slab pools, benchmarked on EC2.</li>
+<li><span class="meta">GITHUB ACTIONS · PYTHON · 2026</span><strong><a href="https://github.com/RyanJHamby/autopilot-kit">autopilot-kit</a></strong><br>Guardrails for running coding agents across my repos: reusable workflows and stdlib scripts (guard, gate, handshake, automerge) that consuming repos pin by commit SHA, with no tokens and no network access in the scripts.</li>
 <li><span class="meta">PYTHON · POSTGIS · 2026 · PAUSED</span><strong><a href="/writing/zonevex-retrospective/">Zonevex</a></strong><br>Checked whether a developer's site control would hold up against interconnection-queue rules. Paused in November 2026; the postmortem covers the outcome, PJM's own AI review tool, and what I would build instead.</li>
 </ul>
 

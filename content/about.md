@@ -3,7 +3,7 @@ description = "Ryan J Hamby: software engineer working on AI compute, from servi
 title = "About"
 +++
 
-I'm a Software Development Engineer II at Amazon Web Services working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
+I'm a Senior Software Engineer on an inference data plane at an AI company. Before that I was a Software Development Engineer II at Amazon Web Services, working on payment infrastructure for AWS Marketplace. I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.
 
 ## What I Do
 
@@ -11,7 +11,7 @@ I build resilient, high-performance systems. At work that means fault-tolerant, 
 
 ## Background
 
-I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and have spent my career building production systems at AWS. I've worked on distributed systems processing millions of requests per day, led infrastructure redesigns that unlocked hundreds of millions in annual revenue, and mentored engineers on system design principles.
+I graduated from the University of Michigan with a B.S.E. in Computer Science (Magna Cum Laude) and then spent nearly four years building production systems at AWS. I've worked on distributed systems processing millions of requests per day, led infrastructure work that supported $112M+ a year in new marketplace GMV, and mentored engineers on system design principles.
 
 ## Interests
 

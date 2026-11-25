@@ -43,19 +43,24 @@ url = "projects"
 weight = 2
 
 [[menu.main]]
+name = "Receipts"
+url = "receipts"
+weight = 3
+
+[[menu.main]]
 name = "About"
 url = "about"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Resume"
 url = "pdfs/Ryan_Hamby_Resume.pdf"
-weight = 4
+weight = 5
 
 [params]
 images = ["images/og.png"]
 author = "Ryan J Hamby"
-description = "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust & C++"
+description = "Senior Software Engineer, inference data plane | AI compute systems: inference, GPU telemetry, low-latency Rust & C++ | prev. AWS"
 keywords = ["software engineer", "AI infrastructure", "inference", "GPU", "distributed systems", "Rust", "C++", "vLLM", "AWS"]
 defaultTheme = "auto"
 ShowReadingTime = true
@@ -96,7 +101,7 @@ url = "https://ryanjhamby.substack.com"
 [params.profileMode]
 enabled = false
 title = "Ryan J Hamby"
-subtitle = "Software Development Engineer II @ AWS | AI Compute • Distributed Systems • Low-Latency"
+subtitle = "Senior Software Engineer, inference data plane | AI Compute • Distributed Systems • Low-Latency | prev. AWS"
 imageUrl = "/images/headshot.jpg"
 imageTitle = "Profile Picture"
 imageWidth = 150

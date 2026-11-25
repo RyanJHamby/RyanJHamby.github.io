@@ -10,3 +10,25 @@
 {{- with site.Params.goatcounter }}{{ if not hugo.IsServer }}
 <script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 {{- end }}{{ end }}
+{{- if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://ryanjhamby.dev/#person",
+  "name": "Ryan J Hamby",
+  "url": "https://ryanjhamby.dev/",
+  "jobTitle": "Senior Software Engineer",
+  "description": "Software engineer working on AI compute: inference serving, GPU performance, distributed systems and exactly-once payment systems. Every published number links to a captured run.",
+  "homeLocation": {"@type": "Place", "name": "New York, NY"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Michigan"},
+  "knowsAbout": ["AI inference serving", "vLLM", "GPU performance", "distributed systems", "low-latency C++", "Rust", "benchmarking methodology", "exactly-once payment systems", "coding-agent guardrails"],
+  "sameAs": [
+    "https://github.com/RyanJHamby",
+    "https://www.linkedin.com/in/ryan-j-hamby/",
+    "https://ryanjhamby.substack.com"
+  ],
+  "subjectOf": {"@type": "Dataset", "name": "Receipts: captured runs and claims", "url": "https://ryanjhamby.dev/receipts/", "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://ryanjhamby.dev/claims.json"}}
+}
+</script>
+{{- end }}

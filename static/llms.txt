@@ -1,6 +1,10 @@
 # Ryan J Hamby
 
-> Software engineer working on AI compute: serving, GPU telemetry, and low-latency systems in Rust, C++ and Go. Based in New York.
+> Senior Software Engineer on an inference data plane at an AI company (previously AWS, payments and IoT). Works on AI compute: serving, GPU telemetry, and low-latency systems in Rust, C++ and Go. Based in New York.
+
+Focus: inference serving, GPU performance, distributed systems, exactly-once payment and metering systems, coding-agent guardrails.
+
+Open to: advising AI-infrastructure and payments startups, technical diligence for investors, and early conversations with founders (email below).
 
 Public claims here are backed by repos and dated history. Where a figure is not from a captured run, the page says so.
 
@@ -10,7 +14,14 @@ Public claims here are backed by repos and dated history. Where a figure is not 
 - [vllm-project/vllm#48420](https://github.com/vllm-project/vllm/pull/48420): merged fix, Qwen3-Omni multimodal processing crash
 - [firecracker#6032](https://github.com/firecracker-microvm/firecracker/pull/6032): merged fix, VMM panic on ACPI device restore
 - [FlowState](https://github.com/RyanJHamby/FlowState): Rust temporal join engine
+- [autopilot-kit](https://github.com/RyanJHamby/autopilot-kit): SHA-pinned workflows and stdlib scripts that gate coding agents working across repos
+- [Order Book Engine](https://github.com/RyanJHamby/order-book-engine): C++20 matching engine; P50 0.21 us, P99.9 3.1-3.2 us, 1.4-1.8M orders/sec on an isolated EC2 c6i.large core (3 runs)
 - [GPU Flight Recorder](https://github.com/RyanJHamby/distributed-gpu-training-flight-recorder): implemented and validated in simulation only; no real-hardware results yet
+
+## Receipts
+
+- [Receipts](https://ryanjhamby.dev/receipts/): every captured run (command, hardware, commit) and verified claim
+- [claims.json](https://ryanjhamby.dev/claims.json): the same ledger as JSON
 
 ## Writing
 

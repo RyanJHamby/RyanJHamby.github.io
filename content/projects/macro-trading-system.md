@@ -14,7 +14,7 @@ status = "Aug 2023 – May 2026"
 Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
 
 <div class="achievement">
-Backtested on real FRED data over <span class="metric">17 years (2007–2024)</span>: <span class="metric">0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown</span> with half-Kelly, regime-adjusted position sizing
+Backtest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. <strong>Results withdrawn pending a rerun:</strong> the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited
 </div>
 
 <div class="achievement">
@@ -59,7 +59,7 @@ Solution: Decompose surprise covariance via PCA to identify 3-4 interpretable ma
 
 **Validation:**
 - 240+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability, Sharpe/drawdown/P&L accuracy
-- 17-year backtest (2007–2024, 468 trades): 0.28 Sharpe, 3.23% max drawdown, 2.10% annualized return, 87.2% win rate (selectivity, not edge); NASDAQCOM proxy for 2007–2016 equity returns; figures from the repo README, not a captured run
+- Backtest (2007–2024): figures withdrawn until a lagged rerun through the PCA model is captured; NASDAQCOM proxy for 2007–2016 equity returns
 
 ## Data Inputs
 

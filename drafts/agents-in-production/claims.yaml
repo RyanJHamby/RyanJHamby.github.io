@@ -1,0 +1,8 @@
+# Evidence for draft.md. Every tagged number needs an entry here.
+# verified_by / verified_on are filled by Ryan only.
+# - key: <short_name>
+#   kind: run | cite | est
+#   claim: "<the exact claim, with units>"
+#   evidence: "<results path @ commit, URL + access date, or arithmetic and inputs>"
+#   verified_by:
+#   verified_on:
