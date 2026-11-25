@@ -1,0 +1,219 @@
+{
+  "schema": "ryanjhamby.dev/claims/v1",
+  "subject": {
+    "name": "Ryan J Hamby",
+    "url": "https://ryanjhamby.dev/"
+  },
+  "generated_at": "2026-11-25T03:01:02Z",
+  "note": "Runs marked real_host=false were captured on a laptop and are not the figures to cite.",
+  "runs": [
+    {
+      "id": ":2026-11-13-1729-zonevex-commits-by-month",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "name": "2026-11-13-1729-zonevex-commits-by-month",
+      "date": "2026-11-13 17:29 EST",
+      "commit": "4531f13 (uncommitted changes)",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": "sh -c git\\ -C\\ \\\"\\$HOME/dev/zonevex\\\"\\ log\\ origin/main\\ --format=%ad\\ --date=format:%Y-%m\\ \\|\\ sort\\ \\|\\ uniq\\ -c",
+      "url": "https://github.com/RyanJHamby/RyanJHamby.github.io/tree/HEAD/results/2026-11-13-1729-zonevex-commits-by-month"
+    },
+    {
+      "id": ":2026-11-13-1729-zonevex-october-commits",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "name": "2026-11-13-1729-zonevex-october-commits",
+      "date": "2026-11-13 17:29 EST",
+      "commit": "4531f13 (uncommitted changes)",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": "sh -c git\\ -C\\ \\\"\\$HOME/dev/zonevex\\\"\\ log\\ origin/main\\ --since=2026-10-01\\ --until=2026-11-01\\ --format=\\\"%ad\\ %s\\\"\\ --date=short",
+      "url": "https://github.com/RyanJHamby/RyanJHamby.github.io/tree/HEAD/results/2026-11-13-1729-zonevex-october-commits"
+    },
+    {
+      "id": ":2026-11-13-1729-zonevex-repo-stats",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "name": "2026-11-13-1729-zonevex-repo-stats",
+      "date": "2026-11-13 17:29 EST",
+      "commit": "4531f13",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": "sh -c cd\\ \\\"\\$HOME/dev/zonevex\\\"\\ \\&\\&\\ echo\\ \\\"commits\\ on\\ origin/main\\ through\\ 2026-10-31:\\ \\$\\(git\\ rev-list\\ --count\\ --before=2026-11-01T00:00:00\\ origin/main\\)\\\"\\;\\ echo\\ \\\"first\\ commit:\\ \\$\\(git\\ log\\ --reverse\\ --format=%ad\\ --date=short\\ origin/main\\ \\|\\ head\\ -1\\)\\\"\\;\\ echo\\ \\\"last\\ commit\\ before\\ 2026-11-01:\\ \\$\\(git\\ log\\ --before=2026-11-01T00:00:00\\ -1\\ --format=%ad\\ --date=short\\ origin/main\\)\\\"\\;\\ echo\\ \\\"landing\\ blog\\ html\\ files:\\ \\$\\(git\\ ls-files\\ site-control-auditor/landing/blog\\ \\|\\ grep\\ -c\\ \\\"\\\\.html\\$\\\"\\)\\\"",
+      "url": "https://github.com/RyanJHamby/RyanJHamby.github.io/tree/HEAD/results/2026-11-13-1729-zonevex-repo-stats"
+    },
+    {
+      "id": "FlowState:2026-10-04-1729-asof-join-vs-polars-pandas",
+      "repo": "RyanJHamby/FlowState",
+      "name": "2026-10-04-1729-asof-join-vs-polars-pandas",
+      "date": "2026-10-04 17:29 EDT",
+      "commit": "0df6f05",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": ".venv/bin/python -W ignore benchmarks/reproduce.py --pandas-scale --runs 5",
+      "url": "https://github.com/RyanJHamby/FlowState/tree/HEAD/results/2026-10-04-1729-asof-join-vs-polars-pandas"
+    },
+    {
+      "id": "FlowState:2026-10-30-1412-asof-join-spread",
+      "repo": "RyanJHamby/FlowState",
+      "name": "2026-10-30-1412-asof-join-spread",
+      "date": "2026-10-30 14:12 EDT",
+      "commit": "fe67b08",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": ".venv/bin/python -W ignore benchmarks/reproduce.py --pandas-scale --runs 10",
+      "url": "https://github.com/RyanJHamby/FlowState/tree/HEAD/results/2026-10-30-1412-asof-join-spread"
+    },
+    {
+      "id": "FlowState:2026-10-30-1423-asof-join-march-build-3c7486a",
+      "repo": "RyanJHamby/FlowState",
+      "name": "2026-10-30-1423-asof-join-march-build-3c7486a",
+      "date": "2026-10-30 14:23 EDT",
+      "commit": "fdc202b",
+      "hardware": {
+        "host-os": "Darwin 25.6.0 arm64",
+        "cpu": "Apple M4, 10 logical cores",
+        "memory": "32 GB"
+      },
+      "real_host": false,
+      "exit_code": "0",
+      "command": "/private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/wt/.venv/bin/python -W ignore /private/tmp/claude-501/-Users-ryanhamby-dev-drillpad/6704cbf7-1607-4d44-808b-1a4cc22ae675/scratchpad/wt/reproduce_current.py --runs 10",
+      "url": "https://github.com/RyanJHamby/FlowState/tree/HEAD/results/2026-10-30-1423-asof-join-march-build-3c7486a"
+    }
+  ],
+  "claims": [
+    {
+      "id": ":zonevex-retrospective:repo_span",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "run",
+      "claim": "First commit 2026-02-21; last commit before the pause 2026-10-22, on the same main branch",
+      "evidence": "results/2026-11-13-1729-zonevex-repo-stats/output.log. The repository is private",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:repo_blog_posts",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "run",
+      "claim": "25 blog HTML files in the landing site's blog folder of the Zonevex repository",
+      "evidence": "results/2026-11-13-1729-zonevex-repo-stats/output.log. The repository is private",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:commits_by_month",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "run",
+      "claim": "Commits on the Zonevex main branch per month in 2026: February 148, March 199, April 44, May 338, June 100, July 0, August 0, September 0, October 7. They sum to 836. November's commits record the pause and are excluded",
+      "evidence": "results/2026-11-13-1729-zonevex-commits-by-month/output.log (command in cmd.txt, hardware in env.txt: Apple M4, 10 cores, 32 GB). The repository is private",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:october_commits",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "run",
+      "claim": "The seven October 2026 commits all fall between 2026-10-20 and 2026-10-22: removing prices from the landing pages and the web app, excluding internal files from site deploys, correcting claims in a HyperQ post, adding a PJM large-load post, fixing the web deploy workflow, adding a specification for an open interconnection rules register, and adding engineering-journal scaffolding",
+      "evidence": "results/2026-11-13-1729-zonevex-october-commits/output.log (commit subjects). The repository is private",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:outreach",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "est",
+      "claim": "2,454 cold emails sent; one person replied and said they did not need the product; one call was booked through Cal.com with a founder in the site-control field. Free calculator and toolkit downloads were few and came mostly from private equity firms",
+      "evidence": "My own figures. I have not published an export from the email-sending tool or the Cal.com booking",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:cost",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "est",
+      "claim": "About 150 hours of my time and $185 in cash to build and run Zonevex",
+      "evidence": "My own estimate. I kept no timesheet or receipt export for it",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:pjm_release_811",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "cite",
+      "claim": "811 generation projects applied to PJM's first Cycle 1 under the reformed process; the application window closed on 2026-04-27; the process requires proof of site control",
+      "evidence": "PJM Interconnection news release 'Over 800 New Generation Projects Seek To Connect Under PJM's Reformed Process', 2026-04-29, pages 1 to 2, accessed 2026-11-13. Archived 2026-07-03 at web.archive.org/web/20260703040154/https://www.pjm.com/-/media/DotCom/about-pjm/newsroom/2026-releases/20260429-over-800-new-generation-projects-seek-to-connect-under-pjms-reformed-process.pdf",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:pjm_release_hyperq",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "cite",
+      "claim": "PJM said it is using HyperQ, an AI-enabled tool developed by Google's Tapestry, to help review large volumes of application data, and that HyperQ is already helping with these reviews",
+      "evidence": "Same PJM release, page 1, accessed 2026-11-13. Same archived copy",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:tapestry_checks",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "cite",
+      "claim": "Tapestry says HyperQ evaluates each bundled agreement against four OATT site-control elements: term, conveyance, exclusivity and minimum acreage. This is vendor-reported",
+      "evidence": "Tapestry, 'Field notes: HyperQ deployment in PJM's Cycle 1', tapestryenergy.com/en/projects/field-notes-hyperq-deployment-in-pjm-s-cycle-1, entries dated 2025-12-08 to 2026-11-10, accessed 2026-11-13. Archived 2026-10-21, before the 2026-11-10 entry, at web.archive.org/web/20261021195727/https://www.tapestryenergy.com/en/projects/field-notes-hyperq-deployment-in-pjm-s-cycle-1",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:tapestry_determinations",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "cite",
+      "claim": "Tapestry's page states that 'PJM experts retained full control over all final determinations'. This is vendor-reported",
+      "evidence": "Same Tapestry page, footnote to the 2026-04-29 entry, accessed 2026-11-13. Same archived copy",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    },
+    {
+      "id": ":zonevex-retrospective:tapestry_dev_access",
+      "repo": "RyanJHamby/RyanJHamby.github.io",
+      "source": "drafts/zonevex-retrospective/claims.yaml",
+      "kind": "cite",
+      "claim": "Tapestry's page does not say developers can use HyperQ today. It lists developer pre-submission access as a future item with no date. This is vendor-reported",
+      "evidence": "Same Tapestry page, 'Looking ahead' section, as of the entry dated 2026-11-10, checked 2026-11-13. A claim about what a page does not say can change; the archived copy predates the 2026-11-10 entry",
+      "verified": true,
+      "verified_on": "2026-11-13"
+    }
+  ]
+}

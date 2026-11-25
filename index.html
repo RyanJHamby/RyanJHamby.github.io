@@ -75,6 +75,26 @@
 </script><link rel="stylesheet" href="/css/custom.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script data-goatcounter="https://ryanjhamby.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://ryanjhamby.dev/#person",
+  "name": "Ryan J Hamby",
+  "url": "https://ryanjhamby.dev/",
+  "jobTitle": "Senior Software Engineer",
+  "description": "Software engineer working on AI compute: inference serving, GPU performance, distributed systems and exactly-once payment systems. Every published number links to a captured run.",
+  "homeLocation": {"@type": "Place", "name": "New York, NY"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Michigan"},
+  "knowsAbout": ["AI inference serving", "vLLM", "GPU performance", "distributed systems", "low-latency C++", "Rust", "benchmarking methodology", "exactly-once payment systems", "coding-agent guardrails"],
+  "sameAs": [
+    "https://github.com/RyanJHamby",
+    "https://www.linkedin.com/in/ryan-j-hamby/",
+    "https://ryanjhamby.substack.com"
+  ],
+  "subjectOf": {"@type": "Dataset", "name": "Receipts: captured runs and claims", "url": "https://ryanjhamby.dev/receipts/", "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://ryanjhamby.dev/claims.json"}}
+}
+</script>
 <meta property="og:url" content="https://ryanjhamby.dev/">
   <meta property="og:site_name" content="Ryan J Hamby">
   <meta property="og:title" content="Ryan J Hamby">
@@ -93,7 +113,7 @@
   "@type": "Person",
   "name": "Ryan J Hamby",
   "url": "https://ryanjhamby.dev/",
-  "description": "Software Development Engineer @ AWS | AI compute systems: inference, GPU telemetry, low-latency Rust \u0026amp; C++",
+  "description": "Senior Software Engineer, inference data plane | AI compute systems: inference, GPU telemetry, low-latency Rust \u0026amp; C++ | prev. AWS",
   "image": "https://ryanjhamby.dev/favicon.ico",
   "sameAs": [
       "https://www.linkedin.com/in/ryan-j-hamby/", "https://github.com/RyanJHamby", "https://ryanjhamby.substack.com"
@@ -142,6 +162,11 @@
                 </a>
             </li>
             <li>
+                <a href="https://ryanjhamby.dev/receipts" title="Receipts">
+                    <span>Receipts</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://ryanjhamby.dev/about" title="About">
                     <span>About</span>
                 </a>
@@ -156,10 +181,11 @@
 </header>
 <main class="main">
 <div class="post-content"><p>I make AI compute fast, efficient, and reliable, from the serving layer down to the hardware and the power behind it.</p>
-<p>Software Development Engineer II at AWS, New York. At work: fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.</p>
+<p>Senior Software Engineer on an inference data plane at an AI company, New York. Before that, nearly four years at AWS on fault-tolerant, multi-tenant payment and IoT systems. Outside work: the layer AI runs on.</p>
 <div class="links-line">
 <p><a href="/pdfs/Ryan_Hamby_Resume.pdf">Resume</a> <a href="https://github.com/RyanJHamby">GitHub</a> <a href="https://www.linkedin.com/in/ryan-j-hamby/">LinkedIn</a> <a href="https://ryanjhamby.substack.com">Substack</a> <a href="mailto:ryan.j.hamby@gmail.com">Email</a></p>
 </div>
+<p><strong>Open to:</strong> advising AI-infrastructure and payments startups, technical diligence for investors, and early conversations with founders. <a href="mailto:ryan.j.hamby@gmail.com">Email me</a>.</p>
 <h2 id="upstream-contributions">Upstream contributions</h2>
 <ul class="work-list">
 <li><span class="meta">vLLM · MERGED 2026-08-03</span><strong><a href="https://github.com/vllm-project/vllm/pull/48420">Qwen3-Omni crash on videos with no audio track</a></strong><br>Root-caused a <code>StopIteration</code> in multimodal processing when <code>use_audio_in_video=True</code>; fixed two follow-on false-positive paths in processor caching and class inheritance.</li>
@@ -170,9 +196,10 @@
 <p><a href="/projects/#open-source">All open-source work</a></p>
 <h2 id="selected-work">Selected work</h2>
 <ul class="work-list">
-<li><span class="meta">RUST · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust temporal join engine for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
+<li><span class="meta">RUST + PYTHON · ARROW · 2026</span><strong><a href="/projects/flowstate/">FlowState</a></strong><br>Rust-kernel temporal join engine with a Python API for point-in-time ML feature pipelines, batch and streaming, with zero-copy Arrow.</li>
 <li><span class="meta">GO · GRPC · SIMULATED RESULTS</span><strong><a href="/projects/gpu-flight-recorder/">GPU Flight Recorder</a></strong><br>Names the straggling rank in distributed GPU training by joining NCCL collective timings with per-GPU telemetry. Validated in simulation; no real-hardware results yet.</li>
 <li><span class="meta">C++20 · 2025–2026</span><strong><a href="/projects/order-book-engine/">Low-Latency Order Book Engine</a></strong><br>Lock-free SPSC ingestion and thread-local slab pools, benchmarked on EC2.</li>
+<li><span class="meta">GITHUB ACTIONS · PYTHON · 2026</span><strong><a href="https://github.com/RyanJHamby/autopilot-kit">autopilot-kit</a></strong><br>Guardrails for running coding agents across my repos: reusable workflows and stdlib scripts (guard, gate, handshake, automerge) that consuming repos pin by commit SHA, with no tokens and no network access in the scripts.</li>
 <li><span class="meta">PYTHON · POSTGIS · 2026 · PAUSED</span><strong><a href="/writing/zonevex-retrospective/">Zonevex</a></strong><br>Checked whether a developer's site control would hold up against interconnection-queue rules. Paused in November 2026; the postmortem covers the outcome, PJM's own AI review tool, and what I would build instead.</li>
 </ul>
 <h2 id="writing">Writing</h2>

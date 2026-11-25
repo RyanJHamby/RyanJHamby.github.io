@@ -11,7 +11,7 @@
 GitHub repository
 Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
 
-Backtested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing
+Backtest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. Results withdrawn pending a rerun: the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited
 
 
 C&#43;&#43; factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators &#43; VIX with AWS Lambda daily automation
@@ -92,7 +92,7 @@ End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Herm
   <meta property="og:description" content="Aug 2023 - May 2026
 GitHub repository
 Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
-Backtested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing C&#43;&#43; factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators &#43; VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\Sigma = U \Lambda U^{\top}Σ=UΛU⊤) → S3, covered by 240&#43; unit tests">
+Backtest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. Results withdrawn pending a rerun: the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited C&#43;&#43; factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators &#43; VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\Sigma = U \Lambda U^{\top}Σ=UΛU⊤) → S3, covered by 240&#43; unit tests">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
@@ -104,7 +104,7 @@ Backtested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% ann
 GitHub repository
 Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.
 
-Backtested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing
+Backtest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. Results withdrawn pending a rerun: the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited
 
 
 C&#43;&#43; factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators &#43; VIX with AWS Lambda daily automation
@@ -140,11 +140,11 @@ End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Herm
   "@type": "BlogPosting",
   "headline": "Covariance-Based Macro Trading System",
   "name": "Covariance-Based Macro Trading System",
-  "description": "Aug 2023 - May 2026\nGitHub repository\nSystematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.\nBacktested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤) → S3, covered by 240+ unit tests\n",
+  "description": "Aug 2023 - May 2026\nGitHub repository\nSystematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.\nBacktest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. Results withdrawn pending a rerun: the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤) → S3, covered by 240+ unit tests\n",
   "keywords": [
     
   ],
-  "articleBody": "Aug 2023 - May 2026\nGitHub repository\nSystematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.\nBacktested on real FRED data over 17 years (2007–2024): 0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown with half-Kelly, regime-adjusted position sizing C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤) → S3, covered by 240+ unit tests\nCore Hypothesis Markets respond to unexpected economic information, not levels. Raw covariance is misleading—it captures expected relationships.\nStandard assumption: E[rt∣Xt]=α+βXt\\mathbb{E}[r_t \\mid X_t] = \\alpha + \\beta X_tE[rt​∣Xt​]=α+βXt​\nReality: Markets react to surprises: ΔXt−Et[ΔXt]\\Delta X_t - \\mathbb{E}_t[\\Delta X_t]ΔXt​−Et​[ΔXt​]\nSolution: Decompose surprise covariance via PCA to identify 3-4 interpretable macro factors (growth, inflation, policy, volatility) and measure ES exposure across regimes.\n5-Stage Architecture Data Acquisition: FRED API (CPI, GDP, Unemployment, Sentiment, Fed Funds, Treasury yields) + VIX Temporal Alignment: Daily → month-end LOCF, Quarterly → Hermite interpolation to monthly Covariance Estimation: Σij=1n−1∑t(Xit−Xˉi)(Xjt−Xˉj)\\Sigma_{ij} = \\frac{1}{n-1} \\sum_t (X_{it} - \\bar{X}_i)(X_{jt} - \\bar{X}_j)Σij​=n−11​∑t​(Xit​−Xˉi​)(Xjt​−Xˉj​) Spectral Decomposition: Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤ → First 3-4 eigenvalues capture 85-92% variance Regime Quantification: Frobenius norm ∥Σ∥F=∑i,jσij2\\|\\Sigma\\|_F = \\sqrt{\\sum_{i,j} \\sigma_{ij}^2}∥Σ∥F​=∑i,j​σij2​​ maps to regime state Regime Classification:\nStable (∥Σ∥F\u003cμ−σ\\|\\Sigma\\|_F \u003c \\mu - \\sigma∥Σ∥F​\u003cμ−σ): Low uncertainty, tight co-movement Neutral (μ−σ≤∥Σ∥F≤μ+σ\\mu - \\sigma \\le \\|\\Sigma\\|_F \\le \\mu + \\sigmaμ−σ≤∥Σ∥F​≤μ+σ): Moderate uncertainty Elevated (∥Σ∥F\u003eμ+σ\\|\\Sigma\\|_F \u003e \\mu + \\sigma∥Σ∥F​\u003eμ+σ): High uncertainty, factor decoupling Infrastructure AWS Stack:\nEventBridge (cron: daily 12:00 UTC) → Lambda (512MB, 600s) → S3 (versioned, encrypted) Native C++ binary with Eigen, AWS SDK, curl IaC: AWS CDK 2.x (TypeScript, dev/staging/prod) Validation:\n240+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability, Sharpe/drawdown/P\u0026L accuracy 17-year backtest (2007–2024, 468 trades): 0.28 Sharpe, 3.23% max drawdown, 2.10% annualized return, 87.2% win rate (selectivity, not edge); NASDAQCOM proxy for 2007–2016 equity returns; figures from the repo README, not a captured run Data Inputs 8 economic indicators at mixed frequencies:\nCPI (monthly) - Inflation anchor Real GDP (quarterly) - Earnings driver Unemployment (monthly) - Labor tightness Consumer Sentiment (monthly) - Forward demand Fed Funds (monthly) - Discount rate 10Y/2Y Treasury (daily) - Yield curve VIX (daily) - Realized volatility ",
+  "articleBody": "Aug 2023 - May 2026\nGitHub repository\nSystematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.\nBacktest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. Results withdrawn pending a rerun: the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Hermite interpolation) → spectral decomposition (Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤) → S3, covered by 240+ unit tests\nCore Hypothesis Markets respond to unexpected economic information, not levels. Raw covariance is misleading—it captures expected relationships.\nStandard assumption: E[rt∣Xt]=α+βXt\\mathbb{E}[r_t \\mid X_t] = \\alpha + \\beta X_tE[rt​∣Xt​]=α+βXt​\nReality: Markets react to surprises: ΔXt−Et[ΔXt]\\Delta X_t - \\mathbb{E}_t[\\Delta X_t]ΔXt​−Et​[ΔXt​]\nSolution: Decompose surprise covariance via PCA to identify 3-4 interpretable macro factors (growth, inflation, policy, volatility) and measure ES exposure across regimes.\n5-Stage Architecture Data Acquisition: FRED API (CPI, GDP, Unemployment, Sentiment, Fed Funds, Treasury yields) + VIX Temporal Alignment: Daily → month-end LOCF, Quarterly → Hermite interpolation to monthly Covariance Estimation: Σij=1n−1∑t(Xit−Xˉi)(Xjt−Xˉj)\\Sigma_{ij} = \\frac{1}{n-1} \\sum_t (X_{it} - \\bar{X}_i)(X_{jt} - \\bar{X}_j)Σij​=n−11​∑t​(Xit​−Xˉi​)(Xjt​−Xˉj​) Spectral Decomposition: Σ=UΛU⊤\\Sigma = U \\Lambda U^{\\top}Σ=UΛU⊤ → First 3-4 eigenvalues capture 85-92% variance Regime Quantification: Frobenius norm ∥Σ∥F=∑i,jσij2\\|\\Sigma\\|_F = \\sqrt{\\sum_{i,j} \\sigma_{ij}^2}∥Σ∥F​=∑i,j​σij2​​ maps to regime state Regime Classification:\nStable (∥Σ∥F\u003cμ−σ\\|\\Sigma\\|_F \u003c \\mu - \\sigma∥Σ∥F​\u003cμ−σ): Low uncertainty, tight co-movement Neutral (μ−σ≤∥Σ∥F≤μ+σ\\mu - \\sigma \\le \\|\\Sigma\\|_F \\le \\mu + \\sigmaμ−σ≤∥Σ∥F​≤μ+σ): Moderate uncertainty Elevated (∥Σ∥F\u003eμ+σ\\|\\Sigma\\|_F \u003e \\mu + \\sigma∥Σ∥F​\u003eμ+σ): High uncertainty, factor decoupling Infrastructure AWS Stack:\nEventBridge (cron: daily 12:00 UTC) → Lambda (512MB, 600s) → S3 (versioned, encrypted) Native C++ binary with Eigen, AWS SDK, curl IaC: AWS CDK 2.x (TypeScript, dev/staging/prod) Validation:\n240+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability, Sharpe/drawdown/P\u0026L accuracy Backtest (2007–2024): figures withdrawn until a lagged rerun through the PCA model is captured; NASDAQCOM proxy for 2007–2016 equity returns Data Inputs 8 economic indicators at mixed frequencies:\nCPI (monthly) - Inflation anchor Real GDP (quarterly) - Earnings driver Unemployment (monthly) - Labor tightness Consumer Sentiment (monthly) - Forward demand Fed Funds (monthly) - Discount rate 10Y/2Y Treasury (daily) - Yield curve VIX (daily) - Realized volatility ",
   "wordCount" : "381",
   "inLanguage": "en",
   "image": "https://ryanjhamby.dev/images/og.png","datePublished": "0001-01-01T00:00:00Z",
@@ -208,6 +208,11 @@ End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Herm
                 </a>
             </li>
             <li>
+                <a href="https://ryanjhamby.dev/receipts" title="Receipts">
+                    <span>Receipts</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://ryanjhamby.dev/about" title="About">
                     <span>About</span>
                 </a>
@@ -256,7 +261,7 @@ End-to-end pipeline: FRED API → monthly frequency alignment (downsampling/Herm
 <p><a href="https://github.com/RyanJHamby/macro-factor-decomposition">GitHub repository</a></p>
 <p>Systematic ES futures trading system powered by eigendecomposition of economic indicator covariance matrices. Decomposes 8×8 macro factor covariance to identify uncertainty regimes and size positions via macro surprise exposure.</p>
 <div class="achievement">
-Backtested on real FRED data over <span class="metric">17 years (2007–2024)</span>: <span class="metric">0.28 Sharpe, 2.10% annualized return, 3.2% max drawdown</span> with half-Kelly, regime-adjusted position sizing
+Backtest over real FRED data (2007–2024) with half-Kelly, regime-adjusted position sizing. <strong>Results withdrawn pending a rerun:</strong> the backtest used same-day signals (look-ahead) and did not run through the PCA model, so earlier figures are not cited
 </div>
 <div class="achievement">
 C++ factor decomposition engine (Eigen 3.4.0) processing 8 FRED indicators + VIX with AWS Lambda daily automation
@@ -302,7 +307,7 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 <p><strong>Validation:</strong></p>
 <ul>
 <li>240+ unit tests: covariance symmetry, eigenvalue ordering, numerical stability, Sharpe/drawdown/P&amp;L accuracy</li>
-<li>17-year backtest (2007–2024, 468 trades): 0.28 Sharpe, 3.23% max drawdown, 2.10% annualized return, 87.2% win rate (selectivity, not edge); NASDAQCOM proxy for 2007–2016 equity returns; figures from the repo README, not a captured run</li>
+<li>Backtest (2007–2024): figures withdrawn until a lagged rerun through the PCA model is captured; NASDAQCOM proxy for 2007–2016 equity returns</li>
 </ul>
 <h2 id="data-inputs">Data Inputs<a hidden class="anchor" aria-hidden="true" href="#data-inputs">#</a></h2>
 <p>8 economic indicators at mixed frequencies:</p>
