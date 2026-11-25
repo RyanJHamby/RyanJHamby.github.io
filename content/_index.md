@@ -21,7 +21,7 @@ Senior Software Engineer on an inference data plane at an AI company, New York. 
 <li><span class="meta">vLLM · MERGED 2026-08-03</span><strong><a href="https://github.com/vllm-project/vllm/pull/48420">Qwen3-Omni crash on videos with no audio track</a></strong><br>Root-caused a <code>StopIteration</code> in multimodal processing when <code>use_audio_in_video=True</code>; fixed two follow-on false-positive paths in processor caching and class inheritance.</li>
 <li><span class="meta">FIRECRACKER · MERGED 2026-07-23 · DOCS</span><strong><a href="https://github.com/firecracker-microvm/firecracker/pull/6033">DNS lookup delay from an IPv6 resolver stall</a></strong><br>Documented the cause of the delay.</li>
 <li><span class="meta">FIRECRACKER · MERGED 2026-07-16</span><strong><a href="https://github.com/firecracker-microvm/firecracker/pull/6032">VMM panic on ACPI device restore</a></strong><br>Fixed a panic when <code>EventFd</code> creation fails under fd exhaustion.</li>
-<li><span class="meta">vLLM · OPEN, OPENED 2026-09-19</span><strong><a href="https://github.com/vllm-project/vllm/pull/57722">NIXL metrics: registration-expiry and writer-loop-error counters</a></strong><br>Not merged yet.</li>
+<li><span class="meta">vLLM · OPEN, OPENED 2026-09-19 · STATUS CHECKED 2026-11-25</span><strong><a href="https://github.com/vllm-project/vllm/pull/57722">NIXL metrics: registration-expiry counter</a></strong><br>Not merged yet. Rebased and narrowed to the registration-expiry counter; the writer-loop counter was dropped because another PR reworks that path.</li>
 </ul>
 
 [All open-source work](/projects/#open-source)
